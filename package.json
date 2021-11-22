@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "playwright": "~1.14.1"
+  },
+  "engines": {
+    "node": ">=12.7.0"
+  },
+  "dependencies": {
+    "chai": "^4.3.4"
+  },
+  "scripts": {
+    "test": "node playwright-single.js"
+  }
+}

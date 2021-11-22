@@ -1,5 +1,4 @@
-# playwright-sample
-![LambdaTest Logo](https://www.lambdatest.com/static/images/logo.svg)
+# Playwright-Sample
 ---
 
 ## Prerequisites

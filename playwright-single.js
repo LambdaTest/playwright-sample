@@ -13,7 +13,7 @@ const { chromium } = require('playwright');
   };
 
   const browser = await chromium.connectOverCDP({
-    endpointURL: `wss://stage-cdp.lambdatest.com/puppeteer?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`,
+    endpointURL: `wss://stage-cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`,
   });
 
   const page = await browser.newPage();

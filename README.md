@@ -32,10 +32,6 @@ export LT_ACCESS_KEY="YOUR ACCESS KEY"`
 `set LT_USERNAME="YOUR_USERNAME"
 set LT_ACCESS_KEY="YOUR ACCESS KEY"`
 
-5. Ensure that you have Webdriverio installed in your system, you can install it using the below command through npm. 	
-
-`$ npm install webdriverio`
-
 >   #### Try Demo in Gitpod
 >   Select the button below to try this demo in [Gitpod](https://www.gitpod.io/)
 >

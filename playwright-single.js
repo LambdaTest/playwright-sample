@@ -9,8 +9,8 @@ const { chromium } = require('playwright');
         'platform': 'MacOS Catalina',
         'build': 'Playwright Sample Build',
         'name': 'Playwright Sample Test',
-        'username': '<your user name>',
-        'access_key': '<your access key>',
+        'user': '<your user name>',
+        'accessKey': '<your access key>',
         'network': true
       }
    };

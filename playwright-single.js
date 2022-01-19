@@ -2,15 +2,18 @@ const expect = require('chai').expect
 const { chromium } = require('playwright');
 
 (async () => {
-  const capabilities = {
-    'browserName': 'chrome',
-    'version': 'latest',
-    'platform': 'MacOS Catalina',
-    'build': 'Playwright Sample Build',
-    'name': 'Playwright Sample Test',
-    'username': '<your user name>',
-    'access_key': '<your access key>',
-  };
+    const capabilities = {
+      'browserName': 'Chrome',
+      'browserVersion': 'latest',
+      'LT:Options': {
+        'platform': 'MacOS Catalina',
+        'build': 'Playwright Sample Build',
+        'name': 'Playwright Sample Test',
+        'username': '<your user name>',
+        'access_key': '<your access key>',
+        'network': true
+      }
+   };
 
   const browser = await chromium.connectOverCDP({
     endpointURL: `wss://stage-cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`,

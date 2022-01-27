@@ -6,17 +6,18 @@ const { chromium } = require('playwright');
       'browserName': 'Chrome',
       'browserVersion': 'latest',
       'LT:Options': {
-        'platform': 'MacOS Catalina',
+        'platform': 'Windows 10',
         'build': 'Playwright Sample Build',
         'name': 'Playwright Sample Test',
-        'user': '<your user name>',
-        'accessKey': '<your access key>',
-        'network': true
+        'user': process.env.LT_USERNAME,
+        'accessKey': process.env.LT_ACCESS_KEY,
+        'network': true,
+        'video':true
       }
    };
 
   const browser = await chromium.connectOverCDP({
-    endpointURL: `wss://stage-cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`,
+    endpointURL: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`,
   });
 
   const page = await browser.newPage();

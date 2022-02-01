@@ -9,6 +9,7 @@
     "chai": "^4.3.4"
   },
   "scripts": {
-    "test": "node playwright-single.js"
+    "test": "node playwright-single.js",
+    "test-parallel": "node playwright-parallel.js"
   }
 }

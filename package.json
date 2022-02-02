@@ -1,4 +1,5 @@
 {
+  "name": "LambdaTest Playwright Sample",
   "devDependencies": {
     "playwright": "~1.14.1"
   },

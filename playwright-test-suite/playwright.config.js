@@ -1,4 +1,4 @@
-const { devices } = require('@playwright/test');
+const { devices } = require('@playwright/test')
 
 // Playwright config to run tests on LambdaTest platform and local
 const config = {
@@ -16,21 +16,21 @@ const config = {
       use: {
         browserName: 'chromium',
         channel: 'chrome'
-      },
+      }
     },
     {
       name: 'chrome:latest:Windows 10@lambdatest',
       use: {
         browserName: 'chromium',
         channel: 'chrome'
-      },
+      }
     },
     {
       name: 'edge@90:Windows 10@lambdatest',
       use: {
         browserName: 'chromium',
-        ...devices['iPhone 12 Pro Max'],
-      },
+        ...devices['iPhone 12 Pro Max']
+      }
     }
 
     // Config for running tests in local
@@ -62,7 +62,7 @@ const config = {
     //     ...devices['iPhone 12 Pro Max'],
     //   }
     // },
-  ],
-};
+  ]
+}
 
-module.exports = config;
+module.exports = config

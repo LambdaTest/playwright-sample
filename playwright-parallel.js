@@ -1,5 +1,5 @@
-const expect = require('chai').expect
 const { chromium } = require('playwright')
+const { expect } = require('@playwright/test')
 
 const parallelTests = async (capability) => {
   console.log('Initialising test:: ', capability['LT:Options']['name'])
@@ -19,7 +19,7 @@ const parallelTests = async (capability) => {
   const title = await page.title()
 
   try {
-    expect(title).to.equal('LambdaTest - Search', 'Incorrect title!')
+    expect(title).toEqual('LambdaTest - Search')
     // Mark the test as completed or failed
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'completed', remark: 'Title matched' } })}`)
   } catch {

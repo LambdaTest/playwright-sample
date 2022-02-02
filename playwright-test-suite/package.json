@@ -10,7 +10,7 @@
     "test": "npx playwright test --config=./playwright.config.js"
   },
   "devDependencies": {
-    "playwright": "~1.18.1",
-    "@playwright/test": "~1.18.1"
+    "@playwright/test": "~1.18.1",
+    "playwright": "~1.18.1"
   }
 }

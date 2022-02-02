@@ -1,4 +1,4 @@
-const { chromium } = require('playwright')
+const { chromium, devices } = require('playwright')
 const { expect } = require('@playwright/test');
 
 (async () => {
@@ -20,7 +20,8 @@ const { expect } = require('@playwright/test');
     endpointURL: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
-  const page = await browser.newPage()
+  const context = await browser.newContext({ ...devices['iPhone 11'] })  // Documentation: https://playwright.dev/docs/emulation#devices
+  const page = await context.newPage()
 
   await page.goto('https://www.bing.com')
 

@@ -1,0 +1,16 @@
+{
+  "name": "Playwright Test Suite",
+  "version": "1.0.0",
+  "author": "LambdaTest",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "description": "Sample project to run playwright tests on LambdaTest platform",
+  "scripts": {
+    "test": "npx playwright test --config=./playwright.config.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "~1.18.1",
+    "playwright": "~1.18.1"
+  }
+}

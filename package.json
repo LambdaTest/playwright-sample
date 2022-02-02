@@ -1,14 +1,14 @@
 {
+  "name": "LambdaTest Playwright Sample",
   "devDependencies": {
-    "playwright": "~1.14.1"
+    "playwright": "~1.18.1",
+    "@playwright/test": "^1.18.1"
   },
   "engines": {
     "node": ">=12.7.0"
   },
-  "dependencies": {
-    "chai": "^4.3.4"
-  },
   "scripts": {
-    "test": "node playwright-single.js"
+    "test": "node playwright-single.js",
+    "test-parallel": "node playwright-parallel.js"
   }
 }

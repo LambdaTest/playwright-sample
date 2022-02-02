@@ -1,0 +1,17 @@
+const { test } = require('../lambdatest-setup');
+const { expect } = require('@playwright/test');
+
+test.describe('Browse LambdaTest in different search engines', () => {
+  test('Search LambdaTest on Bing', async ({ page }) => {
+    await page.goto('https://www.bing.com');
+    const element = await page.$('[aria-label="Enter your search term"]');
+    await element.click();
+    await element.type('LambdaTest');
+    await element.press('Enter');
+    const title = await page.title();
+
+    console.log("Page title:: ", title);
+    // Use the expect API for assertions provided by playwright
+    expect(title).toEqual('LambdaTest - Bing', 'Incorrect title!')
+  });
+});

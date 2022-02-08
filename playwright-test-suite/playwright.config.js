@@ -26,7 +26,7 @@ const config = {
       }
     },
     {
-      name: 'MicrosoftEdge@90:Windows 10@lambdatest',
+      name: 'MicrosoftEdge:90:Windows 10@lambdatest',
       use: {
         browserName: 'chromium',
         ...devices['iPhone 12 Pro Max']

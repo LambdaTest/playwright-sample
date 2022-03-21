@@ -4,8 +4,8 @@ const { expect } = require('@playwright/test')
 const parallelTests = async (capability) => {
   console.log('Initialising test:: ', capability['LT:Options']['name'])
 
-  const browser = await chromium.connectOverCDP({
-    endpointURL: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capability))}`
+  const browser = await chromium.connect({
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capability))}`
   })
 
   const page = await browser.newPage()
@@ -32,7 +32,7 @@ const parallelTests = async (capability) => {
 // Capabilities array for with the respective configuration for the parallel tests
 const capabilities = [
   {
-    'browserName': 'Chrome',
+    'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
     'browserVersion': 'latest',
     'LT:Options': {
       'platform': 'Windows 10',

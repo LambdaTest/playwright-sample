@@ -3,7 +3,7 @@ const { expect } = require('@playwright/test');
 
 (async () => {
   const capabilities = {
-    'browserName': 'Chrome',
+    'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
     'browserVersion': 'latest',
     'LT:Options': {
       'platform': 'Windows 10',
@@ -16,8 +16,8 @@ const { expect } = require('@playwright/test');
     }
   }
 
-  const browser = await chromium.connectOverCDP({
-    endpointURL: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+  const browser = await chromium.connect({
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
   const context = await browser.newContext({ ...devices['iPhone 11'] })  // Documentation: https://playwright.dev/docs/emulation#devices
@@ -34,7 +34,7 @@ const { expect } = require('@playwright/test');
   try {
     expect(title).toEqual('LambdaTest - Search')
     // Mark the test as completed or failed
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'completed', remark: 'Title matched' } })}`)
+    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
   } catch {
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' } })}`)
   }

@@ -4,14 +4,14 @@ const { chromium } = require('playwright')
 
 // LambdaTest capabilities
 const capabilities = {
-  'browserName': 'Chrome',
+  'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
   'browserVersion': 'latest',
   'LT:Options': {
     'platform': 'Windows 10',
     'build': 'Playwright Build',
     'name': 'Playwright Test',
     'user': process.env.LT_USERNAME,
-    'accessKey': process.env.LT_ACCESS_KEY,
+    'accessKey': process.env.LT_ACCESS_KEY_PROD,
     'network': true,
     'video': true
   }
@@ -36,8 +36,8 @@ exports.test = base.test.extend({
     if (testInfo.project.name.match(/lambdatest/)) {
       modifyCapabilities(testInfo.project.name, `${testInfo.title} - ${fileName}`)
 
-      const browser = await chromium.connectOverCDP({
-        endpointURL: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+      const browser = await chromium.connect({
+        wsEndpoint: `wss://preprod-cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
       })
 
       const ltPage = await browser.newPage(testInfo.project.use)

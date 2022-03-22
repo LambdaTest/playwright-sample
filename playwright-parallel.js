@@ -4,8 +4,8 @@ const { expect } = require('@playwright/test')
 const parallelTests = async (capability) => {
   console.log('Initialising test:: ', capability['LT:Options']['name'])
 
-  const browser = await chromium.connectOverCDP({
-    endpointURL: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capability))}`
+  const browser = await chromium.connect({
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
   const page = await browser.newPage()
@@ -21,7 +21,7 @@ const parallelTests = async (capability) => {
   try {
     expect(title).toEqual('LambdaTest - Search')
     // Mark the test as completed or failed
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'completed', remark: 'Title matched' } })}`)
+    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
   } catch {
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' } })}`)
   }
@@ -32,7 +32,7 @@ const parallelTests = async (capability) => {
 // Capabilities array for with the respective configuration for the parallel tests
 const capabilities = [
   {
-    'browserName': 'Chrome',
+    'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
     'browserVersion': 'latest',
     'LT:Options': {
       'platform': 'Windows 10',

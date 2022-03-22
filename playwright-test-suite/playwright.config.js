@@ -31,6 +31,19 @@ const config = {
         browserName: 'chromium',
         ...devices['iPhone 12 Pro Max']
       }
+    },
+    {
+      name: 'pw-firefox:90:Windows 10@lambdatest',
+      use: {
+        browserName: 'chromium',
+        ...devices['iPhone 12 Pro Max']
+      }
+    },
+    {
+      name: 'pw-webkit:90:Windows 10@lambdatest',
+      use: {
+        browserName: 'webkit'
+      }
     }
 
     // Config for running tests in local

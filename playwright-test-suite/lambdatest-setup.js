@@ -11,8 +11,8 @@ const capabilities = {
     'build': 'Playwright Build',
     'name': 'Playwright Test',
     'user': process.env.LT_USERNAME,
-    'accessKey': process.env.LT_ACCESS_KEY_PROD,
-    'network': true,
+    'accessKey': process.env.LT_ACCESS_KEY,
+    'network': false,
     'video': true
   }
 }
@@ -37,7 +37,7 @@ exports.test = base.test.extend({
       modifyCapabilities(testInfo.project.name, `${testInfo.title} - ${fileName}`)
 
       const browser = await chromium.connect({
-        wsEndpoint: `wss://preprod-cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+        wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
       })
 
       const ltPage = await browser.newPage(testInfo.project.use)

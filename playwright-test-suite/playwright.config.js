@@ -33,14 +33,14 @@ const config = {
       }
     },
     {
-      name: 'pw-firefox:90:Windows 10@lambdatest',
+      name: 'pw-firefox:latest:Windows 10@lambdatest',
       use: {
         browserName: 'chromium',
         ...devices['iPhone 12 Pro Max']
       }
     },
     {
-      name: 'pw-webkit:90:Windows 10@lambdatest',
+      name: 'pw-webkit:latest:Windows 10@lambdatest',
       use: {
         browserName: 'webkit'
       }

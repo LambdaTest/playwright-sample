@@ -5,7 +5,7 @@ const parallelTests = async (capability) => {
   console.log('Initialising test:: ', capability['LT:Options']['name'])
 
   const browser = await chromium.connect({
-    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capability))}`
   })
 
   const page = await browser.newPage()

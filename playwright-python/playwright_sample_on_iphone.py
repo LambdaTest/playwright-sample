@@ -22,8 +22,11 @@ capabilities = {
 def run(playwright):
     lt_cdp_url = 'wss://cdp.lambdatest.com/playwright?capabilities=' + urllib.parse.quote(
         json.dumps(capabilities))
+    iphone = playwright.devices["iPhone 11"]  # Documentation: https://playwright.dev/docs/emulation#devices
     browser = playwright.chromium.connect(lt_cdp_url)
-    page = browser.new_page()
+    context = browser.new_context(**iphone)
+    page = context.new_page()
+
     try:
         page.goto("https://www.bing.com/")
         page.fill("[aria-label='Enter your search term']", 'LambdaTest')

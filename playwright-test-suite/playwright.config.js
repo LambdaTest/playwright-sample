@@ -11,6 +11,7 @@ const config = {
   projects: [
     // -- LambdaTest Config --
     // name in the format: browserName:browserVersion:platform@lambdatest
+    // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
     {
       name: 'chrome:latest:MacOS Catalina@lambdatest',
       use: {

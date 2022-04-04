@@ -11,6 +11,7 @@ const config = {
   projects: [
     // -- LambdaTest Config --
     // name in the format: browserName:browserVersion:platform@lambdatest
+    // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
     {
       name: 'chrome:latest:MacOS Catalina@lambdatest',
       use: {
@@ -30,6 +31,19 @@ const config = {
       use: {
         browserName: 'chromium',
         ...devices['iPhone 12 Pro Max']
+      }
+    },
+    {
+      name: 'pw-firefox:latest:Windows 10@lambdatest',
+      use: {
+        browserName: 'chromium',
+        ...devices['iPhone 12 Pro Max']
+      }
+    },
+    {
+      name: 'pw-webkit:latest:Windows 10@lambdatest',
+      use: {
+        browserName: 'webkit'
       }
     }
 

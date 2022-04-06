@@ -37,7 +37,6 @@ const config = {
       name: 'pw-firefox:latest:Windows 10@lambdatest',
       use: {
         browserName: 'chromium',
-        ...devices['iPhone 12 Pro Max']
       }
     },
     {

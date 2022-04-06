@@ -15,7 +15,7 @@ Then("Open HyperExecute documentation", async function () {
   let title = await this.page.title()
 
   try{
-    assert.equal(title, "How1 to use HyperExecute for scalable and reliable web automation testing | LambdaTest", "Page title does not match")
+    assert.equal(title, "How to use HyperExecute for scalable and reliable web automation testing | LambdaTest", "Page title does not match")
 
     await this.setTestStatus("passed", "Title matched")
   } catch (e) {

@@ -6,7 +6,7 @@ const capabilities = {
   'browserVersion': 'latest',
   'LT:Options': {
     'platform': 'Windows 10',
-    'build': 'Playwright Sample Build',
+    'build': 'Playwright Sample Build with Cucumber Runner',
     'name': 'Playwright Sample Test',
     'user': process.env.LT_USERNAME,
     'accessKey': process.env.LT_ACCESS_KEY,

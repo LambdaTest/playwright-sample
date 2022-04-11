@@ -12,8 +12,9 @@ const capabilities = {
     'name': 'Playwright Test',
     'user': process.env.LT_USERNAME,
     'accessKey': process.env.LT_ACCESS_KEY,
-    'network': false,
-    'video': true
+    'network': true,
+    'video': true,
+    'console': true
   }
 }
 

@@ -11,7 +11,8 @@ const capabilities = {
     'user': process.env.LT_USERNAME,
     'accessKey': process.env.LT_ACCESS_KEY,
     'network': true,
-    'video': true
+    'video': true,
+    'console': true
   }
 }
 

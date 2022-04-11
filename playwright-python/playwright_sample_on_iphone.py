@@ -13,8 +13,9 @@ capabilities = {
         'name': 'Playwright Test',
         'user': os.getenv('LT_USERNAME'),
         'accessKey': os.getenv('LT_ACCESS_KEY'),
-        'network': False,
-        'video': True
+        'network': True,
+        'video': True,
+        'console': True
     }
 }
 

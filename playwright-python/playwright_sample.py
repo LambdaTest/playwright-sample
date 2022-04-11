@@ -1,6 +1,7 @@
 import json
 import os
 import urllib
+import subprocess
 
 from playwright.sync_api import sync_playwright
 
@@ -21,6 +22,9 @@ capabilities = {
 
 
 def run(playwright):
+    playwrightVersion = str(subprocess.getoutput('playwright --version')).strip().split(" ")[1]
+    capabilities['LT:Options']['playwrightVersion'] = playwrightVersion
+
     lt_cdp_url = 'wss://cdp.lambdatest.com/playwright?capabilities=' + urllib.parse.quote(
         json.dumps(capabilities))
     browser = playwright.chromium.connect(lt_cdp_url)

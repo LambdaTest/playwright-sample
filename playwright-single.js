@@ -14,9 +14,8 @@ const { expect } = require('@playwright/test');
       'network': true,
       'video': true,
       'console': true,
-      // Add tunnel configuration if testing locally hosted webpage
-      'tunnel': false,
-      'tunnelName': ''
+      'tunnel': false, // Add tunnel configuration if testing locally hosted webpage
+      'tunnelName': '' // Optional
     }
   }
 

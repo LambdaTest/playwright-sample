@@ -17,9 +17,8 @@ capabilities = {
         'network': True,
         'video': True,
         'console': True,
-        # Add tunnel configuration if testing locally hosted webpage
-        'tunnel': False,
-        'tunnelName': ''
+        'tunnel': False,  # Add tunnel configuration if testing locally hosted webpage
+        'tunnelName': ''  # Optional
     }
 }
 

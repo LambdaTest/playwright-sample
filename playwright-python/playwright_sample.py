@@ -16,7 +16,9 @@ capabilities = {
         'accessKey': os.getenv('LT_ACCESS_KEY'),
         'network': True,
         'video': True,
-        'console': True
+        'console': True,
+        'tunnel': False,  # Add tunnel configuration if testing locally hosted webpage
+        'tunnelName': ''  # Optional
     }
 }
 

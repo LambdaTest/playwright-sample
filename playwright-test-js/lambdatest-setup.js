@@ -14,7 +14,9 @@ const capabilities = {
     'accessKey': process.env.LT_ACCESS_KEY,
     'network': true,
     'video': true,
-    'console': true
+    'console': true,
+    'tunnel': false, // Add tunnel configuration if testing locally hosted webpage
+    'tunnelName': '' // Optional
   }
 }
 

@@ -13,7 +13,10 @@ const { expect } = require('@playwright/test');
       'accessKey': process.env.LT_ACCESS_KEY,
       'network': true,
       'video': true,
-      'console': true
+      'console': true,
+      // Add tunnel configuration if testing locally hosted webpage
+      'tunnel': false,
+      'tunnelName': ''
     }
   }
 

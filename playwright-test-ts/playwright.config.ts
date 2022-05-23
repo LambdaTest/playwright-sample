@@ -1,5 +1,5 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
-const { devices } = require("@playwright/test");
+import { devices } from "@playwright/test";
 
 // Playwright config to run tests on LambdaTest platform and local
 const config: PlaywrightTestConfig = {
@@ -19,32 +19,30 @@ const config: PlaywrightTestConfig = {
         viewport: { width: 1920, height: 1080 },
       },
     },
-    /*
     {
-      name: 'chrome:latest:Windows 10@lambdatest',
+      name: "chrome:latest:Windows 10@lambdatest",
       use: {
-        viewport: { width: 1280, height: 720 }
-      }
+        viewport: { width: 1280, height: 720 },
+      },
     },
     {
-      name: 'MicrosoftEdge:90:Windows 10@lambdatest',
+      name: "MicrosoftEdge:90:Windows 10@lambdatest",
       use: {
-        ...devices['iPhone 12 Pro Max']
-      }
+        ...devices["iPhone 12 Pro Max"],
+      },
     },
     {
-      name: 'pw-firefox:latest:Windows 10@lambdatest',
+      name: "pw-firefox:latest:Windows 10@lambdatest",
       use: {
-        viewport: { width: 1280, height: 720 }
-      }
+        viewport: { width: 1280, height: 720 },
+      },
     },
     {
-      name: 'pw-webkit:latest:Windows 10@lambdatest',
+      name: "pw-webkit:latest:Windows 10@lambdatest",
       use: {
-        viewport: { width: 1920, height: 1080 }
-      }
-    }
-*/
+        viewport: { width: 1920, height: 1080 },
+      },
+    },
     // Config for running tests in local
     // {
     //   name: "chrome",

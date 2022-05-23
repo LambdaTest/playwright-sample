@@ -1,4 +1,4 @@
-<img height="200" src="https://user-images.githubusercontent.com/70570645/169812365-4141efe0-918e-4bfc-a2d5-bf3da9571d2b.png">
+<img height="300" src="https://user-images.githubusercontent.com/70570645/169812365-4141efe0-918e-4bfc-a2d5-bf3da9571d2b.png">
 
 *Playwright is a Node.js library that uses a single API to automate Chromium, Firefox, and WebKit. It is designed to enable powerful, reliable, and efficient [automated browser testing](https://www.lambdatest.com/automated-browser-testing). Playwright can also automate Microsoft Edge since it is built on the open-source Chromium web framework. LambdaTest allows you to run Playwright tests across 40+ real browsers and operating system combinations.* 
 
@@ -11,12 +11,12 @@
 * [Pre-requisites](#pre-requisites)
 * [Running Your First Playwright Test](#running-your-first-playwright-test)
 * [Parallel Testing](#parallel-testing)
-* [Migrate Playwright Tests](https://github.com/LambdaTest/playwright-sample/blob/master/pw-docs/migrate-playwright-tests.md)
-* [Test Execution Setup](https://github.com/LambdaTest/playwright-sample/blob/master/pw-docs/test-execution-setup.md)
-* [Local Testing](https://github.com/LambdaTest/playwright-sample/blob/master/pw-docs/local-testing.md)
-* [Integrate With Playwright Test Runner](https://github.com/LambdaTest/playwright-sample/blob/master/pw-docs/playwright-test-runner.md)
-* [Integrate With Cucumber.js](https://github.com/LambdaTest/playwright-sample/blob/master/pw-docs/cucumberjs.md)
-* [Playwright Testing With CI/CD](https://github.com/LambdaTest/playwright-sample/blob/master/pw-docs/playwright-with-cicd.md)
+* [Migrate Playwright Tests](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/migrate-playwright-tests.md)
+* [Test Execution Setup](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/test-execution-setup.md)
+* [Local Testing](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/local-testing.md)
+* [Integrate With Playwright Test Runner](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/playwright-test-runner.md)
+* [Integrate With Cucumber.js](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/cucumberjs.md)
+* [Playwright Testing With CI/CD](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/playwright-with-cicd.md)
 ***
 
 # Pre-requisites

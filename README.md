@@ -1,11 +1,12 @@
+# Playwright Cloud ![pw](https://user-images.githubusercontent.com/70570645/169813479-9713557e-4430-42ea-91f4-70c6cb72ec0b.PNG)
+
 <img height="300" src="https://user-images.githubusercontent.com/70570645/169812365-4141efe0-918e-4bfc-a2d5-bf3da9571d2b.png">
 
 *Playwright is a Node.js library that uses a single API to automate Chromium, Firefox, and WebKit. It is designed to enable powerful, reliable, and efficient [automated browser testing](https://www.lambdatest.com/automated-browser-testing). Playwright can also automate Microsoft Edge since it is built on the open-source Chromium web framework. LambdaTest allows you to run Playwright tests across 40+ real browsers and operating system combinations.* 
 
-*Learn the basics of [getting started with Playwright testing on the LambdaTest platform](https://www.lambdatest.com/support/docs/playwright-testing/).*
+*Learn the basics of [Playwright testing on the LambdaTest platform](https://www.lambdatest.com/support/docs/playwright-testing/).*
 
-# Playwright Cloud ![pw](https://user-images.githubusercontent.com/70570645/169813479-9713557e-4430-42ea-91f4-70c6cb72ec0b.PNG)
-
+## Table of Contents:
 ***
 
 * [Pre-requisites](#pre-requisites)
@@ -19,7 +20,7 @@
 * [Playwright Testing With CI/CD](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/playwright-with-cicd.md)
 ***
 
-# Pre-requisites
+## Pre-requisites
 
 1. Clone the [LambdaTest-Playwright repository](https://github.com/LambdaTest/playwright-sample) on your system.
 
@@ -47,7 +48,7 @@ export LT_USERNAME="YOUR_LAMBDATEST_USERNAME"
 export LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 ```
 
-# Run Your First Playwright Test
+## Run Your First Playwright Test
 * * *
 
 Shown below are the steps on running Playwright tests on the LambdaTest platform. 
@@ -65,54 +66,8 @@ cd playwright-sample-main
 
 Once you are done with the above-mentioned steps, you can initiate your first Playwright test on LambdaTest. 
 
-The below test script searches the term 'LambdaTest' on Bing.
+**Test Scenario**: Check out [playwright-single.js](https://github.com/LambdaTest/playwright-sample/blob/main/playwright-single.js) file to view the sample test script.
 
-```js
-const { chromium } = require('playwright')
-const { expect } = require('@playwright/test');
-
-(async () => {
-  const capabilities = {
-    'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
-    'browserVersion': 'latest',
-    'LT:Options': {
-      'platform': 'Windows 10',
-      'build': 'Playwright Sample Build',
-      'name': 'Playwright Sample Test',
-      'user': process.env.LT_USERNAME,
-      'accessKey': process.env.LT_ACCESS_KEY,
-      'network': true,
-      'video': true,
-      'console': true
-    }
-  }
-
-  const browser = await chromium.connect({
-    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
-  })
-
-  const page = await browser.newPage()
-
-  await page.goto('https://www.bing.com')
-
-  const element = await page.$('[aria-label="Enter your search term"]')
-  await element.click()
-  await element.type('LambdaTest')
-  await element.press('Enter')
-  const title = await page.title()
-
-  try {
-    expect(title).toEqual('LambdaTest - Search')
-    // Mark the test as completed or failed
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
-  } catch {
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' } })}`)
-  }
-
-  await browser.close()
-})()
-
-```
 
 4. Pass the below command to run the test.
 
@@ -120,7 +75,7 @@ const { expect } = require('@playwright/test');
 node playwright-single.js
 ```
 
-# View your Playwright test results
+## View your Playwright test results
 ***
 
 The LambdaTest Automation Dashboard is where you can see the results of your Playwright tests after running them on the LambdaTest platform. 
@@ -154,90 +109,7 @@ cd playwright-sample-main
 
 Once you are done with the above-mentioned steps, you can run your parallel tests with Playwright on LambdaTest. 
 
-The below test script searches the term 'LambdaTest' on Bing.
-
-```js
-const { chromium } = require('playwright')
-const { expect } = require('@playwright/test')
-
-const parallelTests = async (capability) => {
-  console.log('Initialising test:: ', capability['LT:Options']['name'])
-
-  const browser = await chromium.connect({
-    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capability))}`
-  })
-
-  const page = await browser.newPage()
-
-  await page.goto('https://www.bing.com')
-
-  const element = await page.$('[aria-label="Enter your search term"]')
-  await element.click()
-  await element.type('LambdaTest')
-  await element.press('Enter')
-  const title = await page.title()
-
-  try {
-    expect(title).toEqual('LambdaTest - Search')
-    // Mark the test as completed or failed
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
-  } catch {
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' } })}`)
-  }
-
-  await browser.close()
-}
-
-// Capabilities array for with the respective configuration for the parallel tests
-const capabilities = [
-  {
-    'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
-    'browserVersion': 'latest',
-    'LT:Options': {
-      'platform': 'Windows 10',
-      'build': 'Playwright Sample Build',
-      'name': 'Playwright Sample Test on Windows 10 - Chrome',
-      'user': process.env.LT_USERNAME,
-      'accessKey': process.env.LT_ACCESS_KEY,
-      'network': true,
-      'video': true,
-      'console': true
-    }
-  },
-  {
-    'browserName': 'MicrosoftEdge',
-    'browserVersion': 'latest',
-    'LT:Options': {
-      'platform': 'Windows 8',
-      'build': 'Playwright Sample Build',
-      'name': 'Playwright Sample Test on Windows 8 - MicrosoftEdge',
-      'user': process.env.LT_USERNAME,
-      'accessKey': process.env.LT_ACCESS_KEY,
-      'network': true,
-      'video': true,
-      'console': true
-    }
-  },
-  {
-    'browserName': 'Chrome',
-    'browserVersion': 'latest',
-    'LT:Options': {
-      'platform': 'MacOS Big sur',
-      'build': 'Playwright Sample Build',
-      'name': 'Playwright Sample Test on MacOS Big sur - Chrome',
-      'user': process.env.LT_USERNAME,
-      'accessKey': process.env.LT_ACCESS_KEY,
-      'network': true,
-      'video': true,
-      'console': true
-    }
-  }]
-
-capabilities.forEach(async (capability) => {
-  await parallelTests(capability)
-})
-
-```
+**Test Scenario**: Check out [playwright-parallel.js](https://github.com/LambdaTest/playwright-sample/blob/main/playwright-parallel.js) file to view the sample test script.
 
 4. Pass the below command to run the test.
 
@@ -245,12 +117,12 @@ capabilities.forEach(async (capability) => {
 node playwright-parallel.js
 ```
 
-## Gitpod
+## Run Playwright Tests In Gitpod
 ***
 
 Select the button below to try this demo in [Gitpod](https://www.gitpod.io/)
 
-[<img alt="Run in Gitpod" width="100 px" align="center" src="https://img.shields.io/badge/Gitpod-000000?style=for-the-badge&logo=gitpod&logoColor=#FFAE33" />](https://gitpod.io/#https://github.com/LambdaTest/playwright-sample)
+[<img alt="Run in Gitpod" width="200px" align="center" src="https://user-images.githubusercontent.com/70570645/169987363-1408c494-4e2a-4f12-8828-c931eac716b0.png" />](https://gitpod.io/#https://github.com/LambdaTest/playwright-sample)
 
 * After the Gitpod session launches, navigate to the terminal and run the following commands to save your [LambdaTest Credentials](https://accounts.lambdatest.com/detail/profile) to Gitpod as environment variables:
 
@@ -263,11 +135,11 @@ eval $(gp env -e LT_ACCESS_KEY=******)
 ```
  eval $(gp env -e)
 ```
-For more information consult the [Gitpod documentation](https://www.gitpod.io/docs/47_environment_variables/)
+For more information, refer to [Gitpod documentation](https://www.gitpod.io/docs/47_environment_variables/)
 
 ## LambdaTest Community :busts_in_silhouette:
 ***
-The [LambdaTest Community](https://community.lambdatest.com/) allows people to interact with LambdaTest tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe.
+The [LambdaTest Community](https://community.lambdatest.com/) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe.
 
 ## Documentation & Resources :books:
 ***
@@ -276,15 +148,11 @@ If you want to learn more about the LambdaTest's features, setup, and usage, vis
       
  ## About LambdaTest
 ***
-[LambdaTest](https://www.lambdatest.com) is a leading test execution platform that allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, browser versions, and operating systems. You can accelerate your test execution and achieve faster release cycles. Over 500 enterprises and 1M+ users across 132+ countries rely on LambdaTest for their web testing needs.     
+[LambdaTest](https://www.lambdatest.com) is the leading test execution and orchestration platform. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. You can accelerate your test execution and achieve fast feedback on code changes. Over 500 enterprises and 1Million + users across 132+ countries rely on LambdaTest for their web testing needs.     
     
-[<img height="50" src="https://user-images.githubusercontent.com/70570645/169649126-ed61f6de-49b5-4593-80cf-3391ca40d665.PNG">](https://accounts.lambdatest.com/register)
+[<img height="70" src="https://user-images.githubusercontent.com/70570645/169649126-ed61f6de-49b5-4593-80cf-3391ca40d665.PNG">](https://accounts.lambdatest.com/register)
       
 ## We are here to help you :headphones:
 ***
-* LambdaTest Support: [support@lambdatest.com](mailto:support@lambdatest.com)
-* Playwright Testing Page: https://www.lambdatest.com/playwright-testing
-* LambdaTest HomePage: https://www.lambdatest.com      
-
-
-
+* Got a query? we are available 24x7 to help. [Contact Us](mailto:support@lambdatest.com)
+* For more info, visit - https://www.lambdatest.com

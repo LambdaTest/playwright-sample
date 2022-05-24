@@ -148,8 +148,8 @@ If you want to learn more about the LambdaTest's features, setup, and usage, vis
       
  ## About LambdaTest
 ***
-[LambdaTest](https://www.lambdatest.com) is the leading test execution and orchestration platform. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. You can accelerate your test execution and achieve fast feedback on code changes. Over 500 enterprises and 1Million + users across 132+ countries rely on LambdaTest for their web testing needs.     
-    
+[LambdaTest](https://www.lambdatest.com) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.
+
 [<img height="70" src="https://user-images.githubusercontent.com/70570645/169649126-ed61f6de-49b5-4593-80cf-3391ca40d665.PNG">](https://accounts.lambdatest.com/register)
       
 ## We are here to help you :headphones:

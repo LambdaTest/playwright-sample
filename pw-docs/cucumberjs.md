@@ -20,8 +20,7 @@ npm install
 
 3. In order to run your Playwright tests with Playwright test runner, you will need to set your LambdaTest username and access key in the environment variables. Click the **Access Key** button at the top-right of the Automation Dashboard to access it.
 
-<img loading="lazy" src={require('../assets/images/playwright-testing/key.webp').default} alt="Image" width="1444" height="703"  className="doc_img"/>
-
+<img height="400" src="https://user-images.githubusercontent.com/70570645/170220219-2b8f209e-07bb-416a-ab66-9ee1c35b1e90.png"/>
 
 **Windows**
 

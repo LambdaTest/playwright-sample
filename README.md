@@ -57,7 +57,7 @@ Shown below are the steps on running Playwright tests on the LambdaTest platform
 
 ```js
 git clone https://github.com/LambdaTest/playwright-sample.git
-cd playwright-sample-main
+cd playwright-sample
 ```
 
 2. Ensure you have npm dependencies installed. 

@@ -1,13 +1,29 @@
 # Playwright Cloud ![pw](https://user-images.githubusercontent.com/70570645/169813479-9713557e-4430-42ea-91f4-70c6cb72ec0b.PNG)
 
-<img height="300" src="https://user-images.githubusercontent.com/70570645/169812365-4141efe0-918e-4bfc-a2d5-bf3da9571d2b.png">
+<img height="400" src="https://user-images.githubusercontent.com/70570645/171361733-065df506-c302-452d-8bc7-e63047377f8e.png">
+
+<p align="center">
+  <a href="https://www.lambdatest.com/blog/" target="_bank">Blog</a>
+  &nbsp; &#8901; &nbsp;
+  <a href="https://www.lambdatest.com/support/docs/" target="_bank">Docs</a>
+  &nbsp; &#8901; &nbsp;
+  <a href="https://www.lambdatest.com/learning-hub/" target="_bank">Learning Hub</a>
+  &nbsp; &#8901; &nbsp;
+  <a href="https://www.lambdatest.com/newsletter/" target="_bank">Newsletter</a>
+  &nbsp; &#8901; &nbsp;
+  <a href="https://www.lambdatest.com/certifications/" target="_bank">Certifications</a>
+  &nbsp; &#8901; &nbsp;
+  <a href="https://www.youtube.com/c/LambdaTest" target="_bank">YouTube</a>
+</p>
+&emsp;
+&emsp;
+&emsp;
 
 *Playwright is a Node.js library that uses a single API to automate Chromium, Firefox, and WebKit. It is designed to enable powerful, reliable, and efficient [automated browser testing](https://www.lambdatest.com/automated-browser-testing). Playwright can also automate Microsoft Edge since it is built on the open-source Chromium web framework. LambdaTest allows you to run Playwright tests across 40+ real browsers and operating system combinations.* 
 
 *Learn the basics of [Playwright testing on the LambdaTest platform](https://www.lambdatest.com/support/docs/playwright-testing/).*
 
 ## Table of Contents:
-***
 
 * [Pre-requisites](#pre-requisites)
 * [Running Your First Playwright Test](#running-your-first-playwright-test)
@@ -18,11 +34,10 @@
 * [Integrate With Playwright Test Runner](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/playwright-test-runner.md)
 * [Integrate With Cucumber.js](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/cucumberjs.md)
 * [Playwright Testing With CI/CD](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/playwright-with-cicd.md)
-***
 
 ## Pre-requisites
 
-1. Clone the [LambdaTest-Playwright repository](https://github.com/LambdaTest/playwright-sample) on your system.
+1. Clone the LambdaTest-Playwright repository on your system.
 
 2. Install the npm dependencies.
 
@@ -49,11 +64,10 @@ export LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 ```
 
 ## Run Your First Playwright Test
-* * *
 
 Shown below are the steps on running Playwright tests on the LambdaTest platform. 
 
-1. Clone the [LambdaTest-Playwright GitHub repository](https://github.com/LambdaTest/playwright-sample) and switch to the cloned directory.
+1. Clone the LambdaTest-Playwright GitHub repository and switch to the cloned directory.
 
 ```js
 git clone https://github.com/LambdaTest/playwright-sample.git
@@ -76,7 +90,6 @@ node playwright-single.js
 ```
 
 ## View your Playwright test results
-***
 
 The LambdaTest Automation Dashboard is where you can see the results of your Playwright tests after running them on the LambdaTest platform. 
 
@@ -89,14 +102,14 @@ On clicking the session name of the respective test, you can view the details of
 <img height="400" src="https://user-images.githubusercontent.com/70570645/169819492-9b89a3ec-3db3-44f7-8ced-11eb747b9f2c.png"/>
 
 ## Parallel Testing With Playwright
-* * *
+
 
 LambdaTest allows you to perform parallel testing with Playwright across 40+ browsers and OS to automate your several test cases simultaneously. You can run one test case across various browsers, or you can run multiple test case scenarios in the same browser with different browser versions.
 
 
 Shown below are the steps on running parallel tests with Playright on the LambdaTest platform. 
 
-1. Clone the [LambdaTest-Playwright GitHub repository](https://github.com/LambdaTest/playwright-sample) and switch to the cloned directory.
+1. Clone the LambdaTest-Playwright GitHub repository and switch to the cloned directory.
 
 ```js
 git clone https://github.com/LambdaTest/playwright-sample.git
@@ -118,7 +131,6 @@ node playwright-parallel.js
 ```
 
 ## Run Playwright Tests In Gitpod
-***
 
 Select the button below to try this demo in [Gitpod](https://www.gitpod.io/)
 
@@ -137,22 +149,48 @@ eval $(gp env -e LT_ACCESS_KEY=******)
 ```
 For more information, refer to [Gitpod documentation](https://www.gitpod.io/docs/47_environment_variables/)
 
-## LambdaTest Community :busts_in_silhouette:
-***
-The [LambdaTest Community](https://community.lambdatest.com/) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe.
-
 ## Documentation & Resources :books:
-***
-      
-If you want to learn more about the LambdaTest's features, setup, and usage, visit the [LambdaTest documentation](https://www.lambdatest.com/support/docs/). You can also find in-depth tutorials around test automation, mobile app testing, responsive testing, manual testing on [LambdaTest Blog](https://www.lambdatest.com/blog/) and [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/).     
-      
- ## About LambdaTest
-***
-[LambdaTest](https://www.lambdatest.com) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.
 
+      
+Visit the following links to learn more about LambdaTest's features, setup and tutorials around test automation, mobile app testing, responsive testing, and manual testing.
+
+* [LambdaTest Documentation](https://www.lambdatest.com/support/docs/)
+* [LambdaTest Blog](https://www.lambdatest.com/blog/)
+* [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/)    
+
+## LambdaTest Community :busts_in_silhouette:
+
+The [LambdaTest Community](https://community.lambdatest.com/) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe 🌎
+
+## What's New At LambdaTest ❓
+
+To stay updated with the latest features and product add-ons, visit [Changelog](https://changelog.lambdatest.com/) 
+      
+## About LambdaTest
+
+[LambdaTest](https://www.lambdatest.com) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.    
+
+### Features
+
+* Run Selenium, Cypress, Puppeteer, Playwright, and Appium automation tests across 3000+ real desktop and mobile environments.
+* Real-time Cross browser testing on 3000+ environments.
+* Test on Real device cloud
+* Blazing fast test automation with HyperExecute
+* Accelerate testing, shorten job times and get faster feedback on code changes with Test At Scale.
+* Smart Visual Regression Testing on cloud
+* 120+ third-party integration with your favourite tool for CI/CD, Project Management, Codeless Automation, and more.
+* Automated Screenshot testing across multiple browsers in a single click.
+* Local testing of web and mobile apps.
+* Online Accessibility Testing across 3000+ desktop and mobile browsers, browser versions, and operating systems.
+* Geolocation testing of web and mobile apps across 53+ countries.
+* LT Browser - for responsive testing across 50+ pre-installed mobile, tablets, desktop, and laptop viewports.
+
+    
 [<img height="70" src="https://user-images.githubusercontent.com/70570645/169649126-ed61f6de-49b5-4593-80cf-3391ca40d665.PNG">](https://accounts.lambdatest.com/register)
+
+
       
 ## We are here to help you :headphones:
-***
-* Got a query? we are available 24x7 to help. [Contact Us](mailto:support@lambdatest.com)
+
+* Got a query? we are available 24x7 to help. [Contact Us](support@lambdatest.com)
 * For more info, visit - https://www.lambdatest.com

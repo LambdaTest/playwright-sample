@@ -19,9 +19,8 @@
 &emsp;
 &emsp;
 
-*Playwright is a Node.js library that uses a single API to automate Chromium, Firefox, and WebKit. It is designed to enable powerful, reliable, and efficient [automated browser testing](https://www.lambdatest.com/automated-browser-testing). Playwright can also automate Microsoft Edge since it is built on the open-source Chromium web framework. LambdaTest allows you to run Playwright tests across 40+ real browsers and operating system combinations.* 
 
-*Learn the basics of [Playwright testing on the LambdaTest platform](https://www.lambdatest.com/support/docs/playwright-testing/).*
+*Learn the basics of Playwright testing on the LambdaTest platform.*
 
 ## Table of Contents:
 

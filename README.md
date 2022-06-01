@@ -173,21 +173,19 @@ To stay updated with the latest features and product add-ons, visit [Changelog](
 ### Features
 
 * Run Selenium, Cypress, Puppeteer, Playwright, and Appium automation tests across 3000+ real desktop and mobile environments.
-* Real-time Cross browser testing on 3000+ environments.
+* Real-time cross browser testing on 3000+ environments.
 * Test on Real device cloud
 * Blazing fast test automation with HyperExecute
 * Accelerate testing, shorten job times and get faster feedback on code changes with Test At Scale.
 * Smart Visual Regression Testing on cloud
-* 120+ third-party integration with your favourite tool for CI/CD, Project Management, Codeless Automation, and more.
+* 120+ third-party integrations with your favorite tool for CI/CD, Project Management, Codeless Automation, and more.
 * Automated Screenshot testing across multiple browsers in a single click.
 * Local testing of web and mobile apps.
 * Online Accessibility Testing across 3000+ desktop and mobile browsers, browser versions, and operating systems.
 * Geolocation testing of web and mobile apps across 53+ countries.
-* LT Browser - for responsive testing across 50+ pre-installed mobile, tablets, desktop, and laptop viewports.
-
+* LT Browser - for responsive testing across 50+ pre-installed mobile, tablets, desktop, and laptop viewports
     
 [<img height="70" src="https://user-images.githubusercontent.com/70570645/169649126-ed61f6de-49b5-4593-80cf-3391ca40d665.PNG">](https://accounts.lambdatest.com/register)
-
 
       
 ## We are here to help you :headphones:

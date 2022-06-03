@@ -3,15 +3,15 @@
 <img height="400" src="https://user-images.githubusercontent.com/70570645/171361733-065df506-c302-452d-8bc7-e63047377f8e.png">
 
 <p align="center">
-  <a href="https://www.lambdatest.com/blog/" target="_bank">Blog</a>
+  <a href="https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Blog</a>
   &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/support/docs/" target="_bank">Docs</a>
+  <a href="https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Docs</a>
   &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/learning-hub/" target="_bank">Learning Hub</a>
+  <a href="https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Learning Hub</a>
   &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/newsletter/" target="_bank">Newsletter</a>
+  <a href="https://www.lambdatest.com/newsletter/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Newsletter</a>
   &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/certifications/" target="_bank">Certifications</a>
+  <a href="https://www.lambdatest.com/certifications/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Certifications</a>
   &nbsp; &#8901; &nbsp;
   <a href="https://www.youtube.com/c/LambdaTest" target="_bank">YouTube</a>
 </p>
@@ -19,8 +19,9 @@
 &emsp;
 &emsp;
 
+*Learn the how to get started with Playwright testing on the LambdaTest platform.*
 
-*Learn the basics of Playwright testing on the LambdaTest platform.*
+[<img height="70" width="220" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register)
 
 ## Table of Contents:
 
@@ -64,6 +65,8 @@ export LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 
 ## Run Your First Playwright Test
 
+>**Test Scenario**: The sample playwright-single.js file search the term 'LambdaTest' on Bing.
+
 Shown below are the steps on running Playwright tests on the LambdaTest platform. 
 
 1. Clone the LambdaTest-Playwright GitHub repository and switch to the cloned directory.
@@ -79,7 +82,7 @@ cd playwright-sample
 
 Once you are done with the above-mentioned steps, you can initiate your first Playwright test on LambdaTest. 
 
-**Test Scenario**: Check out [playwright-single.js](https://github.com/LambdaTest/playwright-sample/blob/main/playwright-single.js) file to view the sample test script.
+Check out [playwright-single.js](https://github.com/LambdaTest/playwright-sample/blob/main/playwright-single.js) file to view the sample test script.
 
 
 4. Pass the below command to run the test.
@@ -153,9 +156,9 @@ For more information, refer to [Gitpod documentation](https://www.gitpod.io/docs
       
 Visit the following links to learn more about LambdaTest's features, setup and tutorials around test automation, mobile app testing, responsive testing, and manual testing.
 
-* [LambdaTest Documentation](https://www.lambdatest.com/support/docs/)
-* [LambdaTest Blog](https://www.lambdatest.com/blog/)
-* [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/)    
+* [LambdaTest Documentation](https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
+* [LambdaTest Blog](https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
+* [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)    
 
 ## LambdaTest Community :busts_in_silhouette:
 
@@ -184,10 +187,9 @@ To stay updated with the latest features and product add-ons, visit [Changelog](
 * Geolocation testing of web and mobile apps across 53+ countries.
 * LT Browser - for responsive testing across 50+ pre-installed mobile, tablets, desktop, and laptop viewports
     
-[<img height="70" src="https://user-images.githubusercontent.com/70570645/169649126-ed61f6de-49b5-4593-80cf-3391ca40d665.PNG">](https://accounts.lambdatest.com/register)
-
+[<img height="70" width="220" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register)
       
 ## We are here to help you :headphones:
 
 * Got a query? we are available 24x7 to help. [Contact Us](support@lambdatest.com)
-* For more info, visit - https://www.lambdatest.com
+* For more info, visit - [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)

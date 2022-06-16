@@ -22,7 +22,7 @@ Before(async (scenario) => {
       'console': true,
       'tunnel': false, // Add tunnel configuration if testing locally hosted webpage
       'tunnelName': '', // Optional
-      'geoLocation': '<country code>', // country code can be fetched from https://www.lambdatest.com/capabilities-generator/
+      'geoLocation': '', // country code can be fetched from https://www.lambdatest.com/capabilities-generator/
     }
   }
 

@@ -1,0 +1,37 @@
+name: Tests
+
+on:
+  # Add the triggers as required
+  push:
+    branches:
+      - '**'
+
+  pull_request:
+    branches:
+      - '**'
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # This example triggers the workflow every day at 6:00 and 18:00 UTC:
+    - cron:  '0 6,18 * * *'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    env:
+      LT_USERNAME: ${{ secrets.LT_USERNAME }}
+      LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+
+    strategy:
+      matrix:
+        # Specify as per the service requirements
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run build --if-present
+      - run: npm run test

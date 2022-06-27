@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-class PlaywrightTest
+class PlaywrightTestSingle
 {
     public static async Task main(string[] args)
     {
@@ -30,9 +30,6 @@ class PlaywrightTest
         string capabilitiesJson = JsonConvert.SerializeObject(capabilities);
 
         string cdpUrl = "wss://cdp.lambdatest.com/playwright?capabilities=" + Uri.EscapeDataString(capabilitiesJson);
-
-        Console.WriteLine("capsJson "+ capsJson);
-        Console.WriteLine("cdpUrl "+ cdpUrl);
 
         await using var browser = await playwright.Chromium.ConnectAsync(cdpUrl);
         var page = await browser.NewPageAsync();

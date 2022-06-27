@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-class PlaywrightTest
+class PlaywrightTestonIPad
 {
     public static async Task main(string[] args)
     {

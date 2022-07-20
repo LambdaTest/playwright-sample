@@ -19,24 +19,24 @@ public class PlaywrightTestSingle {
             ltOptions.addProperty("platform", "Windows 10");
             ltOptions.addProperty("name", "Playwright Test");
             ltOptions.addProperty("build", "Playwrite Testing in Java");
-            ltOptions.addProperty("user", System.getenv("LT_USERNAME"));
-            ltOptions.addProperty("accessKey", System.getenv("LT_ACCESS_KEY"));
-            capabilities.addProperty("LT:Options", ltOptions);
+            ltOptions.addProperty("user", user);
+            ltOptions.addProperty("accessKey", accessKey);
+            capabilities.add("LT:Options", ltOptions);
 
             BrowserType chromium = playwright.chromium();
-            String caps = URLEncoder.encode(capabilitiesObject.toString(), "utf-8");
+            String caps = URLEncoder.encode(capabilities.toString(), "utf-8");
             String cdpUrl = "wss://cdp.lambdatest.com/playwright?capabilities=" + capabilities;
             Browser browser = chromium.connect(cdpUrl);
             Page page = browser.newPage();
             try {
-                page.navigate("https://www.bing.com");
-                Locator locator = page.locator("[aria-label='Enter your search term']");
+                page.navigate("https://www.duckduckgo.com");
+                Locator locator = page.locator("#search_form_input_homepage");
                 locator.click();
-                page.fill("[aria-label='Enter your search term']", "LambdaTest");
+                page.fill("#search_form_input_homepage", "LambdaTest");
                 page.keyboard().press("Enter");
                 String title = page.title();
 
-                if (title.equals("LambdaTest - Search")) {
+                if (title.equals("LambdaTest at DuckDuckGo")) {
                     // Use the following code to mark the test status.
                     setTestStatus("passed", "Title matched", page);
                 } else {
@@ -45,10 +45,11 @@ public class PlaywrightTestSingle {
 
             } catch (Exception err) {
                 setTestStatus("failed", err.getMessage(), page);
+                err.printStackTrace();
             }
             browser.close();
         } catch (Exception err) {
-            System.out.println(err);
+            err.printStackTrace();
         }
     }
 

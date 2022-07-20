@@ -5,4 +5,4 @@
 
 ## Running your tests
 - To run a single test, run 
-  `mvn test -P PlaywrightTestSingle`
+  ```mvn -Dexec.mainClass="com.lambdatest.PlaywrightTestSingle" -Dexec.classpathScope=test test-compile exec:java```

@@ -1,59 +1,50 @@
 import com.google.gson.JsonObject;
-import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
-import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.net.URLEncoder;
-
 @RunWith(DataProviderRunner.class)
-public class SampleTest {
+public class SampleTest extends  BaseTest{
   @Test
   @UseDataProvider(value = "getDefaultTestCapability",location = LTCapability.class)
   public void sampleTest1(JsonObject capability){
-    try (Playwright playwright = Playwright.create()) {
-      String caps = URLEncoder.encode(capability.toString(), "utf-8");
-      String cdpUrl = "wss://cdp.lambdatest.com/playwright?capabilities=" + caps;
-      Browser browser = playwright.chromium().connect(cdpUrl);
-      Page page = browser.newPage();
+    Driver driver;
+    Page page = null;
+    try {
+      driver = super.createConnection(capability);
+      page = driver.getPage();
       page.navigate("http://whatsmyuseragent.org/");
       if(page.title().equalsIgnoreCase("What's my User Agent?")){
-        setTestStatus("PASSED","Title matched",page);
+        super.setTestStatus("PASSED","Title matched",page);
       } else {
-        setTestStatus("FAILED","Title not matched",page);
+        super.setTestStatus("FAILED","Title not matched",page);
       }
-      page.close();
-      browser.close();
+      super.closeConnection(driver);
     } catch (Exception e) {
       e.printStackTrace();
+      super.setTestStatus("FAILED","Title not matched",page);
     }
   }
   @Test
   @UseDataProvider(value = "getDefaultTestCapability",location = LTCapability.class)
-  public void sampleTest2(JsonObject capability){
-    try (Playwright playwright = Playwright.create()) {
-      String caps = URLEncoder.encode(capability.toString(), "utf-8");
-      String cdpUrl = "wss://cdp.lambdatest.com/playwright?capabilities=" + caps;
-      Browser browser = playwright.webkit().connect(cdpUrl);
-      Page page = browser.newPage();
-      page.navigate("https://google.com/");
+  public void sampleTest2(JsonObject capability) {
+    Driver driver;
+    Page page = null;
+    try {
+      driver = super.createConnection(capability);
+      page = driver.getPage();
+      page.navigate("http://whatsmyuseragent.org/");
       if(page.title().equalsIgnoreCase("What's my User Agent?")){
-        setTestStatus("PASSED","Title matched",page);
+        super.setTestStatus("PASSED","Title matched",page);
       } else {
-        setTestStatus("FAILED","Title not matched",page);
+        super.setTestStatus("FAILED","Title not matched",page);
       }
-      page.close();
-      browser.close();
+      super.closeConnection(driver);
     } catch (Exception e) {
       e.printStackTrace();
+      super.setTestStatus("FAILED","Title not matched",page);
     }
-  }
-  public static void setTestStatus(String status, String remark, Page page) {
-    Object result;
-    result = page.evaluate("_ => {}", "lambdatest_action: { \"action\": \"setTestStatus\", \"arguments\": { \"status\": \"" + status + "\", \"remark\": \"" + remark + "\"}}");
   }
 }

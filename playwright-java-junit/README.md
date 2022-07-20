@@ -73,7 +73,7 @@ Check out [SampleTest.java](https://github.com/LambdaTest/playwright-sample/blob
 4. Pass the below command to run the test.
 
 ```
-mvn test
+mvn clean test
 ```
 
 ## View your Playwright test results

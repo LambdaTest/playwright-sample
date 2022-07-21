@@ -6,6 +6,7 @@ import com.microsoft.playwright.Playwright;
 import java.net.URLEncoder;
 
 public abstract class BaseTest {
+
   protected Driver createConnection(JsonObject cap) throws Exception {
     try {
       Playwright playwright = Playwright.create();
@@ -20,15 +21,18 @@ public abstract class BaseTest {
       throw e;
     }
   }
+
   protected void closeConnection(Driver driver){
     driver.getPage().close();
     driver.getBrowser().close();
   }
+
   protected void setTestStatus(String status, String remark,Page page) {
     page.evaluate("_ => {}", "lambdatest_action: { \"action\": \"setTestStatus\", \"arguments\": { \"status\": \"" + status + "\", \"remark\": \"" + remark + "\"}}");
   }
 }
 class Driver{
+
   private Browser browser;
   private Page page;
   Driver(Browser browser, Page page){

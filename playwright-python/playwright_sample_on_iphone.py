@@ -45,7 +45,7 @@ def run(playwright):
 
         print("Title:: ", title)
 
-        if "Lambdatest" in title:
+        if "LambdaTest" in title:
             set_test_status(page, "passed", "Title matched")
         else:
             set_test_status(page, "failed", "Title did not match")

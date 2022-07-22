@@ -39,12 +39,13 @@ def run(playwright):
         page.goto("https://www.bing.com/")
         page.fill("[aria-label='Enter your search term']", 'LambdaTest')
         page.keyboard.press("Enter")
+        page.wait_for_timeout(1000)
 
         title = page.title()
 
         print("Title:: ", title)
 
-        if "Lambdatest" not in title:
+        if "Lambdatest" in title:
             set_test_status(page, "passed", "Title matched")
         else:
             set_test_status(page, "failed", "Title did not match")

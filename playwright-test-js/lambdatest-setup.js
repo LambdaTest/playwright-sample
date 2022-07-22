@@ -1,3 +1,7 @@
+/**
+ * Add the file in your test suite to run tests on LambdaTest.
+ * Import `test` object from this file in the tests.
+ */
 const base = require('@playwright/test')
 const path = require('path')
 const { chromium } = require('playwright')

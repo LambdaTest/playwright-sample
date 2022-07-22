@@ -1,3 +1,8 @@
+/**
+ * Add the file in your test suite to run tests on LambdaTest.
+ * Import `test` object from this file in the tests.
+ */
+
 import * as base from "@playwright/test";
 import path from "path";
 import { chromium } from "playwright";

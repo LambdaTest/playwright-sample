@@ -21,6 +21,7 @@ const {expect} = require("@playwright/test");
         ],
         "loadExtensions": [
           // Add public .zip link(s) of the extension
+          "https://public-objects-for-test.s3.amazonaws.com/hello-world-1.0.0.zip"
         ],
       },
     };

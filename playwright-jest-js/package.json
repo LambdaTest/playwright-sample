@@ -1,0 +1,16 @@
+{
+  "name": "playwright-jest",
+  "version": "1.0.0",
+  "description": "Sample project to run playwright-jest tests on LambdaTest platform",
+  "main": "sample.spec.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Mukesh Rana",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.2.2",
+    "jest-playwright-preset": "^2.0.0",
+    "playwright": "~1.24.2"
+  }
+}

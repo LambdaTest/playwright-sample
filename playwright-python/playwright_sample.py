@@ -26,7 +26,7 @@ capabilities = {
 
 def run(playwright):
     playwrightVersion = str(subprocess.getoutput('playwright --version')).strip().split(" ")[1]
-    capabilities['LT:Options']['playwrightVersion'] = playwrightVersion
+    capabilities['LT:Options']['playwrightClientVersion'] = playwrightVersion
 
     lt_cdp_url = 'wss://cdp.lambdatest.com/playwright?capabilities=' + urllib.parse.quote(
         json.dumps(capabilities))

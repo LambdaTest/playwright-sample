@@ -1,5 +1,7 @@
 const { chromium } = require('playwright')
 const { expect } = require('@playwright/test')
+const cp = require('child_process');
+const playwrightClientVersion = cp.execSync('npx playwright --version').toString().trim().split(' ')[1];
 
 const parallelTests = async (capability) => {
   console.log('Initialising test:: ', capability['LT:Options']['name'])
@@ -42,7 +44,8 @@ const capabilities = [
       'accessKey': process.env.LT_ACCESS_KEY,
       'network': true,
       'video': true,
-      'console': true
+      'console': true,
+      'playwrightClientVersion': playwrightClientVersion
     }
   },
   {
@@ -56,7 +59,8 @@ const capabilities = [
       'accessKey': process.env.LT_ACCESS_KEY,
       'network': true,
       'video': true,
-      'console': true
+      'console': true,
+      'playwrightClientVersion': playwrightClientVersion
     }
   },
   {
@@ -70,7 +74,8 @@ const capabilities = [
       'accessKey': process.env.LT_ACCESS_KEY,
       'network': true,
       'video': true,
-      'console': true
+      'console': true,
+      'playwrightClientVersion': playwrightClientVersion
     }
   }]
 

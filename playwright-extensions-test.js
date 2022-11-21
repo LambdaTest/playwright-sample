@@ -1,5 +1,7 @@
 const {chromium} = require("playwright");
 const {expect} = require("@playwright/test");
+const cp = require('child_process');
+const playwrightClientVersion = cp.execSync('npx playwright --version').toString().trim().split(' ')[1];
 
 (async () => {
   let browser;
@@ -16,6 +18,7 @@ const {expect} = require("@playwright/test");
         "network": true,
         "video": true,
         "console": true,
+        'playwrightClientVersion': playwrightClientVersion,
         "lambdaLoadExtensions": [
           // Add private .zip link(s) of the extension uploaded on LambdaTest
         ],

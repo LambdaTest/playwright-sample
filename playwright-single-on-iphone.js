@@ -1,5 +1,7 @@
 const { chromium, devices } = require('playwright')
 const { expect } = require('@playwright/test');
+const cp = require('child_process');
+const playwrightClientVersion = cp.execSync('npx playwright --version').toString().trim().split(' ')[1];
 
 (async () => {
   const capabilities = {
@@ -17,6 +19,7 @@ const { expect } = require('@playwright/test');
       'tunnel': false, // Add tunnel configuration if testing locally hosted webpage
       'tunnelName': '', // Optional
       'geoLocation': '', // country code can be fetched from https://www.lambdatest.com/capabilities-generator/
+      'playwrightClientVersion': playwrightClientVersion
     }
   }
 

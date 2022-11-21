@@ -1,3 +1,6 @@
+const cp = require('child_process');
+const playwrightClientVersion = cp.execSync('npx playwright --version').toString().trim().split(' ')[1];
+
 const caps_chromium = {
   'browserName': 'pw-chromium', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
   'browserVersion': 'latest',
@@ -13,6 +16,7 @@ const caps_chromium = {
     'tunnel': false, // Add tunnel configuration if testing locally hosted webpage
     'tunnelName': '', // Optional
     'geoLocation': '', // country code can be fetched from https://www.lambdatest.com/capabilities-generator/
+    'playwrightClientVersion': playwrightClientVersion
   }
 };
 

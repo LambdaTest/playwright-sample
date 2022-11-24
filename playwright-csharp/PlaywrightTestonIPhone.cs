@@ -22,7 +22,7 @@ class PlaywrightTestonIPhone
         ltOptions.Add("platform", "Windows 10");
         ltOptions.Add("user", user);
         ltOptions.Add("accessKey", accessKey);
-
+        ltOptions.Add("playwrightClientVersion", "1.20.2");
         capabilities.Add("browserName", "Chrome");
         capabilities.Add("browserVersion", "latest");
         capabilities.Add("LT:Options", ltOptions);

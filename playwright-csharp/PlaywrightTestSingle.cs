@@ -21,6 +21,7 @@ class PlaywrightTestSingle
         ltOptions.Add("build", "Playwright C-Sharp tests");
         ltOptions.Add("platform", "Windows 10");
         ltOptions.Add("user", user);
+        ltOptions.Add("playwrightClientVersion", "1.20.2");
         ltOptions.Add("accessKey", accessKey);
 
         capabilities.Add("browserName", "Chrome");

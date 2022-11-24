@@ -18,8 +18,9 @@ public class PlaywrightTestSingle {
             capabilities.addProperty("browserVersion", "latest");
             ltOptions.addProperty("platform", "Windows 10");
             ltOptions.addProperty("name", "Playwright Test");
-            ltOptions.addProperty("build", "Playwrite Testing in Java");
+            ltOptions.addProperty("build", "Playwright Testing in Java");
             ltOptions.addProperty("user", user);
+            ltOptions.addProperty("playwrightClientVersion", "1.20.2");
             ltOptions.addProperty("accessKey", accessKey);
             capabilities.add("LT:Options", ltOptions);
 

@@ -5,9 +5,7 @@ import { devices } from "@playwright/test";
 const config: PlaywrightTestConfig = {
   testDir: "tests",
   timeout: 60000,
-  use: {
-    viewport: null,
-  },
+  use: {},
   projects: [
     // -- LambdaTest Config --
     // name in the format: browserName:browserVersion:platform@lambdatest

@@ -11,7 +11,7 @@ test.describe('Browse LambdaTest in different browser contexts', () => {
     const title = await page.title()
 
     // Create new browserContext
-    const newPage = await page._browserContext._browser.newPage(testInfo.project.use)
+    const newPage = await page.context().browser().newPage(testInfo.project.use)
     await newPage.goto('https://www.duckduckgo.com')
     const searchElement = await newPage.$("[name=\"q\"]");
     await searchElement.click();

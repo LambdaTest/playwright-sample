@@ -1,7 +1,8 @@
-const { setWorldConstructor, World, Before, After} = require("@cucumber/cucumber");
+const { setWorldConstructor, World, Before, After, setDefaultTimeout} = require("@cucumber/cucumber");
 const { chromium } = require('playwright')
 const cp = require('child_process');
 const playwrightClientVersion = cp.execSync('npx playwright --version').toString().trim().split(' ')[1];
+setDefaultTimeout(120 * 1000)
 
 class CustomWorld extends World{
   async setTestStatus(status, remark) {

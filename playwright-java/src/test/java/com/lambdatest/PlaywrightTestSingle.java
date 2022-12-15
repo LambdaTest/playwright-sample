@@ -4,23 +4,25 @@ import com.google.gson.JsonObject;
 import com.microsoft.playwright.*;
 
 import java.net.URLEncoder;
+import java.util.Scanner;
 
 public class PlaywrightTestSingle {
     public static void main(String[] args) {
         try (Playwright playwright = Playwright.create()) {
             JsonObject capabilities = new JsonObject();
             JsonObject ltOptions = new JsonObject();
-
+            Scanner s = new java.util.Scanner(Runtime.getRuntime().exec("npx playwright --version").getInputStream()).useDelimiter("\\A");
+            String playwrightClientVersion = s.hasNext() ? s.next() : "";
+            String client_version = playwrightClientVersion.split(" ")[1];
             String user = System.getenv("LT_USERNAME");
             String accessKey = System.getenv("LT_ACCESS_KEY");
-
             capabilities.addProperty("browsername", "Chrome"); // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
             capabilities.addProperty("browserVersion", "latest");
             ltOptions.addProperty("platform", "Windows 10");
             ltOptions.addProperty("name", "Playwright Test");
             ltOptions.addProperty("build", "Playwright Testing in Java");
             ltOptions.addProperty("user", user);
-            ltOptions.addProperty("playwrightClientVersion", "1.20.2");
+            ltOptions.addProperty("playwrightClientVersion", client_version);
             ltOptions.addProperty("accessKey", accessKey);
             capabilities.add("LT:Options", ltOptions);
 

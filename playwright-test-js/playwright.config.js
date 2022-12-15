@@ -5,9 +5,7 @@ const config = {
   testDir: 'tests',
   testMatch: '**/*.spec.js',
   timeout: 60000,
-  use: {
-    viewport: null
-  },
+  use: {},
   projects: [
     // -- LambdaTest Config --
     // name in the format: browserName:browserVersion:platform@lambdatest

@@ -2,6 +2,7 @@
   "name": "lambdatest-playwright-sample",
   "scripts": {
     "test": "node playwright-single.js",
+    "test-smartui": "node playwright-smartui.js",
     "test-parallel": "node playwright-parallel.js"
   },
   "engines": {

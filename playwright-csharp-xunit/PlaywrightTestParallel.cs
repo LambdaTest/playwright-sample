@@ -7,7 +7,7 @@ namespace playwright_csharp_xunit
 
     public class PlaywrightTestParallel
     {
-        private static string GetCdpUrl()
+        private static string GetCdpUrl(string browserType)
         {
             string user, accessKey;
             user = Environment.GetEnvironmentVariable("LT_USERNAME");
@@ -17,12 +17,12 @@ namespace playwright_csharp_xunit
             Dictionary<string, string> ltOptions = new Dictionary<string, string>();
 
             ltOptions.Add("name", "Playwright Test");
-            ltOptions.Add("build", "Playwright C-Sharp tests");
+            ltOptions.Add("build", "Playwright C-Sharp XUnit tests");
             ltOptions.Add("platform", "Windows 10");
             ltOptions.Add("user", user);
             ltOptions.Add("accessKey", accessKey);
 
-            capabilities.Add("browserName", "Chrome");
+            capabilities.Add("browserName", browserType);
             capabilities.Add("browserVersion", "latest");
             capabilities.Add("LT:Options", ltOptions);
 
@@ -31,32 +31,22 @@ namespace playwright_csharp_xunit
         }
     
         [Fact]
-        public static async Task Test1()
+        public static async Task TestWithChrome()
         {
             using var playwright = await Playwright.CreateAsync();
-            await using var browser = await playwright.Chromium.ConnectAsync(GetCdpUrl());
+            await using var browser = await playwright.Chromium.ConnectAsync(GetCdpUrl("Chrome"));
             var page = await browser.NewPageAsync();
             await page.GotoAsync("https://www.bing.com");
             await browser.CloseAsync();
         }
     
         [Fact]
-        public static async Task Test2()
+        public static async Task TestWithMicrosoftEdge()
         {
             using var playwright = await Playwright.CreateAsync();
-            await using var browser = await playwright.Chromium.ConnectAsync(GetCdpUrl());
+            await using var browser = await playwright.Chromium.ConnectAsync(GetCdpUrl("MicrosoftEdge"));
             var page = await browser.NewPageAsync();
             await page.GotoAsync("https://www.google.com");
-            await browser.CloseAsync();
-        }
-    
-        [Fact]
-        public static async Task Test3()
-        {
-            using var playwright = await Playwright.CreateAsync();
-            await using var browser = await playwright.Chromium.ConnectAsync(GetCdpUrl());
-            var page = await browser.NewPageAsync();
-            await page.GotoAsync("https://www.lambdatest.com");
             await browser.CloseAsync();
         }
     }

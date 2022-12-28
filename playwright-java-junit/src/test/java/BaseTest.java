@@ -2,7 +2,7 @@ import com.google.gson.JsonObject;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
-
+import java.util.Scanner;
 import java.net.URLEncoder;
 
 public abstract class BaseTest {

@@ -17,6 +17,10 @@ public class LTCapability {
     ltOptions1.addProperty("build", "Playwrite Testing using Junit");
     ltOptions1.addProperty("user", user);
     ltOptions1.addProperty("accessKey", accessKey);
+    Scanner s = new java.util.Scanner(Runtime.getRuntime().exec("npx playwright --version").getInputStream()).useDelimiter("\\A");
+    String playwrightClientVersion = s.hasNext() ? s.next() : "";
+    String client_version = playwrightClientVersion.split(" ")[1];
+    ltOptions1.addProperty("playwrightClientVersion", client_version);        
     capabilities1.add("LT:Options", ltOptions1);
 
 
@@ -29,6 +33,10 @@ public class LTCapability {
     ltOptions2.addProperty("build", "Playwrite Testing using Junit");
     ltOptions2.addProperty("user", user);
     ltOptions2.addProperty("accessKey", accessKey);
+    Scanner s = new java.util.Scanner(Runtime.getRuntime().exec("npx playwright --version").getInputStream()).useDelimiter("\\A");
+    String playwrightClientVersion = s.hasNext() ? s.next() : "";
+    String client_version = playwrightClientVersion.split(" ")[1];
+    ltOptions1.addProperty("playwrightClientVersion", client_version);  
     capabilities2.add("LT:Options", ltOptions2);
     return new Object[]{
       capabilities1,capabilities2

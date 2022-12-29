@@ -64,3 +64,4 @@ class PlaywrightTestonIPad
         await page.EvaluateAsync("_ => {}", "lambdatest_action: {\"action\": \"setTestStatus\", \"arguments\": {\"status\":\"" + status + "\", \"remark\": \"" + remark + "\"}}");
     }
 }
+

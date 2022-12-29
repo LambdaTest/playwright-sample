@@ -10,3 +10,4 @@
 - To run a single test, run `dotnet run single`
 - To run sessions on custom devices with emulation, run 
 `dotnet run iphonetest` or `dotnet run ipadtest`
+

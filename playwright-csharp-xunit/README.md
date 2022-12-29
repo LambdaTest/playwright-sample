@@ -13,3 +13,4 @@
 * For parallel running `Meziantou.Xunit.ParallelTestFramework` is used
 * XUnit has runner configuration for parallel running. It can also be configured from official documentation. https://xunit.net/docs/running-tests-in-parallel
 
+

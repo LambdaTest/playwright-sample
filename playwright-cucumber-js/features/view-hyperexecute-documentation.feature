@@ -9,3 +9,4 @@ Feature: View LambdaTest Documentations
     Given Open LambdaTest Website
     When Open Test At Scale page
     Then Open Test At Scale documentation
+

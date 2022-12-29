@@ -58,3 +58,4 @@ public class PlaywrightTestSingle {
         result = page.evaluate("_ => {}", "lambdatest_action: { \"action\": \"setTestStatus\", \"arguments\": { \"status\": \"" + status + "\", \"remark\": \"" + remark + "\"}}");
     }
 }
+

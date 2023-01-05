@@ -1,6 +1,6 @@
 using System;
 
-namespace SpecFlowProject1.Drivers
+namespace SpecFlowPlaywrightXUnitExample.Drivers
 {
     public class Driver
     {

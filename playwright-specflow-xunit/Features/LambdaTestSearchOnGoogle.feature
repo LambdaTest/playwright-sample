@@ -7,5 +7,3 @@ Scenario Outline: Open Google
 	  | browser 			 |
 	  | Chrome  			 |
 	  | MicrosoftEdge        |
-	
-	

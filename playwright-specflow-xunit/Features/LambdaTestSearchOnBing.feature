@@ -7,5 +7,3 @@ Scenario Outline: Open Bing
 	  | browser 			 |
 	  | Chrome  			 |
 	  | MicrosoftEdge        |
-	
-	

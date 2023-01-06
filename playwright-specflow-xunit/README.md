@@ -15,6 +15,7 @@
 
 ## Notes
 * There are 2 different feature files and each feature files includes 2 test cases, for chrome and microsoft edge.
-* When the tests are run with command `dotnet test` XUnit runner runs the different features parallel but it runs the scenarios in the same feature sequentially.
+* When the tests are run with command `dotnet test` XUnit runner default behaviour is to run the different features parallel but it runs the scenarios in the same feature sequentially.
+* If you would like to disable parallel execution, you can set `[assembly: CollectionBehavior(DisableTestParallelization = true)]`
 * XUnit does not support parallel execution in the same feature. Here is the documentation https://docs.specflow.org/projects/specflow/en/latest/Execution/Parallel-Execution.html
 * For running scenarios parallel, it seems only supported runner for .net is SpecFlow+

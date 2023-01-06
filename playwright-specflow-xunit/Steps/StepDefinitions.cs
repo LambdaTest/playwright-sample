@@ -1,6 +1,8 @@
 ﻿using Microsoft.Playwright;
 using Newtonsoft.Json;
+using Xunit;
 
+[assembly: CollectionBehavior(DisableTestParallelization = false)]
 namespace  SpecFlowPlaywrightXUnitExample.Steps
 {
     [Binding]

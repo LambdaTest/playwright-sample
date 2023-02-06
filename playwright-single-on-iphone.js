@@ -27,8 +27,9 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
     wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
-  const context = await browser.newContext({ ...devices['iPhone 11'] })  // Documentation: https://playwright.dev/docs/emulation#devices
-  const page = await context.newPage()
+  // Documentation: https://playwright.dev/docs/emulation#devices
+  // Supported devices: https://github.com/microsoft/playwright/blob/main/packages/playwright-core/src/server/deviceDescriptorsSource.json
+  const context = await browser.newContext({ ...devices['iPhone 11'] })
 
   await page.goto('https://www.bing.com')
 

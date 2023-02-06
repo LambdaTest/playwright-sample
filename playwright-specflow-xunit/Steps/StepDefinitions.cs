@@ -1,20 +1,23 @@
 ﻿using Microsoft.Playwright;
 using Newtonsoft.Json;
-using Xunit;
 
-[assembly: CollectionBehavior(DisableTestParallelization = false)]
 namespace  SpecFlowPlaywrightXUnitExample.Steps
 {
     [Binding]
     public class PlaywrightTestParallel
     {
-        private static string GetCdpUrl(string browserType)
+        private IBrowser? _browser;
+        private Dictionary<string, object>? _capabilities = new Dictionary<string, object>();
+        private string gdpUrl = "";
+        private string currentUrl;
+
+        [BeforeScenario]
+        private async void CreateCapabilities()
         {
             string user, accessKey;
             user = Environment.GetEnvironmentVariable("LT_USERNAME");
             accessKey = Environment.GetEnvironmentVariable("LT_ACCESS_KEY");
-
-            Dictionary<string, object> capabilities = new Dictionary<string, object>();
+            
             Dictionary<string, string> ltOptions = new Dictionary<string, string>();
 
             ltOptions.Add("name", "Playwright Test");
@@ -22,25 +25,35 @@ namespace  SpecFlowPlaywrightXUnitExample.Steps
             ltOptions.Add("platform", "Windows 10");
             ltOptions.Add("user", user);
             ltOptions.Add("accessKey", accessKey);
+            
+            _capabilities.Add("browserVersion", "latest");
+            _capabilities.Add("LT:Options", ltOptions);
+        }
+        
+        [AfterScenario]
+        private async void CloseDriver()
+        {
+            await _browser.CloseAsync();
+        }
 
-            capabilities.Add("browserName", browserType);
-            capabilities.Add("browserVersion", "latest");
-            capabilities.Add("LT:Options", ltOptions);
-
-            string capabilitiesJson = JsonConvert.SerializeObject(capabilities);
-            return "wss://cdp.lambdatest.com/playwright?capabilities=" + Uri.EscapeDataString(capabilitiesJson);
+        [Given(@"Set (.*) as a capability")]
+        public void CreateBrowser(string browserType)
+        {
+            _capabilities.Add("browserName", browserType);
+            string capabilitiesJson = JsonConvert.SerializeObject(_capabilities);
+            gdpUrl = "wss://cdp.lambdatest.com/playwright?capabilities=" + Uri.EscapeDataString(capabilitiesJson);
         }
     
-        [Given(@"Go to Bing with (.*)")]
-        public static async Task SearchWithBing(string browserType)
+        [Then(@"Go to Bing")]
+        public async Task SearchWithBing()
         {
             using var playwright = await Playwright.CreateAsync();
-            await using var browser = await playwright.Chromium.ConnectAsync(GetCdpUrl(browserType));
-            var page = await browser.NewPageAsync();
+            _browser = await playwright.Chromium.ConnectAsync(gdpUrl);
+            var page = await _browser.NewPageAsync();
             await page.GotoAsync("https://www.bing.com");
-            var url = page.Url;
+            currentUrl = page.Url;
 
-            if (url.Contains("bing"))
+            if (currentUrl.Contains("bing"))
             {
                 // Use the following code to mark the test status.
                 await SetTestStatus("passed", "Title matched", page);
@@ -48,19 +61,17 @@ namespace  SpecFlowPlaywrightXUnitExample.Steps
             else {
                 await SetTestStatus("failed", "Title not matched", page);
             }
-            await browser.CloseAsync();
         }
         
-    
-        [Given(@"Go to Google with (.*)")]
-        public static async Task SearchWithGoogle(string browserType)
+        [Then(@"Go to Google")]
+        public async Task SearchWithGoogle()
         {
             using var playwright = await Playwright.CreateAsync();
-            await using var browser = await playwright.Chromium.ConnectAsync(GetCdpUrl(browserType));
-            var page = await browser.NewPageAsync();
+            _browser = await playwright.Chromium.ConnectAsync(gdpUrl);
+            var page = await _browser.NewPageAsync();
             await page.GotoAsync("https://www.google.com");
             var url = page.Url;
-
+        
             if (url.Contains("google"))
             {
                 // Use the following code to mark the test status.
@@ -69,7 +80,6 @@ namespace  SpecFlowPlaywrightXUnitExample.Steps
             else {
                 await SetTestStatus("failed", "Title not matched", page);
             }
-            await browser.CloseAsync();
         }
         private static async Task SetTestStatus(string status, string remark, IPage page) {
             await page.EvaluateAsync("_ => {}", "lambdatest_action: {\"action\": \"setTestStatus\", \"arguments\": {\"status\":\"" + status + "\", \"remark\": \"" + remark + "\"}}");

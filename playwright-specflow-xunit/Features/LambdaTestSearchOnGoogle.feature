@@ -2,7 +2,8 @@
 	
 @Google
 Scenario Outline: Open Google
-	Given Go to Google with <browser>
+	Given Set <browser> as a capability
+	Then Go to Google
 	Examples:
 	  | browser 			 |
 	  | Chrome  			 |

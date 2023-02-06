@@ -1,8 +1,9 @@
-﻿Feature: Open Bing with different browsers
+﻿Feature: Go to Bing with different browsers
 	
 @Bing
 Scenario Outline: Open Bing
-	Given Go to Bing with <browser>
+	Given Set <browser> as a capability
+	Then Go to Bing
 	Examples:
 	  | browser 			 |
 	  | Chrome  			 |

@@ -31,10 +31,12 @@ const { expect } = require('@playwright/test');
     `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: '<Your Screenshot Name>' }
     })}`) // Add a relevant screenshot name here
 
-  const element = await page.$('[aria-label="Enter your search term"]')
+  const element = await page.$('[id="sb_form_q"]')
   await element.click()
   await element.type('LambdaTest')
-  await element.press('Enter')
+  await page.waitForTimeout(1000)
+  await page.keyboard.press('Enter')
+  await page.waitForSelector('[class=" b_active"]')
   const title = await page.title()
 
   try {

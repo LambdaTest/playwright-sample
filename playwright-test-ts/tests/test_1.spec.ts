@@ -9,7 +9,7 @@ test.describe("Browse LambdaTest in different search engines", () => {
     await element.type('LambdaTest')
     await page.waitForTimeout(1000)
     await page.keyboard.press("Enter")
-    await page.waitForSelector('[class="b_title"]')
+    await page.waitForSelector('[class=" b_active"]')
     const title = await page.title()
 
     console.log("Page title:: ", title);

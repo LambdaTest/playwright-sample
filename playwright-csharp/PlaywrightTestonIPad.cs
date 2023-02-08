@@ -43,7 +43,7 @@ class PlaywrightTestonIPad
           await page.Locator('[id="sb_form_q"]').ClickAsync();
           await page.FillAsync('[id="sb_form_q"]', "LambdaTest");
           await page.waitForTimeout(1000)
-          const searchButton = await page.waitForSelector('[id="search_icon"] svg')
+          const searchButton = await page.$('[id="search_icon"] svg path')
           await searchButton.click()
           await page.waitForSelector('[class="b_title"]')
           var title = await page.TitleAsync();

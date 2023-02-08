@@ -34,8 +34,10 @@ def run(playwright):
     page = browser.new_page()
     try:
         page.goto("https://www.bing.com/")
-        page.fill("[aria-label='Enter your search term'] > input", 'LambdaTest')
-        page.keyboard.press("Enter")
+        page.fill('[id="sb_form_q"]', 'LambdaTest')
+        page.waitForSelector('[id="search_icon"]')
+        page.click('[id="search_icon"]')
+        page.waitForSelector('[class="b_title"]')
         page.wait_for_timeout(1000)
 
         title = page.title()

@@ -42,6 +42,7 @@ class PlaywrightTestonIPad
           await page.GotoAsync("https://www.bing.com");
           await page.Locator('[id="sb_form_q"]').ClickAsync();
           await page.FillAsync('[id="sb_form_q"]', "LambdaTest");
+          await page.waitForTimeout(1000)
           const searchButton = await page.waitForSelector('[id="search_icon"] svg')
           await searchButton.click()
           await page.waitForSelector('[class="b_title"]')

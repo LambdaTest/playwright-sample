@@ -15,6 +15,7 @@ const parallelTests = async (capability) => {
   const element = await page.$('[id="sb_form_q"]')
   await element.click()
   await element.type('LambdaTest')
+  await page.waitForTimeout(1000)
   const searchButton = await page.waitForSelector('[id="search_icon"] svg')
   await searchButton.click()
   await page.waitForSelector('[class="b_title"]')

@@ -39,8 +39,7 @@ def run(playwright):
         page.goto("https://www.bing.com/")
         page.fill('[id="sb_form_q"]', 'LambdaTest')
         page.wait_for_timeout(1000)
-        page.waitForSelector('[id="search_icon"] svg')
-        page.click('[id="search_icon"] svg')
+        page.keyboard.press("Enter")
         page.waitForSelector('[class="b_title"]')
         page.wait_for_timeout(1000)
 

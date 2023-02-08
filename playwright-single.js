@@ -32,8 +32,7 @@ const { expect } = require('@playwright/test');
   await element.click()
   await element.type('LambdaTest')
   await page.waitForTimeout(1000)
-  const searchButton = await page.$('[id="search_icon"] svg path')
-  await searchButton.click()
+  await page.keyboard.press('Enter')
   await page.waitForSelector('[class="b_title"]')
   const title = await page.title()
 

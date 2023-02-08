@@ -4,10 +4,12 @@ const { expect } = require('@playwright/test')
 test.describe('Browse LambdaTest in different search engines', () => {
   test('Search LambdaTest Blog on Bing', async ({ page }) => {
     await page.goto('https://www.bing.com')
-    const element = await page.$('[aria-label="Enter your search term"]')
+    const element = await page.$('[id="sb_form_q"]')
     await element.click()
-    await element.type('LambdaTest Blog')
-    await element.press('Enter')
+    await element.type('LambdaTest')
+    await page.waitForTimeout(1000)
+    await page.keyboard.press("Enter")
+    await page.waitForSelector('[class="b_title"]')
     const title = await page.title()
 
     console.log('Page title:: ', title)

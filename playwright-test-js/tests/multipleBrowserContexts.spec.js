@@ -4,10 +4,12 @@ const { expect } = require('@playwright/test')
 test.describe('Browse LambdaTest in different browser contexts', () => {
   test('Search LambdaTest on Bing and DuckDuckGo', async ({ page }, testInfo) => {
     await page.goto('https://www.bing.com')
-    const element = await page.$('[aria-label="Enter your search term"]')
+    const element = await page.$('[id="sb_form_q"]')
     await element.click()
     await element.type('LambdaTest')
+    await page.waitForTimeout(1000)
     await element.press('Enter')
+    await page.waitForSelector('[class=" b_active"]')
     const title = await page.title()
 
     // Create new browserContext

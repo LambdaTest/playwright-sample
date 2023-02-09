@@ -37,9 +37,10 @@ namespace playwright_csharp_xunit
             await using var browser = await playwright.Chromium.ConnectAsync(GetCdpUrl("Chrome"));
             var page = await browser.NewPageAsync();
             await page.GotoAsync("https://www.bing.com");
-            await page.Locator("[aria-label='Enter your search term']").ClickAsync();
+            await page.Locator("[id='sb_form_q']").ClickAsync();
             await page.FillAsync("[id='sb_form_q']", "LambdaTest");
             await page.Keyboard.PressAsync("Enter");
+            await page.Locator("[class=' b_active']")
             var title = await page.TitleAsync();
 
             if (title.Contains("LambdaTest"))

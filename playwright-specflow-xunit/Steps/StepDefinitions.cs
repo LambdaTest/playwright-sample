@@ -1,88 +1,40 @@
 ﻿using Microsoft.Playwright;
-using Newtonsoft.Json;
+using FluentAssertions;
 
 namespace  SpecFlowPlaywrightXUnitExample.Steps
 {
     [Binding]
-    public class PlaywrightTestParallel
+    internal class PlaywrightTestParallel
     {
-        private IBrowser? _browser;
-        private Dictionary<string, object>? _capabilities = new Dictionary<string, object>();
-        private string gdpUrl = "";
-        private string currentUrl;
+        private IPage _page;
 
-        [BeforeScenario]
-        private async void CreateCapabilities()
+        public PlaywrightTestParallel(IPage page)
         {
-            string user, accessKey;
-            user = Environment.GetEnvironmentVariable("LT_USERNAME");
-            accessKey = Environment.GetEnvironmentVariable("LT_ACCESS_KEY");
-            
-            Dictionary<string, string> ltOptions = new Dictionary<string, string>();
-
-            ltOptions.Add("name", "Playwright Test");
-            ltOptions.Add("build", "Playwright C-Sharp XUnit tests");
-            ltOptions.Add("platform", "Windows 10");
-            ltOptions.Add("user", user);
-            ltOptions.Add("accessKey", accessKey);
-            
-            _capabilities.Add("browserVersion", "latest");
-            _capabilities.Add("LT:Options", ltOptions);
-        }
-        
-        [AfterScenario]
-        private async void CloseDriver()
-        {
-            await _browser.CloseAsync();
+            _page = page;
         }
 
         [Given(@"Set (.*) as a capability")]
-        public void CreateBrowser(string browserType)
+        public async Task CreateBrowser(string browserType)
         {
-            _capabilities.Add("browserName", browserType);
-            string capabilitiesJson = JsonConvert.SerializeObject(_capabilities);
-            gdpUrl = "wss://cdp.lambdatest.com/playwright?capabilities=" + Uri.EscapeDataString(capabilitiesJson);
+            Console.WriteLine("The passed browser is " + browserType);
+            await _page.WaitForTimeoutAsync(1000);
+
         }
-    
-        [Then(@"Go to Bing")]
+
+        [Then("Go to Bing")]
         public async Task SearchWithBing()
         {
-            using var playwright = await Playwright.CreateAsync();
-            _browser = await playwright.Chromium.ConnectAsync(gdpUrl);
-            var page = await _browser.NewPageAsync();
-            await page.GotoAsync("https://www.bing.com");
-            currentUrl = page.Url;
-
-            if (currentUrl.Contains("bing"))
-            {
-                // Use the following code to mark the test status.
-                await SetTestStatus("passed", "Title matched", page);
-            }
-            else {
-                await SetTestStatus("failed", "Title not matched", page);
-            }
+            await _page.GotoAsync("https://www.bing.com");
+            var title = await _page.TitleAsync();
+            title.Should().Contain("Bing");
         }
-        
-        [Then(@"Go to Google")]
+
+        [Then("Go to Google")]
         public async Task SearchWithGoogle()
         {
-            using var playwright = await Playwright.CreateAsync();
-            _browser = await playwright.Chromium.ConnectAsync(gdpUrl);
-            var page = await _browser.NewPageAsync();
-            await page.GotoAsync("https://www.google.com");
-            var url = page.Url;
-        
-            if (url.Contains("google"))
-            {
-                // Use the following code to mark the test status.
-                await SetTestStatus("passed", "Title matched", page);
-            }
-            else {
-                await SetTestStatus("failed", "Title not matched", page);
-            }
-        }
-        private static async Task SetTestStatus(string status, string remark, IPage page) {
-            await page.EvaluateAsync("_ => {}", "lambdatest_action: {\"action\": \"setTestStatus\", \"arguments\": {\"status\":\"" + status + "\", \"remark\": \"" + remark + "\"}}");
+            await _page.GotoAsync("https://www.google.com");
+            var title = await _page.TitleAsync();
+            title.Should().Contain("Google");
         }
     }
 }

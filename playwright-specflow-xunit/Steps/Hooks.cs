@@ -25,18 +25,9 @@ namespace SpecFlowPlaywrightXUnitExample.Steps
         public async Task CreateCapabilities()
         {
             string user, accessKey;
+            string browserName =  JsonConvert.SerializeObject(_scenarioContext.ScenarioInfo.Arguments["browser"]).Replace("\"", "");
             user = Environment.GetEnvironmentVariable("LT_USERNAME");
             accessKey = Environment.GetEnvironmentVariable("LT_ACCESS_KEY");
-            string tags = string.Join(",", _scenarioContext.ScenarioInfo.Tags);
-            if(tags.Contains("chrome")) {
-                _capabilities.Add("browserName", "Chrome");
-
-            } else if(tags.Contains("edge")) {
-                _capabilities.Add("browserName", "MicrosoftEdge");
-
-            } else {
-                _capabilities.Add("browserName", "Firefox");
-            }
             Dictionary<string, string> ltOptions = new Dictionary<string, string>();
 
             ltOptions.Add("name", "Playwright Test");
@@ -45,6 +36,7 @@ namespace SpecFlowPlaywrightXUnitExample.Steps
             ltOptions.Add("user", user);
             ltOptions.Add("accessKey", accessKey);
 
+             _capabilities.Add("browserName", browserName);
             _capabilities.Add("browserVersion", "latest");
             _capabilities.Add("LT:Options", ltOptions);
             try {
@@ -66,9 +58,9 @@ namespace SpecFlowPlaywrightXUnitExample.Steps
         {
             if (_scenarioContext.TestError != null)
             {
-                await SetTestStatus("failed", "Test Failed", page);
+                await SetTestStatus("failed", _scenarioContext.TestError.Message.Replace("\"", ""), page);
             } else {
-                await SetTestStatus("passed", "Test Passed}", page);
+                await SetTestStatus("passed", "Assertions Passed", page);
             }
            await browser.DisposeAsync();
         }

@@ -4,12 +4,7 @@
 Scenario Outline: Open Google
 	Given Set <browser> as a capability
 	Then Go to Google
-	@chrome
 	Examples:
 	  | browser 			 |
 	  | Chrome  			 |
-
-	@edge
-	Examples:
-	  | browser 			 |
 	  | MicrosoftEdge        |

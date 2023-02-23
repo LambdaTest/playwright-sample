@@ -54,7 +54,7 @@ const capabilities = [
     'browserName': 'MicrosoftEdge',
     'browserVersion': 'latest',
     'LT:Options': {
-      'platform': 'Windows 8',
+      'platform': 'MacOS Ventura',
       'build': 'Playwright Sample Build',
       'name': 'Playwright Sample Test on Windows 8 - MicrosoftEdge',
       'user': process.env.LT_USERNAME,

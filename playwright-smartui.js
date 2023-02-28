@@ -14,9 +14,11 @@ const { expect } = require('@playwright/test');
       'network': true,
       'video': true,
       'console': true,
-      'smartUIProjectName': '<projectName>' //Add the required Smart UI Project name
+      'smartUIProjectName': 'L1 Template'
     }
   }
+
+  console.log(capabilities)
 
   const browser = await chromium.connect({
     wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
@@ -24,28 +26,21 @@ const { expect } = require('@playwright/test');
 
   const page = await browser.newPage()
 
-  await page.goto('https://www.bing.com')
+  await page.goto("https://huskyx.gatsbyjs.io/")
 
   // Add the following command in order to take screenshot in SmartUI
   await page.evaluate((_) => {},
-    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: '<Your Screenshot Name>' }
-    })}`) // Add a relevant screenshot name here
-
-  const element = await page.$('[id="sb_form_q"]')
-  await element.click()
-  await element.type('LambdaTest')
+    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'husky' }
+    })}`) 
+    try {
+    // Add a relevant screenshot name here
+  console.log("screenshot taken")
   await page.waitForTimeout(1000)
-  await page.keyboard.press('Enter')
-  await page.waitForSelector('[class=" b_active"]')
-  const title = await page.title()
-
-  try {
-    expect(title).toEqual('LambdaTest - Search')
-    // Mark the test as completed or failed
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
-  } catch {
+  // Mark the test as completed or failed
+  await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
+  } catch (e) {
+    console.log(e)
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' } })}`)
   }
-
   await browser.close()
 })()

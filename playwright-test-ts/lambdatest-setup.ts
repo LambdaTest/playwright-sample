@@ -65,7 +65,7 @@ const test = base.test.extend({
         action: "setTestStatus",
         arguments: {
           status: testInfo.status,
-          remark: testInfo?.error?.stack || testInfo?.error?.message,
+          remark: testInfo.error?.stack || testInfo.error?.message,
         },
       };
       await ltPage.evaluate(() => {},

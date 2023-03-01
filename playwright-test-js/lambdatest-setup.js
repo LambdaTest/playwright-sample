@@ -38,8 +38,6 @@ const modifyCapabilities = (configName, testName) => {
   capabilities['LT:Options']['name'] = testName
 }
 
-const getErrorMessage = (obj, keys) => keys.reduce((obj, key) => (typeof obj == 'object' ? obj[key] : undefined), obj)
-
 exports.test = base.test.extend({
   page: async ({ page, playwright }, use, testInfo) => {
     // Configure LambdaTest platform for cross-browser testing
@@ -58,7 +56,7 @@ exports.test = base.test.extend({
         action: 'setTestStatus',
         arguments: {
           status: testInfo.status,
-          remark: getErrorMessage(testInfo, ['error', 'message'])
+          remark: testInfo?.error?.stack || testInfo?.error?.message
         }
       }
       await ltPage.evaluate(() => {},

@@ -11,7 +11,7 @@ const expect = require("chai").expect;
       "build": "Playwright android build",
       "name": "Playwright android test",
       "user": process.env.LT_USERNAME,
-      "accessKey": process.env.LT_ACCESS_KEY_STAGE,
+      "accessKey": process.env.LT_ACCESS_KEY,
       "network": true,
       "video": true,
       "console": true,

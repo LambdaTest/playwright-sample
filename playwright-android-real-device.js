@@ -20,7 +20,7 @@ const expect = require("chai").expect;
   };
 
   let device = await _android.connect(
-      `wss://cdp-eu.lambdatest.com/playwright?capabilities=${encodeURIComponent(
+      `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(
           JSON.stringify(capabilities))}`,
   );
 

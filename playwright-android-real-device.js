@@ -5,13 +5,13 @@ const expect = require("chai").expect;
   const capabilities = {
     "LT:Options": {
       "platformName": "android",
-      "deviceName": "Galaxy A12",
-      "platformVersion": "10",
+      "deviceName": "Galaxy S20",
+      "platformVersion": "11",
       "isRealMobile": true,
       "build": "Playwright android build",
       "name": "Playwright android test",
       "user": process.env.LT_USERNAME,
-      "accessKey": process.env.LT_ACCESS_KEY_STAGE,
+      "accessKey": process.env.LT_ACCESS_KEY,
       "network": true,
       "video": true,
       "console": true,

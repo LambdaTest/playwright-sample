@@ -5,7 +5,6 @@
     "test-smartui": "node playwright-smartui.js",
     "test-parallel": "node playwright-parallel.js",
     "test-android": "node playwright-android-real-device.js",
-    "test-ios": "node playwright-single-on-iphone.js",
     "test-extension": "node playwright-extensions-test.js"
   },
   "engines": {

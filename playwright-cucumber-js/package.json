@@ -11,6 +11,6 @@
   "dependencies": {
     "@cucumber/cucumber": "^7.3.2",
     "assert": "^2.0.0",
-    "playwright": "1.29.2"
+    "playwright": "^1.34.0"
   }
 }

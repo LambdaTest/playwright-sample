@@ -3,14 +3,17 @@
   "scripts": {
     "test": "node playwright-single.js",
     "test-smartui": "node playwright-smartui.js",
-    "test-parallel": "node playwright-parallel.js"
+    "test-parallel": "node playwright-parallel.js",
+    "test-android": "node playwright-android-real-device.js",
+    "test-ios": "node playwright-single-on-iphone.js",
+    "test-extension": "node playwright-extensions-test.js"
   },
   "engines": {
     "node": ">=12.7.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.29.2",
-    "playwright": "1.29.2",
+    "@playwright/test": "^1.34.0",
+    "playwright": "^1.34.0",
     "@cucumber/cucumber": "^7.3.2",
     "chai": "^4.3.7"
   }

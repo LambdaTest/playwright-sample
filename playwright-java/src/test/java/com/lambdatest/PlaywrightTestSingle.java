@@ -30,9 +30,9 @@ public class PlaywrightTestSingle {
             Page page = browser.newPage();
             try {
                 page.navigate("https://www.duckduckgo.com");
-                Locator locator = page.locator("#search_form_input_homepage");
+                Locator locator = page.locator("[name=\"q\"]");
                 locator.click();
-                page.fill("#search_form_input_homepage", "LambdaTest");
+                locator.type("LambdaTest");
                 page.keyboard().press("Enter");
                 String title = page.title();
 

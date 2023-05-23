@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
-            <version>1.19.0</version>
+            <version>1.33.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

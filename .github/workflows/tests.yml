@@ -35,3 +35,25 @@ jobs:
       - run: npm install
       - run: npm run build --if-present
       - run: npm run test
+
+      - name: Create Github URL
+        run: |
+          API_HOST=https://api.github.com
+          OWNER=$(echo $GITHUB_REPOSITORY | cut -d'/' -f1)
+          REPO=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
+          # Check out the PR branch
+          git checkout $GITHUB_HEAD_REF
+          # Get the commit ID of the last commit
+          COMMIT_ID=$(git rev-parse HEAD)
+          echo "Last commit ID of PR: $COMMIT_ID"
+          REF=$GITHUB_SHA
+          echo "Current Commit ID REF : $REF"
+          GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_ID
+          echo "GITHUB_URL: $GITHUB_URL"
+          echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
+
+      - name: Execute SmartUI Test
+        run: npm run test-smartui      
+
+
+      

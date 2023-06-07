@@ -35,11 +35,11 @@ const { expect } = require('@playwright/test');
 
   const page = await browser.newPage()
 
-  await page.goto("https://huskyx.gatsbyjs.io/")
+  await page.goto("https://www.bing.com")
 
   // Add the following command in order to take screenshot in SmartUI
   await page.evaluate((_) => {},
-    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'husky' }
+    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'bing-home-page' }
     })}`) 
   await page.goto("https://www.lambdatest.com")
 
@@ -53,7 +53,7 @@ const { expect } = require('@playwright/test');
     })}`) 
     try {
     // Add a relevant screenshot name here
-  console.log("screenshot taken")
+  console.log("screenshots taken")
   await page.waitForTimeout(1000)
   // Mark the test as completed or failed
   await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)

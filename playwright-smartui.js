@@ -14,12 +14,21 @@ const { expect } = require('@playwright/test');
       'network': true,
       'video': true,
       'console': true,
-      'smartUIProjectName': 'L1 Template'
+      'smartUIProjectName': 'Playwright-SmartUI-Project',
+      'smartUIBaseline': false
+    }
+  }
+
+  const githubURL = process.env.GITHUB_URL
+  console.log("GITHUB_URL : ", githubURL);
+  if(githubURL){
+    capabilities['LT:Options']['github'] = {
+      url : githubURL
     }
   }
 
   console.log(capabilities)
-
+  
   const browser = await chromium.connect({
     wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
@@ -31,6 +40,16 @@ const { expect } = require('@playwright/test');
   // Add the following command in order to take screenshot in SmartUI
   await page.evaluate((_) => {},
     `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'husky' }
+    })}`) 
+  await page.goto("https://www.lambdatest.com")
+
+  await page.evaluate((_) => {},
+    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'lambdatest-website' }
+    })}`) 
+  await page.goto("https://www.lambdatest.com/support/api-doc/")
+
+  await page.evaluate((_) => {},
+    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'api-doc' }
     })}`) 
     try {
     // Add a relevant screenshot name here

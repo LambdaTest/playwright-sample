@@ -20,7 +20,6 @@ const { expect } = require('@playwright/test');
   }
 
   const githubURL = process.env.GITHUB_URL
-  console.log("GITHUB_URL : ", githubURL);
   if(githubURL){
     capabilities['LT:Options']['github'] = {
       url : githubURL
@@ -34,12 +33,29 @@ const { expect } = require('@playwright/test');
 
   const page = await browser.newPage()
 
-  await page.goto("https://www.bing.com")
+  await page.goto('https://www.bing.com')
 
   // Add the following command in order to take screenshot in SmartUI
   await page.evaluate((_) => {},
-    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'bing-home-page' }
-    })}`) 
+    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'search-lambdatest' }
+    })}`) // Add a relevant screenshot name here
+
+  const element = await page.$('[id="sb_form_q"]')
+  await element.click()
+  await element.type('LambdaTest')
+  await page.waitForTimeout(1000)
+  await page.keyboard.press('Enter')
+  await page.waitForSelector('[class=" b_active"]')
+  const title = await page.title()
+
+  try {
+    expect(title).toEqual('LambdaTest - Search')
+    // Mark the test as completed or failed
+    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
+  } catch {
+    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' } })}`)
+  }
+
   await page.goto("https://www.lambdatest.com")
 
   await page.evaluate((_) => {},
@@ -50,15 +66,6 @@ const { expect } = require('@playwright/test');
   await page.evaluate((_) => {},
     `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'api-doc' }
     })}`) 
-    try {
-    // Add a relevant screenshot name here
-  console.log("screenshots taken")
-  await page.waitForTimeout(1000)
-  // Mark the test as completed or failed
-  await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
-  } catch (e) {
-    console.log(e)
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' } })}`)
-  }
-  await browser.close()
+
+    await browser.close()
 })()

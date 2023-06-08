@@ -27,7 +27,6 @@ const { expect } = require('@playwright/test');
     }
   }
 
-  console.log(capabilities)
   
   const browser = await chromium.connect({
     wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`

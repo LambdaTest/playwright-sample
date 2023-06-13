@@ -36,6 +36,12 @@ jobs:
       - run: npm run build --if-present
       - run: npm run test
 
+      - name: Get the commit SHA
+        run: echo "The commit SHA is ${{ github.sha }}"
+
+      - name: Get the latest commit SHA in the PR
+        run: echo "The commit SHA is ${{ github.event.pull_request.head.sha }}"
+
       - name: Create Github URL
         run: |
           API_HOST=https://api.github.com

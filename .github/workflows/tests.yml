@@ -36,20 +36,14 @@ jobs:
       - run: npm run build --if-present
       - run: npm run test
 
-      - name: Get the commit SHA
-        run: echo "The commit SHA is ${{ github.sha }}"
-
       - name: Get the latest commit SHA in the PR
         run: echo "The commit SHA is ${{ github.event.pull_request.head.sha }}"
 
       - name: Create Github URL
         run: |
           API_HOST=https://api.github.com
-          # Check out the PR branch
-          git fetch --all
-          git checkout $GITHUB_HEAD_REF
           # Get the commit ID of the last commit
-          COMMIT_ID=$(git rev-parse HEAD)
+          COMMIT_ID=${{ github.event.pull_request.head.sha }}
           echo "Last commit ID of PR: $COMMIT_ID"
           GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_ID
           echo "GITHUB_URL: $GITHUB_URL"

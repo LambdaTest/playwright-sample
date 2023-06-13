@@ -10,8 +10,8 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
       "browserName": "Chrome",
       "browserVersion": "latest",
       "LT:Options": {
-        "platform": "MacOS Big sur",
-        "build": "Playwright Extensions test",
+        "platform": "Windows 10",
+        "build": "Playwright Extensions Build",
         "name": "Load extension and verify it",
         "user": process.env.LT_USERNAME,
         "accessKey": process.env.LT_ACCESS_KEY,

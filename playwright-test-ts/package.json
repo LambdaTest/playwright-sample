@@ -10,7 +10,7 @@
     "test": "npx playwright test --config=./playwright.config.ts"
   },
   "devDependencies": {
-    "@playwright/test": "^1.34.0",
-    "playwright": "^1.34.0"
+    "@playwright/test": "^1.35.0",
+    "playwright": "^1.35.0"
   }
 }

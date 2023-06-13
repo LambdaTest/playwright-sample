@@ -3,9 +3,16 @@ jest.setTimeout(40 * 1000)
 
 describe("Bing Search", () => {
   beforeEach(async () => {
-    await page.goto('https://www.bing.com')
+    await page.goto('https://www.bing.com/')
+    await page.waitForLoadState('domcontentloaded')
+    await page.waitForTimeout(3000)
   })
-  it('title should contain LambdaTest Blog- Bing Search', async () => {
+
+  afterAll(async () => {
+    await page.close()
+  })
+  
+  it('title should contain LambdaTest Blog - Bing Search', async () => {
     await page.type('[id="sb_form_q"]', "LambdaTest Blog");
     await page.waitForTimeout(1000)
     await page.keyboard.press("Enter");
@@ -16,7 +23,7 @@ describe("Bing Search", () => {
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'setTestStatus',arguments: {status: 'passed',remark: 'Test assertion passed'}})}`);
   })
 
-  it('title should contain LambdaTest- Bing Search', async () => {
+  it('title should contain LambdaTest - Bing Search', async () => {
     await page.type('[id="sb_form_q"]', "LambdaTest");
     await page.waitForTimeout(1000)
     await page.keyboard.press("Enter");

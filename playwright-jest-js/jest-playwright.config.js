@@ -6,7 +6,7 @@ const caps_chromium = {
   'browserVersion': 'latest',
   'LT:Options': {
     'platform': 'Windows 10',
-    'build': 'Playwright-jest sample Build',
+    'build': 'Playwright-Jest Build',
     'name': 'Playwright-jest test on Chromium',
     'user': process.env.LT_USERNAME,
     'accessKey': process.env.LT_ACCESS_KEY,
@@ -25,7 +25,7 @@ const caps_firefox = {
   'browserVersion': 'latest',
   'LT:Options': {
     'platform': 'Windows 10',
-    'build': 'Playwright-jest sample Build',
+    'build': 'Playwright-Jest Build',
     'name': 'Playwright-jest test on Firefox',
     'user': process.env.LT_USERNAME,
     'accessKey': process.env.LT_ACCESS_KEY,
@@ -43,7 +43,7 @@ const caps_webkit = {
   'browserVersion': 'latest',
   'LT:Options': {
     'platform': 'Windows 10',
-    'build': 'Playwright-jest sample Build',
+    'build': 'Playwright-Jest Build',
     'name': 'Playwright-jest test on Webkit',
     'user': process.env.LT_USERNAME,
     'accessKey': process.env.LT_ACCESS_KEY,
@@ -65,7 +65,7 @@ module.exports = {
           wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(caps_firefox))}`
         },
         webkit: {
-            wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(caps_webkit))}`
+          wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(caps_webkit))}`
         }
       },
       browsers: ['chromium', 'firefox', 'webkit'],

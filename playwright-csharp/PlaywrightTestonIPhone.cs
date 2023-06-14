@@ -40,11 +40,11 @@ class PlaywrightTestonIPhone
 
         try {
           await page.GotoAsync("https://www.bing.com");
-          await page.Locator('[id="sb_form_q"]').ClickAsync();
-          await page.FillAsync('[id="sb_form_q"]', "LambdaTest");
-          await page.waitForTimeout(1000)
+          await page.Locator("[id='sb_form_q']").ClickAsync();
+          await page.FillAsync("[id='sb_form_q']", "LambdaTest");
+          await page.WaitForTimeoutAsync(1000);
           await page.Keyboard.PressAsync("Enter");
-          await page.waitForSelector('[class=" b_active"]')
+          await page.WaitForSelectorAsync("[class=' b_active']");
           var title = await page.TitleAsync();
 
           if (title.Contains("LambdaTest"))

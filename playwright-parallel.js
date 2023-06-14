@@ -40,7 +40,7 @@ const capabilities = [
     'browserVersion': 'latest',
     'LT:Options': {
       'platform': 'Windows 10',
-      'build': 'Playwright Sample Build',
+      'build': 'Playwright With Parallel Build',
       'name': 'Playwright Sample Test on Windows 10 - Chrome',
       'user': process.env.LT_USERNAME,
       'accessKey': process.env.LT_ACCESS_KEY,

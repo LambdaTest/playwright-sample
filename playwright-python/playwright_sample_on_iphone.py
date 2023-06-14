@@ -10,7 +10,7 @@ capabilities = {
     'browserVersion': 'latest',
     'LT:Options': {
         'platform': 'Windows 10',
-        'build': 'Playwright Build',
+        'build': 'Playwright Python Build',
         'name': 'Playwright Test',
         'user': os.getenv('LT_USERNAME'),
         'accessKey': os.getenv('LT_ACCESS_KEY'),
@@ -37,6 +37,7 @@ def run(playwright):
 
     try:
         page.goto("https://www.bing.com/")
+        page.wait_for_timeout(3000)
         page.fill('[id="sb_form_q"]', 'LambdaTest')
         page.wait_for_timeout(1000)
         page.keyboard.press("Enter")

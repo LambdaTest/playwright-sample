@@ -37,15 +37,17 @@ jobs:
       - run: npm run test
 
       - name: Step for push event
-        run: echo "This is a push event!"
-        run: echo "The latest commitId "
-        run: echo "::set-output name=COMMIT_ID::$(git log -1 --format='%H')"
+        run: |
+          echo "This is a push event!"
+          echo "The latest commitId "
+          echo "::set-output name=COMMIT_ID::$(git log -1 --format='%H')"
         if: github.event_name == 'push'
 
       - name: Step for pull_request event
-        run: echo "This is a pull_request event!"
-        run: echo "The latest commitId $(git log -n 2 --format="%H" | tail -n 1)"
-        run: echo "::set-output name=COMMIT_ID::$(git log -n 2 --format="%H" | tail -n 1)"
+        run: |
+          echo "This is a pull_request event!"
+          echo "The latest commitId $(git log -n 2 --format="%H" | tail -n 1)"
+          echo "::set-output name=COMMIT_ID::$(git log -n 2 --format="%H" | tail -n 1)"
         if: github.event_name == 'pull_request'
 
       - name: Create Github URL

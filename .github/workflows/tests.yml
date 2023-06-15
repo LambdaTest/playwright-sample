@@ -36,6 +36,14 @@ jobs:
       - run: npm run build --if-present
       - run: npm run test
 
+      - name: Step for push event
+        run: echo "This is a push event!"
+        if: github.event_name == 'push'
+
+      - name: Step for pull_request event
+        run: echo "This is a pull_request event!"
+        if: github.event_name == 'pull_request'
+
       - name: Get the latest commit SHA in the PR
         run: echo "The latest commitId $(git log -1 --format='%H' --no-merges)"
 

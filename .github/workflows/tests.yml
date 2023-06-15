@@ -38,22 +38,20 @@ jobs:
 
       - name: Step for push event
         run: echo "This is a push event!"
+        run: echo "The latest commitId "
+        run: echo "::set-output name=COMMIT_ID::$(git log -1 --format='%H')"
         if: github.event_name == 'push'
 
       - name: Step for pull_request event
         run: echo "This is a pull_request event!"
+        run: echo "The latest commitId $(git log -n 2 --format="%H" | tail -n 1)"
+        run: echo "::set-output name=COMMIT_ID::$(git log -n 2 --format="%H" | tail -n 1)"
         if: github.event_name == 'pull_request'
-
-      - name: Get the latest commit SHA in the PR
-        run: echo "The latest commitId $(git log -1 --format='%H' --no-merges)"
 
       - name: Create Github URL
         run: |
           API_HOST=https://api.github.com
-          # Get the commit ID of the last commit
-          COMMIT_ID=$(git log -1 --format='%H' --no-merges)
-          echo "Last commit ID of PR: $COMMIT_ID"
-          GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_ID
+          GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/${{ steps.vars.outputs.COMMIT_ID }}
           echo "GITHUB_URL: $GITHUB_URL"
           echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
 

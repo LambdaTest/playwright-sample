@@ -4,6 +4,8 @@ const { expect } = require('@playwright/test')
 test.describe('Browse LambdaTest in different search engines', () => {
   test('Search LambdaTest Blog on Bing', async ({ page }) => {
     await page.goto('https://www.bing.com')
+    await page.waitForLoadState('domcontentloaded')
+    await page.waitForTimeout(3000)
     const element = await page.$('[id="sb_form_q"]')
     await element.click()
     await element.type('LambdaTest')

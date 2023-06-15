@@ -9,7 +9,7 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
     'browserVersion': 'latest',
     'LT:Options': {
       'platform': 'Windows 10',
-      'build': 'Playwright Sample Build',
+      'build': 'Playwright Single Build',
       'name': 'Playwright Sample Test',
       'user': process.env.LT_USERNAME,
       'accessKey': process.env.LT_ACCESS_KEY,

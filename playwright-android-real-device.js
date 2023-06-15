@@ -5,10 +5,10 @@ const expect = require("chai").expect;
   const capabilities = {
     "LT:Options": {
       "platformName": "android",
-      "deviceName": "Galaxy S20",
-      "platformVersion": "11",
+      "deviceName": "Galaxy S21 5G",
+      "platformVersion": "12",
       "isRealMobile": true,
-      "build": "Playwright android build",
+      "build": "Playwright Android Build",
       "name": "Playwright android test",
       "user": process.env.LT_USERNAME,
       "accessKey": process.env.LT_ACCESS_KEY,
@@ -32,6 +32,7 @@ const expect = require("chai").expect;
   let page = await context.newPage();
 
   await page.goto("https://duckduckgo.com");
+  await page.waitForLoadState('domcontentloaded')
   let element = await page.$("[name=\"q\"]");
   await element.click();
   await element.type("Playwright");

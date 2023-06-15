@@ -16,7 +16,7 @@ Before(async (scenario) => {
     'browserVersion': 'latest',
     'LT:Options': {
       'platform': 'Windows 10',
-      'build': 'Playwright Sample Build with Cucumber Runner',
+      'build': 'Playwright Cucumber-JS Build',
       'name': scenario.pickle.name,
       'user': process.env.LT_USERNAME,
       'accessKey': process.env.LT_ACCESS_KEY,

@@ -39,21 +39,22 @@ jobs:
       - name: Step for push event
         run: |
           echo "This is a push event!"
-          echo "The latest commitId "
-          echo "::set-output name=COMMIT_ID::$(git log -1 --format='%H')"
+          echo "The latest commitId $(git log -1 --format='%H')"
+          echo "COMMIT_ID=$(git log -1 --format='%H')" >> $GITHUB_ENV
         if: github.event_name == 'push'
 
       - name: Step for pull_request event
         run: |
           echo "This is a pull_request event!"
           echo "The latest commitId $(git log -n 2 --format="%H" | tail -n 1)"
-          echo "::set-output name=COMMIT_ID::$(git log -n 2 --format="%H" | tail -n 1)"
+          echo "COMMIT_ID=$(git log -n 2 --format="%H" | tail -n 1)" >> $GITHUB_ENV
         if: github.event_name == 'pull_request'
 
       - name: Create Github URL
         run: |
           API_HOST=https://api.github.com
-          GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/${{ steps.vars.outputs.COMMIT_ID }}
+          echo "The latest commitId is $COMMIT_ID"
+          GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_ID
           echo "GITHUB_URL: $GITHUB_URL"
           echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
 

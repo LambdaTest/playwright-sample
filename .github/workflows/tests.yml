@@ -53,6 +53,4 @@ jobs:
 
       - name: Execute SmartUI Test
         run: npm run test-smartui      
-
-
-      
+  

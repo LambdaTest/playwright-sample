@@ -14,6 +14,8 @@ on:
     # This example triggers the workflow every day at 6:00 and 18:00 UTC:
     - cron:  '0 6,18 * * *'
 
+  workflow_dispatch:
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -37,13 +39,13 @@ jobs:
       - run: npm run test
 
       - name: Get the latest commit SHA in the PR
-        run: echo "The commit SHA is ${{ github.event.pull_request.head.sha }}"
+        run: echo "The latest commitId $(git log -1 --format='%H')"
 
       - name: Create Github URL
         run: |
           API_HOST=https://api.github.com
           # Get the commit ID of the last commit
-          COMMIT_ID=${{ github.event.pull_request.head.sha }}
+          COMMIT_ID=$(git log -1 --format='%H')
           echo "Last commit ID of PR: $COMMIT_ID"
           GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_ID
           echo "GITHUB_URL: $GITHUB_URL"

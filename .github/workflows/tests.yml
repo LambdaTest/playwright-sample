@@ -46,7 +46,7 @@ jobs:
       - name: Step for pull_request event
         run: |
           echo "This is a pull_request event!"
-          echo $(git log -n 5 --format="%H %an %s"}
+          echo $(git log -n 5 --format="%H %an %s")
           echo "The latest commitId $(git log -n 2 --format='%H' | tail -n 1)"
           echo "COMMIT_ID=$(git log -n 2 --format='%H' | tail -n 1)" >> $GITHUB_ENV
         if: github.event_name == 'pull_request'

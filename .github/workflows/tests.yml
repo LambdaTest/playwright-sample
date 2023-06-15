@@ -14,8 +14,6 @@ on:
     # This example triggers the workflow every day at 6:00 and 18:00 UTC:
     - cron:  '0 6,18 * * *'
 
-  workflow_dispatch:
-
 jobs:
   tests:
     runs-on: ubuntu-latest

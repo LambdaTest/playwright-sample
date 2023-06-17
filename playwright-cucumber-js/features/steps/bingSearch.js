@@ -1,17 +1,15 @@
 const {Given, When, Then} = require("@cucumber/cucumber");
 const assert = require("assert");
 
-Given("Open Bing Website", {timeout: 60 * 1000}, async function() {
-  await page.goto("https://www.bing.com");
+Given("Open DuckDuckGo Website", {timeout: 60 * 1000}, async function() {
+  await page.goto("https://duckduckgo.com");
 });
 
 When("Search for LambdaTest", async function() {
-  const element = await page.$('[id="sb_form_q"]')
-	await element.click()
-	await element.type('LambdaTest')
-	await page.waitForTimeout(1000)
-	await page.keyboard.press('Enter')
-	await page.waitForSelector('[class=" b_active"]')
+  let element = await page.$("[name=\"q\"]");
+  await element.click();
+  await element.type("LambdaTest");
+  await element.press("Enter");
 });
 
 Then("Title should match", async function() {
@@ -19,7 +17,7 @@ Then("Title should match", async function() {
 
   try {
     assert.equal(title,
-        "LambdaTest - Search",
+        "LambdaTest at DuckDuckGo",
         "Page title does not match");
 
     await this.setTestStatus("passed", "Title matched");

@@ -10,12 +10,12 @@ class PlaywrightTestonIPad
     {
         using var playwright = await Playwright.CreateAsync();
 
-        string user, accessKey;
+        string? user, accessKey;
         user = Environment.GetEnvironmentVariable("LT_USERNAME");
         accessKey = Environment.GetEnvironmentVariable("LT_ACCESS_KEY");
 
-        Dictionary<string, object> capabilities = new Dictionary<string, object>();
-        Dictionary<string, string> ltOptions = new Dictionary<string, string>();
+        Dictionary<string, object?> capabilities = new Dictionary<string, object?>();
+        Dictionary<string, string?> ltOptions = new Dictionary<string, string?>();
 
         ltOptions.Add("name", "Playwright Test");
         ltOptions.Add("build", "Playwright C-Sharp tests");
@@ -39,15 +39,13 @@ class PlaywrightTestonIPad
         var page = await context.NewPageAsync();
 
         try {
-          await page.GotoAsync("https://www.bing.com");
-          await page.Locator("[id='sb_form_q']").ClickAsync();
-          await page.FillAsync("[id='sb_form_q']", "LambdaTest");
-          await page.WaitForTimeoutAsync(1000);
+          await page.GotoAsync("https://duckduckgo.com");
+          await page.Locator("[name='q']").ClickAsync();
+          await page.FillAsync("[name='q']", "LambdaTest");
           await page.Keyboard.PressAsync("Enter");
-          await page.WaitForSelectorAsync("[class=' b_active']");
           var title = await page.TitleAsync();
 
-          if (title.Contains("LambdaTest"))
+          if (title.Contains("LambdaTest at DuckDuckGo"))
           {
             // Use the following code to mark the test status.
             await SetTestStatus("passed", "Title matched", page);

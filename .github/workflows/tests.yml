@@ -1,4 +1,4 @@
-name: Playwright CI
+name: Playwright CI-1
 
 on:
   # Add the triggers as required

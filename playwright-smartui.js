@@ -34,7 +34,7 @@ const { expect } = require('@playwright/test');
 
   const page = await browser.newPage()
 
-  await page.goto('https://www.bing.com')
+  await page.goto('https://www.google.com')
 
   // Add the following command in order to take screenshot in SmartUI
   await page.evaluate((_) => {},

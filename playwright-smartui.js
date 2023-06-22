@@ -62,7 +62,7 @@ const { expect } = require('@playwright/test');
   await page.evaluate((_) => {},
     `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'lambdatest-website' }
     })}`) 
-  await page.goto("https://www.google.com")
+  await page.goto("https://www.lambdatest.com/blog")
 
   await page.evaluate((_) => {},
     `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'api-doc' }

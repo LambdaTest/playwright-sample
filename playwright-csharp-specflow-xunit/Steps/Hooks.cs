@@ -31,7 +31,7 @@ namespace SpecFlowPlaywrightXUnitExample.Steps
             Dictionary<string, string?> ltOptions = new Dictionary<string, string?>();
 
             ltOptions.Add("name", "Playwright Test");
-            ltOptions.Add("build", "Playwright C-Sharp XUnit tests");
+            ltOptions.Add("build", "Playwright C-Sharp SpecFlow Tests");
             ltOptions.Add("platform", "Windows 10");
             ltOptions.Add("user", user);
             ltOptions.Add("accessKey", accessKey);

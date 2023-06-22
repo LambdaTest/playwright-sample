@@ -24,11 +24,11 @@ namespace SpecFlowPlaywrightXUnitExample.Steps
         [BeforeScenario()]
         public async Task CreateCapabilities()
         {
-            string user, accessKey;
+            string? user, accessKey;
             string browserName =  JsonConvert.SerializeObject(_scenarioContext.ScenarioInfo.Arguments["browser"]).Replace("\"", "");
             user = Environment.GetEnvironmentVariable("LT_USERNAME");
             accessKey = Environment.GetEnvironmentVariable("LT_ACCESS_KEY");
-            Dictionary<string, string> ltOptions = new Dictionary<string, string>();
+            Dictionary<string, string?> ltOptions = new Dictionary<string, string?>();
 
             ltOptions.Add("name", "Playwright Test");
             ltOptions.Add("build", "Playwright C-Sharp XUnit tests");

@@ -112,3 +112,5 @@ dist
 
 **/bin/
 **/obj/
+
+**/*.feature.cs

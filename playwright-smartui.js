@@ -34,7 +34,7 @@ const { expect } = require('@playwright/test');
 
   const page = await browser.newPage()
 
-  await page.goto('https://www.google.com')
+  await page.goto('https://www.bing.com')
 
   // Add the following command in order to take screenshot in SmartUI
   await page.evaluate((_) => {},
@@ -62,7 +62,7 @@ const { expect } = require('@playwright/test');
   await page.evaluate((_) => {},
     `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'lambdatest-website' }
     })}`) 
-  await page.goto("https://www.lambdatest.com/support/api-doc/")
+  await page.goto("https://www.google.com")
 
   await page.evaluate((_) => {},
     `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'api-doc' }

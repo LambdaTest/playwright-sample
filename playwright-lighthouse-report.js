@@ -39,6 +39,7 @@ const { expect } = require('@playwright/test');
   await page.waitForSelector('[class=" b_active"]')
   const title = await page.title()
 
+  // Generate the lighthouse report
   await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'lighthouseReport', arguments: { url: "https://login.live.com" }})}`)
 
   try {

@@ -8,7 +8,7 @@ const { expect } = require('@playwright/test');
     'LT:Options': {
       'platform': 'Windows 10',
       'build': 'Playwright Single Build',
-      'name': 'Playwright Sample Test',
+      'name': 'Playwright Test with Lighthouse report',
       'user': process.env.LT_USERNAME,
       'accessKey': process.env.LT_ACCESS_KEY,
       'network': true,

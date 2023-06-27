@@ -36,12 +36,10 @@ def run(playwright):
     page = context.new_page()
 
     try:
-        page.goto("https://www.bing.com/")
-        page.wait_for_timeout(3000)
-        page.fill('[id="sb_form_q"]', 'LambdaTest')
+        page.goto("https://duckduckgo.com")
+        page.fill("[name='q']", "LambdaTest")
         page.wait_for_timeout(1000)
         page.keyboard.press("Enter")
-        page.wait_for_selector('[class=" b_active"]')
         page.wait_for_timeout(1000)
 
         title = page.title()

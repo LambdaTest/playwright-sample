@@ -6,7 +6,8 @@
     "test-parallel": "node playwright-parallel.js",
     "test-android": "node playwright-android-real-device.js",
     "test-extension": "node playwright-extensions-test.js",
-    "test-iPhone-emulation": "node playwright-single-on-iphone.js"
+    "test-iPhone-emulation": "node playwright-single-on-iphone.js",
+    "test-lighthouse-report": "node playwright-lighthouse-report.js"
   },
   "engines": {
     "node": ">=12.7.0"

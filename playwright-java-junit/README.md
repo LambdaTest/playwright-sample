@@ -49,7 +49,7 @@ export LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 
 ## Run Your First Playwright Test
 
->**Test Scenario**: The sample playwright-single.js file search the term 'LambdaTest' on Bing.
+>**Test Scenario**: The sample playwright-single.js file search the term 'LambdaTest' on DuckDuckGo.
 
 Shown below are the steps on running Playwright tests on the LambdaTest platform. 
 

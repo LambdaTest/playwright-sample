@@ -10,7 +10,7 @@ const { expect } = require('@playwright/test');
       'build': 'Playwright Single Build',
       'name': 'Playwright Sample Test',
       'user': process.env.LT_USERNAME,
-      'accessKey': process.env.LT_ACCESS_KEY_STAGE,
+      'accessKey': process.env.LT_ACCESS_KEY,
       'network': true,
       'video': true,
       'console': true,
@@ -21,7 +21,7 @@ const { expect } = require('@playwright/test');
   }
 
   const browser = await chromium.connect({
-    wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
   const page = await browser.newPage()

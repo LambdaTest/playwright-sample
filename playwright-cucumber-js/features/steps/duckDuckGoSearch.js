@@ -6,7 +6,7 @@ Given("Open DuckDuckGo Website", {timeout: 60 * 1000}, async function() {
 });
 
 When("Search for LambdaTest", async function() {
-  let element = await page.$("[name=\"q\"]");
+  let element = await page.locator("[name=\"q\"]");
   await element.click();
   await element.type("LambdaTest");
   await element.press("Enter");

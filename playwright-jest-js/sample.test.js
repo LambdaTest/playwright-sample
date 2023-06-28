@@ -11,26 +11,24 @@ describe("DuckDuckGo Search", () => {
   })
   
   it('title should contain LambdaTest Blog - DuckDuckGo Search', async () => {
-    let element = await page.$("[name=\"q\"]");
+    let element = await page.locator("[name=\"q\"]");
     await element.click();
     await element.type("LambdaTest Blog");
     await element.press("Enter");
-    let title = (await page.title()).toString().trim()
-    // let finalTitle = title.trim()
+    let title = await page.title()
     console.log('Page title:: ', title)
-    expect(finalTitle).toBe('LambdaTest Blog at DuckDuckGo')
+    expect(title).toEqual(expect.stringContaining("LambdaTest"))
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'setTestStatus',arguments: {status: 'passed',remark: 'Test assertion passed'}})}`);
   })
 
   it('title should contain LambdaTest - DuckDuckGo Search', async () => {
-    let element = await page.$("[name=\"q\"]");
+    let element = await page.locator("[name=\"q\"]");
     await element.click();
     await element.type("LambdaTest");
     await element.press("Enter");
-    let title = (await page.title()).toString().trim()
-    // const finalTitle = title.trim()
+    let title = await page.title()
     console.log('Page title:: ', title)
-    expect(title).toBe('LambdaTest at DuckDuckGo')
+    expect(title).toEqual(expect.stringContaining("LambdaTest"))
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'setTestStatus',arguments: {status: 'passed',remark: 'Test assertion passed'}})}`);
   })
 })

@@ -34,7 +34,7 @@ const { expect } = require('@playwright/test');
   const page = await browser.newPage()
 
   console.log('Navigating URL')
-  await page.goto('https://www.google.com')
+  await page.goto('https://www.lambdatest.com')
 
   // Add the following command in order to take screenshot in SmartUI
   // Add a relevant screenshot name

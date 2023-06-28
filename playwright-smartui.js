@@ -30,8 +30,9 @@ const { expect } = require('@playwright/test');
   const browser = await chromium.connect({
     wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
-
+  console.log("Browser Launched")
   const page = await browser.newPage()
+  console.log("Navigate URL")
 
   await page.goto('https://www.bing.com')
 
@@ -49,10 +50,14 @@ const { expect } = require('@playwright/test');
   const title = await page.title()
 
   try {
+    await page.waitForTimeout(5000)
+    console.log(await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'smartui.fetchScreenshotStatus' })}`));
+
     expect(title).toEqual('LambdaTest - Search')
     // Mark the test as completed or failed
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
-  } catch {
+  } catch(e) {
+    console.log("Got Error while executing action", e)
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' } })}`)
   }
 

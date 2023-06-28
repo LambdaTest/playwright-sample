@@ -55,7 +55,7 @@ const capabilities = [
     'browserVersion': 'latest',
     'LT:Options': {
       'platform': 'MacOS Ventura',
-      'build': 'Playwright Sample Build',
+      'build': 'Playwright With Parallel Build',
       'name': 'Playwright Sample Test on Windows 8 - MicrosoftEdge',
       'user': process.env.LT_USERNAME,
       'accessKey': process.env.LT_ACCESS_KEY,
@@ -70,7 +70,7 @@ const capabilities = [
     'browserVersion': 'latest',
     'LT:Options': {
       'platform': 'MacOS Big sur',
-      'build': 'Playwright Sample Build',
+      'build': 'Playwright With Parallel Build',
       'name': 'Playwright Sample Test on MacOS Big sur - Chrome',
       'user': process.env.LT_USERNAME,
       'accessKey': process.env.LT_ACCESS_KEY,

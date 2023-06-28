@@ -20,57 +20,83 @@ const { expect } = require('@playwright/test');
   }
 
   const githubURL = process.env.GITHUB_URL
-  if(githubURL){
+  if (githubURL) {
     capabilities['LT:Options']['github'] = {
-      url : githubURL
+      url: githubURL
     }
   }
 
-  
   const browser = await chromium.connect({
     wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
-  console.log("Browser Launched")
+
+  console.log('Browser Launched')
   const page = await browser.newPage()
-  console.log("Navigate URL")
+
+  console.log('Navigating URL')
+  await page.goto('https://www.google.com')
+
+  // Add the following command in order to take screenshot in SmartUI
+  // Add a relevant screenshot name
+  // Set `fullPage: true` to take full page screenshots
+  await page.evaluate((_) => {}, `lambdatest_action: ${JSON.stringify({
+    action: 'smartui.takeScreenshot',
+    arguments: { fullPage: true, screenshotName: 'lambdatest-website' }
+  })}`)
 
   await page.goto('https://www.bing.com')
 
-  // Add the following command in order to take screenshot in SmartUI
-  await page.evaluate((_) => {},
-    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'search-lambdatest' }
-    })}`) // Add a relevant screenshot name here
+  await page.evaluate((_) => {}, `lambdatest_action: ${JSON.stringify({
+    action: 'smartui.takeScreenshot',
+    arguments: { fullPage: true, screenshotName: 'search-lambdatest' }
+  })}`)
 
   const element = await page.$('[id="sb_form_q"]')
   await element.click()
   await element.type('LambdaTest')
-  await page.waitForTimeout(1000)
+  // await page.waitForTimeout(1000)
   await page.keyboard.press('Enter')
   await page.waitForSelector('[class=" b_active"]')
   const title = await page.title()
 
   try {
-    await page.waitForTimeout(5000)
-    console.log(await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'smartui.fetchScreenshotStatus' })}`));
+    // Pass the `page` object. Add `screennshotName` if you want to fetch response for a specific screenshot
+    await validateSmartUIScreenshots(page)
 
     expect(title).toEqual('LambdaTest - Search')
     // Mark the test as completed or failed
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
-  } catch(e) {
-    console.log("Got Error while executing action", e)
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' } })}`)
+    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({
+      action: 'setTestStatus',
+      arguments: { status: 'passed', remark: 'Title matched' }
+    })}`)
+  } catch (err) {
+    console.log('Error while executing the test: ', err)
+    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({
+      action: 'setTestStatus',
+      arguments: { status: 'failed', remark: err.stack }
+    })}`)
   }
 
-  await page.goto("https://www.lambdatest.com")
-
-  await page.evaluate((_) => {},
-    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'lambdatest-website' }
-    })}`) 
-  await page.goto("https://www.lambdatest.com/support/api-doc/")
-
-  await page.evaluate((_) => {},
-    `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'api-doc' }
-    })}`) 
-
-    await browser.close()
+  await page.close()
+  await browser.close()
 })()
+
+const validateSmartUIScreenshots = async (page, screenshotName) => {
+  try {
+    await page.waitForTimeout(5000) // Added delay to get reports of all screenshots captured
+
+    let screenshotResponse = JSON.parse(await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'smartui.fetchScreenshotStatus', arguments: { screenshotName }})}`))
+    console.log('screenshotStatus response: ', screenshotResponse)
+
+    if (screenshotResponse.screenshotsData && Array.isArray(screenshotResponse.screenshotsData)) {
+      for (let i = 0; i < screenshotResponse.screenshotsData.length; i++) {
+        let screenshot = screenshotResponse.screenshotsData[i];
+        if (screenshot.screenshotStatus !== "Approved") {
+          throw new Error(`Screenshot status is not approved for the screenshot ${screenshot.screenshotName}`);
+        }
+      }
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+}

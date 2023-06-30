@@ -29,7 +29,7 @@ const { expect } = require('@playwright/test');
   console.log(capabilities)
   
   const browser = await chromium.connect({
-    wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
   const page = await browser.newPage()

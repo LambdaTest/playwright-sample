@@ -30,20 +30,19 @@ namespace playwright_csharp_xunit
             return "wss://cdp.lambdatest.com/playwright?capabilities=" + Uri.EscapeDataString(capabilitiesJson);
         }
     
-        [Fact(DisplayName = "Browse LambdaTest in https://www.bing.com")]
+        [Fact(DisplayName = "Browse LambdaTest in https://duckduckgo.com")]
         public static async Task TestWithChrome()
         {
             using var playwright = await Playwright.CreateAsync();
             await using var browser = await playwright.Chromium.ConnectAsync(GetCdpUrl("Chrome"));
             var page = await browser.NewPageAsync();
-            await page.GotoAsync("https://www.bing.com");
-            await page.Locator("[id='sb_form_q']").ClickAsync();
-            await page.FillAsync("[id='sb_form_q']", "LambdaTest");
+            await page.GotoAsync("https://duckduckgo.com");
+            await page.Locator("[name='q']").ClickAsync();
+            await page.FillAsync("[name='q']", "LambdaTest");
             await page.Keyboard.PressAsync("Enter");
-            await page.Locator("[class=' b_active']")
             var title = await page.TitleAsync();
 
-            if (title.Contains("LambdaTest"))
+          if (title.Contains("LambdaTest at DuckDuckGo"))
             {
                 // Use the following code to mark the test status.
                 await SetTestStatus("passed", "Title matched", page);
@@ -54,18 +53,19 @@ namespace playwright_csharp_xunit
             await browser.CloseAsync();
         }
     
-        [Fact(DisplayName = "Browse LambdaTest in https://www.google.com")]
+        [Fact(DisplayName = "Browse LambdaTest Blog in https://duckduckgo.com")]
         public static async Task TestWithMicrosoftEdge()
         {
             using var playwright = await Playwright.CreateAsync();
             await using var browser = await playwright.Chromium.ConnectAsync(GetCdpUrl("MicrosoftEdge"));
             var page = await browser.NewPageAsync();
-            await page.GotoAsync("https://www.google.com");
-            await page.FillAsync("[title='Search']", "LambdaTest");
+            await page.GotoAsync("https://duckduckgo.com");
+            await page.Locator("[name='q']").ClickAsync();
+            await page.FillAsync("[name='q']", "LambdaTest");
             await page.Keyboard.PressAsync("Enter");
             var title = await page.TitleAsync();
 
-            if (title.Contains("LambdaTest"))
+          if (title.Contains("LambdaTest Blog at DuckDuckGo"))
             {
                 // Use the following code to mark the test status.
                 await SetTestStatus("passed", "Title matched", page);

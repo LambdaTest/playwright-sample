@@ -1,7 +1,7 @@
-Feature: Bing Search
+Feature: DuckDuckGo Search
 
   Scenario: Search results should match
-    Given Open Bing Website
+    Given Open DuckDuckGo Website
     When Search for LambdaTest
     Then Title should match
 

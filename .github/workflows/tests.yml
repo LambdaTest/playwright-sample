@@ -12,7 +12,7 @@ on:
   schedule:
     # * is a special character in YAML so you have to quote this string
     # This example triggers the workflow every day at 6:00 and 18:00 UTC:
-    - cron:  '0 6,18 * * *'
+    - cron:  '0 6 * * *'
 
 env:
   LT_USERNAME: ${{ secrets.LT_USERNAME }}
@@ -35,7 +35,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run build --if-present
 
       - name: Step for push event
         run: |
@@ -78,7 +77,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run build --if-present
+      
 
       - name: Execute PW Single Test
         run: npm run test
@@ -98,7 +97,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run build --if-present
+      
 
       - name: Execute PW Parallel Tests
         run: npm run test-parallel
@@ -118,7 +117,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run build --if-present
+      
 
       - name: Execute PW Android Real Device Test
         run: npm run test-android
@@ -138,7 +137,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run build --if-present
+      
 
       - name: Execute PW Extension Test
         run: npm run test-extension
@@ -158,7 +157,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run build --if-present
+      
 
       - name: Execute PW iPhone Emulation Test
         run: npm run test-iPhone-emulation
@@ -178,7 +177,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run build --if-present
+      
 
       - name: Execute PW LightHouse Test
         run: npm run test-lighthouse-report

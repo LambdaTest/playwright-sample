@@ -1,5 +1,5 @@
 const {_android} = require("playwright");
-const expect = require("chai").expect;
+const expect = require("expect");
 
 (async () => {
   const capabilities = {

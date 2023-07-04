@@ -11,8 +11,8 @@ on:
       - '**'
   schedule:
     # * is a special character in YAML so you have to quote this string
-    # This example triggers the workflow every day at 6:00 and 18:00 UTC:
-    - cron:  '0 6 * * *'
+    # This example triggers the workflow every day at 9:00 AM
+    - cron:  '0 9 * * *'
 
 env:
   LT_USERNAME: ${{ secrets.LT_USERNAME }}

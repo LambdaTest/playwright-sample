@@ -1,5 +1,5 @@
 const { chromium } = require('playwright')
-const { expect } = require('@playwright/test')
+const expect = require("expect");
 const cp = require('child_process');
 const playwrightClientVersion = cp.execSync('npx playwright --version').toString().trim().split(' ')[1];
 

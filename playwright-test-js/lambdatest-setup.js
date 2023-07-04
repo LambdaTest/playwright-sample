@@ -61,7 +61,7 @@ exports.test = base.test.extend({
       }
       await ltPage.evaluate(() => {},
         `lambdatest_action: ${JSON.stringify(testStatus)}`)
-      await ltPage.close()
+      // await ltPage.close()
       await browser.close()
     } else {
       // Run tests in local in case of local config provided

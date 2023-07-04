@@ -1,5 +1,5 @@
 const { chromium } = require('playwright')
-const expect = require("expect");
+const {expect} = require("expect");
 
 (async () => {
   const capabilities = {

@@ -31,7 +31,7 @@ const { expect } = require('@playwright/test');
   // Generate the lighthouse report for the provided URL
   await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'lighthouseReport', arguments: { url: 'https://www.bing.com' }})}`)
 
-  const element = await page.$('[id="sb_form_q"]')
+  const element = await page.locator('[id="sb_form_q"]')
   await element.click()
   await element.type('LambdaTest')
   await page.waitForTimeout(1000)

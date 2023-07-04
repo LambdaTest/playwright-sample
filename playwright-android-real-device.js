@@ -33,7 +33,7 @@ const expect = require("chai").expect;
 
   await page.goto("https://duckduckgo.com");
   await page.waitForLoadState('domcontentloaded')
-  let element = await page.$("[name=\"q\"]");
+  let element = await page.locator("[name=\"q\"]");
   await element.click();
   await element.type("Playwright");
   await element.press("Enter");

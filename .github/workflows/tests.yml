@@ -19,218 +19,218 @@ env:
   LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
 
 jobs:
-  smart-ui:
-    runs-on: ubuntu-latest
+  # smart-ui:
+  #   runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
 
-      - name: Step for push event
-        run: |
-          echo "This is a push event!"
-          echo "The latest commitId $(git log -1 --format='%H')"
-          echo "COMMIT_ID=$(git log -1 --format='%H')" >> $GITHUB_ENV
-        if: github.event_name == 'push'
+  #     - name: Step for push event
+  #       run: |
+  #         echo "This is a push event!"
+  #         echo "The latest commitId $(git log -1 --format='%H')"
+  #         echo "COMMIT_ID=$(git log -1 --format='%H')" >> $GITHUB_ENV
+  #       if: github.event_name == 'push'
 
-      - name: Step for pull_request event
-        run: |
-          echo "This is a pull_request event!"
-          git log -n 5 --format="%H %an %s" | while read line; do echo "$line"; done
-          echo "The latest commitId $(git log -n 2 --format='%H' | tail -n 1)"
-          echo "COMMIT_ID=$(git log -n 2 --format='%H' | tail -n 1)" >> $GITHUB_ENV
-        if: github.event_name == 'pull_request'
+  #     - name: Step for pull_request event
+  #       run: |
+  #         echo "This is a pull_request event!"
+  #         git log -n 5 --format="%H %an %s" | while read line; do echo "$line"; done
+  #         echo "The latest commitId $(git log -n 2 --format='%H' | tail -n 1)"
+  #         echo "COMMIT_ID=$(git log -n 2 --format='%H' | tail -n 1)" >> $GITHUB_ENV
+  #       if: github.event_name == 'pull_request'
 
-      - name: Create Github URL
-        run: |
-          API_HOST=https://api.github.com
-          echo "The latest commitId is $COMMIT_ID"
-          GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_ID
-          echo "GITHUB_URL: $GITHUB_URL"
-          echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
+  #     - name: Create Github URL
+  #       run: |
+  #         API_HOST=https://api.github.com
+  #         echo "The latest commitId is $COMMIT_ID"
+  #         GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_ID
+  #         echo "GITHUB_URL: $GITHUB_URL"
+  #         echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
 
-      - name: Execute PW SmartUI Test
-        run: npm run test-smartui
+  #     - name: Execute PW SmartUI Test
+  #       run: npm run test-smartui
 
-  pw-single:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
+  # pw-single:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 20
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 20
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
       
 
-      - name: Execute PW Single Test
-        run: npm run test
+  #     - name: Execute PW Single Test
+  #       run: npm run test
 
-  pw-parallel:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
+  # pw-parallel:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
       
 
-      - name: Execute PW Parallel Tests
-        run: npm run test-parallel
+  #     - name: Execute PW Parallel Tests
+  #       run: npm run test-parallel
 
-  pw-android:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
+  # pw-android:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
       
 
-      - name: Execute PW Android Real Device Test
-        run: npm run test-android
+  #     - name: Execute PW Android Real Device Test
+  #       run: npm run test-android
 
-  pw-extension:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
+  # pw-extension:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
       
 
-      - name: Execute PW Extension Test
-        run: npm run test-extension
+  #     - name: Execute PW Extension Test
+  #       run: npm run test-extension
 
-  pw-iphone-emulation:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
+  # pw-iphone-emulation:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
       
 
-      - name: Execute PW iPhone Emulation Test
-        run: npm run test-iPhone-emulation
+  #     - name: Execute PW iPhone Emulation Test
+  #       run: npm run test-iPhone-emulation
 
-  pw-lighthouse:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
+  # pw-lighthouse:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
       
 
-      - name: Execute PW LightHouse Test
-        run: npm run test-lighthouse-report
+  #     - name: Execute PW LightHouse Test
+  #       run: npm run test-lighthouse-report
 
-  pw-cucumber-js:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./playwright-cucumber-js
-    strategy:
-      matrix:
-        node-version: [18.x]
+  # pw-cucumber-js:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-cucumber-js
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
 
-      - name: Execute PW Cucumber JS Test
-        run: npm run test
+  #     - name: Execute PW Cucumber JS Test
+  #       run: npm run test
 
-  pw-java:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./playwright-java
+  # pw-java:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-java
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
 
-      - name: Execute PW Java Test
-        run: mvn -Dexec.mainClass="com.lambdatest.PlaywrightTestSingle" -Dexec.classpathScope=test test-compile exec:java
+  #     - name: Execute PW Java Test
+  #       run: mvn -Dexec.mainClass="com.lambdatest.PlaywrightTestSingle" -Dexec.classpathScope=test test-compile exec:java
 
-  pw-java-junit:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./playwright-java-junit
+  # pw-java-junit:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-java-junit
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
 
-      - name: Execute PW Java JUnit Test
-        run: mvn clean test
+  #     - name: Execute PW Java JUnit Test
+  #       run: mvn clean test
 
   pw-jest-js:
     runs-on: ubuntu-latest
@@ -250,135 +250,138 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
+      
+      - name: Install missing PW Dependencies
+        run: npx playwright install-deps
 
       - name: Execute PW Cucumber Jest Test
         run: npm test
 
-  pw-test-js:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./playwright-test-js
-    strategy:
-      matrix:
-        node-version: [18.x]
+  # pw-test-js:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-test-js
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
 
-      - name: Execute PW Test JS
-        run: npm run test
+  #     - name: Execute PW Test JS
+  #       run: npm run test
 
-  pw-test-ts:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./playwright-test-ts
-    strategy:
-      matrix:
-        node-version: [18.x]
+  # pw-test-ts:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-test-ts
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
 
-      - name: Execute PW Test TS
-        run: npm run test
+  #     - name: Execute PW Test TS
+  #       run: npm run test
 
-  pw-python:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./playwright-python
-    strategy:
-      matrix:
-        python-version: ["3.9"]
+  # pw-python:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-python
+  #   strategy:
+  #     matrix:
+  #       python-version: ["3.9"]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      - run: pip3 install pytest-playwright
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Set up Python ${{ matrix.python-version }}
+  #       uses: actions/setup-python@v4
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - run: pip3 install pytest-playwright
 
-      - name: Execute PW Python GetTestDetails
-        run: python3 get_test_details_python_sample.py 
+  #     - name: Execute PW Python GetTestDetails
+  #       run: python3 get_test_details_python_sample.py 
 
-      - name: Execute PW Python iPhone Emulation
-        run: python3 playwright_sample_on_iphone.py 
+  #     - name: Execute PW Python iPhone Emulation
+  #       run: python3 playwright_sample_on_iphone.py 
 
-      - name: Execute PW Python Sample Test
-        run: python3 playwright_sample.py
+  #     - name: Execute PW Python Sample Test
+  #       run: python3 playwright_sample.py
 
-  pw-csharp:
-    runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: ./playwright-csharp
+  # pw-csharp:
+  #   runs-on: windows-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-csharp
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0'
-      - run: dotnet build
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Setup .NET
+  #       uses: actions/setup-dotnet@v1
+  #       with:
+  #         dotnet-version: '6.0'
+  #     - run: dotnet build
 
-      - name: Execute PW CSharp Single Test
-        run: dotnet run single 
+  #     - name: Execute PW CSharp Single Test
+  #       run: dotnet run single 
 
-      - name: Execute PW CSharp iPhone Test
-        run: dotnet run iphonetest
+  #     - name: Execute PW CSharp iPhone Test
+  #       run: dotnet run iphonetest
 
-      - name: Execute PW CSharp iPad Test
-        run: dotnet run ipadtest
+  #     - name: Execute PW CSharp iPad Test
+  #       run: dotnet run ipadtest
 
-  pw-csharp-specflow:
-    runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: ./playwright-csharp-specflow-xunit
+  # pw-csharp-specflow:
+  #   runs-on: windows-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-csharp-specflow-xunit
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0'
-      - run: dotnet build
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Setup .NET
+  #       uses: actions/setup-dotnet@v1
+  #       with:
+  #         dotnet-version: '6.0'
+  #     - run: dotnet build
 
-      - name: Execute PW CSharp Specflow Tests
-        run: dotnet test
+  #     - name: Execute PW CSharp Specflow Tests
+  #       run: dotnet test
 
-  pw-csharp-xunit:
-    runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: ./playwright-csharp-xunit
+  # pw-csharp-xunit:
+  #   runs-on: windows-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-csharp-xunit
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0'
-      - run: dotnet build
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Setup .NET
+  #       uses: actions/setup-dotnet@v1
+  #       with:
+  #         dotnet-version: '6.0'
+  #     - run: dotnet build
 
-      - name: Execute PW CSharp XUnit Tests
-        run: dotnet test
+  #     - name: Execute PW CSharp XUnit Tests
+  #       run: dotnet test

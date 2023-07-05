@@ -350,20 +350,3 @@ jobs:
 
       - name: Execute Playwright CSharp Specflow Tests
         run: dotnet test
-
-  playwright-csharp-xunit:
-    runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: ./playwright-csharp-xunit
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0'
-      - run: dotnet build
-
-      - name: Execute Playwright CSharp XUnit Tests
-        run: dotnet test

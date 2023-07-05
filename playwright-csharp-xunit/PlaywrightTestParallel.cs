@@ -9,12 +9,12 @@ namespace playwright_csharp_xunit
     {
         private static string GetCdpUrl(string browserType)
         {
-            string user, accessKey;
+            string? user, accessKey;
             user = Environment.GetEnvironmentVariable("LT_USERNAME");
             accessKey = Environment.GetEnvironmentVariable("LT_ACCESS_KEY");
 
-            Dictionary<string, object> capabilities = new Dictionary<string, object>();
-            Dictionary<string, string> ltOptions = new Dictionary<string, string>();
+            Dictionary<string, object?> capabilities = new Dictionary<string, object?>();
+            Dictionary<string, string?> ltOptions = new Dictionary<string, string?>();
 
             ltOptions.Add("name", "Playwright Test");
             ltOptions.Add("build", "Playwright C-Sharp XUnit tests");

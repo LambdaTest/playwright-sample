@@ -150,14 +150,12 @@ const { test } = require('../lambdatest-setup')
 const { expect } = require('@playwright/test')
 
 test.describe('Browse LambdaTest in different search engines', () => {
-  test('Search LambdaTest on Bing', async ({ page }) => {
-    await page.goto('https://www.bing.com')
-    const element = await page.$('[id="sb_form_q"]')
-    await element.click()
-    await element.type('LambdaTest')
-    await page.waitForTimeout(1000)
-    await page.keyboard.press("Enter")
-    await page.waitForSelector('[class=" b_active"]')
+  test('Search LambdaTest on DuckDuckGo', async ({ page }) => {
+    await page.goto('https://duckduckgo.com')
+    let element = await page.locator("[name=\"q\"]");
+    await element.click();
+    await element.type("LambdaTest");
+    await element.press("Enter");
     const title = await page.title()
 
     console.log('Page title:: ', title)

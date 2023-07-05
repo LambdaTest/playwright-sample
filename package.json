@@ -16,6 +16,6 @@
     "@playwright/test": "^1.35.0",
     "playwright": "^1.35.0",
     "@cucumber/cucumber": "^7.3.2",
-    "chai": "^4.3.7"
+    "expect": "^29.5.0"
   }
 }

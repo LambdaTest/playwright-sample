@@ -11,20 +11,20 @@ on:
       - '**'
   schedule:
     # * is a special character in YAML so you have to quote this string
-    # This example triggers the workflow every day at 6:00 and 18:00 UTC:
-    - cron:  '0 6,18 * * *'
+    # This example triggers the workflow every day at 9:00 AM
+    - cron:  '0 9 * * *'
+
+env:
+  LT_USERNAME: ${{ secrets.LT_USERNAME }}
+  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
 
 jobs:
-  tests:
+  smart-ui:
     runs-on: ubuntu-latest
-    env:
-      LT_USERNAME: ${{ secrets.LT_USERNAME }}
-      LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
 
     strategy:
       matrix:
-        # Specify as per the service requirements
-        node-version: [14.x]
+        node-version: [18.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -35,8 +35,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run build --if-present
-      - run: npm run test
 
       - name: Step for push event
         run: |
@@ -61,9 +59,335 @@ jobs:
           echo "GITHUB_URL: $GITHUB_URL"
           echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
 
-      - name: Execute SmartUI Test
-        run: npm run test-smartui      
+      - name: Execute PW SmartUI Test
+        run: npm run test-smartui
 
+  pw-single:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
 
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 20
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      
 
+      - name: Execute PW Single Test
+        run: npm run test
 
+  pw-parallel:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      
+
+      - name: Execute PW Parallel Tests
+        run: npm run test-parallel
+
+  pw-android:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      
+
+      - name: Execute PW Android Real Device Test
+        run: npm run test-android
+
+  pw-extension:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      
+
+      - name: Execute PW Extension Test
+        run: npm run test-extension
+
+  pw-iphone-emulation:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      
+
+      - name: Execute PW iPhone Emulation Test
+        run: npm run test-iPhone-emulation
+
+  pw-lighthouse:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      
+
+      - name: Execute PW LightHouse Test
+        run: npm run test-lighthouse-report
+
+  pw-cucumber-js:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-cucumber-js
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+      - name: Execute PW Cucumber JS Test
+        run: npm run test
+
+  pw-java:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-java
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+
+      - name: Execute PW Java Test
+        run: mvn -Dexec.mainClass="com.lambdatest.PlaywrightTestSingle" -Dexec.classpathScope=test test-compile exec:java
+
+  pw-java-junit:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-java-junit
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+
+      - name: Execute PW Java JUnit Test
+        run: mvn clean test
+
+  pw-jest-js:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-jest-js
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      
+      - name: Install missing PW Dependencies
+        run: npx playwright install-deps
+
+      - name: Execute PW Cucumber Jest Test
+        run: npm test
+
+  pw-test-js:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-test-js
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+      - name: Install missing PW Dependencies
+        run: npx playwright install-deps
+
+      - name: Execute PW Test JS
+        run: npm run test
+
+  pw-test-ts:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-test-ts
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+      - name: Install missing PW Dependencies
+        run: npx playwright install-deps
+
+      - name: Execute PW Test TS
+        run: npm run test
+
+  pw-python:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-python
+    strategy:
+      matrix:
+        python-version: ["3.9"]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip3 install pytest-playwright
+
+      - name: Execute PW Python GetTestDetails
+        run: python3 get_test_details_python_sample.py 
+
+      - name: Execute PW Python iPhone Emulation
+        run: python3 playwright_sample_on_iphone.py 
+
+      - name: Execute PW Python Sample Test
+        run: python3 playwright_sample.py
+
+  pw-csharp:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./playwright-csharp
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0'
+      - run: dotnet build
+
+      - name: Execute PW CSharp Single Test
+        run: dotnet run single 
+
+      - name: Execute PW CSharp iPhone Test
+        run: dotnet run iphonetest
+
+      - name: Execute PW CSharp iPad Test
+        run: dotnet run ipadtest
+
+  pw-csharp-specflow:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./playwright-csharp-specflow-xunit
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0'
+      - run: dotnet build
+
+      - name: Execute PW CSharp Specflow Tests
+        run: dotnet test
+
+  pw-csharp-xunit:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./playwright-csharp-xunit
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0'
+      - run: dotnet build
+
+      - name: Execute PW CSharp XUnit Tests
+        run: dotnet test

@@ -48,7 +48,7 @@ const { devices } = require('@playwright/test')
 const config = {
 testDir: 'tests',
 testMatch: '**/*.spec.js',
-timeout: 60000,
+timeout: 120000,
 projects: [
 // -- LambdaTest Config --
   // name in the format: browserName:browserVersion:platform@lambdatest
@@ -96,7 +96,7 @@ const { devices } = require('@playwright/test')
 const config = {
   testDir: 'tests',
   testMatch: '**/*.spec.js',
-  timeout: 60000,
+  timeout: 120000,
   use: {
     viewport: null
   },

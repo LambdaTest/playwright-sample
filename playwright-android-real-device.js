@@ -37,17 +37,25 @@ const {expect} = require("expect");
   await element.type("Playwright");
   await element.press("Enter");
   let title = await page.title();
-
+  
   try {
     expect(title).toEqual("Playwright at DuckDuckGo");
     // Mark the test as completed or failed
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: "setTestStatus", arguments: {status: "passed", remark: "Assertions passed" },})}`);
+    await teardown(page, context, device)
   } catch (e) {
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: "setTestStatus", arguments: { status: "failed", remark: e.stack }})}`);
+    await teardown(page, context, device)
     throw e.stack
   }
 
+})();
+
+async function teardown(page, context, device) {
   await page.close();
   await context.close();
   await device.close();
-})();
+}
+
+
+

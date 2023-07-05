@@ -11,32 +11,33 @@ on:
       - '**'
   schedule:
     # * is a special character in YAML so you have to quote this string
-    # This example triggers the workflow every day at 6:00 and 18:00 UTC:
-    - cron:  '0 6,18 * * *'
+    # This example triggers the workflow every day at 9:00 AM
+    - cron:  '0 9 * * *'
+
+  # Trigger the workflow manually
+  workflow_dispatch:
+
+env:
+  LT_USERNAME: ${{ secrets.LT_USERNAME }}
+  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-    env:
-      LT_USERNAME: ${{ secrets.LT_USERNAME }}
-      LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+  playwright-smart-ui:
+    runs-on: macos-latest
 
     strategy:
       matrix:
-        # Specify as per the service requirements
-        node-version: [14.x]
+        node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 10
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run build --if-present
-      - run: npm run test
 
       - name: Step for push event
         run: |
@@ -61,9 +62,291 @@ jobs:
           echo "GITHUB_URL: $GITHUB_URL"
           echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
 
-      - name: Execute SmartUI Test
-        run: npm run test-smartui      
+      - name: Execute Playwright SmartUI Test
+        run: npm run test-smartui
+
+  playwright-single-test:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+      - name: Execute Playwright Single Test
+        run: npm run test
+
+  playwright-parallel:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
 
 
+      - name: Execute Playwright Parallel Tests
+        run: npm run test-parallel
+
+  playwright-android:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
 
 
+      - name: Execute Playwright Android Real Device Test
+        run: npm run test-android
+
+  playwright-extension:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+
+      - name: Execute Playwright Extension Test
+        run: npm run test-extension
+
+  playwright-iphone-emulation:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+
+      - name: Execute Playwright iPhone Emulation Test
+        run: npm run test-iPhone-emulation
+
+  playwright-lighthouse:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+
+      - name: Execute Playwright LightHouse Test
+        run: npm run test-lighthouse-report
+
+  playwright-cucumber-js:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./playwright-cucumber-js
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+      - name: Execute Playwright Cucumber JS Test
+        run: npm run test
+
+  playwright-java:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./playwright-java
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Execute Playwright Java Test
+        run: mvn -Dexec.mainClass="com.lambdatest.PlaywrightTestSingle" -Dexec.classpathScope=test test-compile exec:java
+
+  playwright-java-junit:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./playwright-java-junit
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Execute Playwright Java JUnit Test
+        run: mvn clean test
+
+  playwright-jest-js:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./playwright-jest-js
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+      - name: Install missing Playwright Dependencies
+        run: npx playwright install-deps
+
+      - name: Execute Playwright Cucumber Jest Test
+        run: npm test
+
+  playwright-test-js:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./playwright-test-js
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+      - name: Install missing Playwright Dependencies
+        run: npx playwright install-deps
+
+      - name: Execute Playwright Test JS
+        run: npm run test
+
+  playwright-test-ts:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./playwright-test-ts
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+
+      - name: Install missing Playwright Dependencies
+        run: npx playwright install-deps
+
+      - name: Execute Playwright Test TS
+        run: npm run test
+
+  playwright-python:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./playwright-python
+    strategy:
+      matrix:
+        python-version: ["3.9"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip3 install pytest-playwright
+
+      - name: Execute Playwright Python GetTestDetails
+        run: python3 get_test_details_python_sample.py
+
+      - name: Execute Playwright Python iPhone Emulation
+        run: python3 playwright_sample_on_iphone.py
+
+      - name: Execute Playwright Python Sample Test
+        run: python3 playwright_sample.py
+
+  playwright-csharp:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./playwright-csharp
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0'
+      - run: dotnet build
+
+      - name: Execute Playwright CSharp Single Test
+        run: dotnet run single
+
+      - name: Execute Playwright CSharp iPhone Test
+        run: dotnet run iphonetest
+
+      - name: Execute Playwright CSharp iPad Test
+        run: dotnet run ipadtest
+
+  playwright-csharp-specflow:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./playwright-csharp-specflow-xunit
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0'
+      - run: dotnet build
+
+      - name: Execute Playwright CSharp Specflow Tests
+        run: dotnet test

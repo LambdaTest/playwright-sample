@@ -14,11 +14,11 @@ namespace PlaywrightTesting
                     await PlaywrightTestSingle.main(args);
                     break;
                 case "iphonetest":
-                    Console.WriteLine("Running Playwright Test with iPhone emulator");
+                    Console.WriteLine("Running Playwright Test with iPhone Emulation");
                     await PlaywrightTestonIPhone.main(args);
                     break;
                 case "ipadtest":
-                    Console.WriteLine("Running Playwright Test with iPad emulator");
+                    Console.WriteLine("Running Playwright Test with iPad Emulation");
                     await PlaywrightTestonIPad.main(args);
                     break;
                 default:

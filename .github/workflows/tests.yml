@@ -23,7 +23,7 @@ env:
 
 jobs:
   playwright-smart-ui:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     strategy:
       matrix:
@@ -66,7 +66,7 @@ jobs:
         run: npm run test-smartui
 
   playwright-single-test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         node-version: [18.x]
@@ -83,7 +83,7 @@ jobs:
         run: npm run test
 
   playwright-parallel:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         node-version: [18.x]
@@ -101,7 +101,7 @@ jobs:
         run: npm run test-parallel
 
   playwright-android:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         node-version: [18.x]
@@ -119,7 +119,7 @@ jobs:
         run: npm run test-android
 
   playwright-extension:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         node-version: [18.x]
@@ -137,7 +137,7 @@ jobs:
         run: npm run test-extension
 
   playwright-iphone-emulation:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         node-version: [18.x]
@@ -155,7 +155,7 @@ jobs:
         run: npm run test-iPhone-emulation
 
   playwright-lighthouse:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         node-version: [18.x]
@@ -173,7 +173,7 @@ jobs:
         run: npm run test-lighthouse-report
 
   playwright-cucumber-js:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./playwright-cucumber-js
@@ -193,7 +193,7 @@ jobs:
         run: npm run test
 
   playwright-java:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./playwright-java
@@ -205,7 +205,7 @@ jobs:
         run: mvn -Dexec.mainClass="com.lambdatest.PlaywrightTestSingle" -Dexec.classpathScope=test test-compile exec:java
 
   playwright-java-junit:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./playwright-java-junit
@@ -217,7 +217,7 @@ jobs:
         run: mvn clean test
 
   playwright-jest-js:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./playwright-jest-js
@@ -240,7 +240,7 @@ jobs:
         run: npm test
 
   playwright-test-js:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./playwright-test-js
@@ -263,7 +263,7 @@ jobs:
         run: npm run test
 
   playwright-test-ts:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./playwright-test-ts
@@ -286,7 +286,7 @@ jobs:
         run: npm run test
 
   playwright-python:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./playwright-python

@@ -4,7 +4,7 @@ import { devices } from "@playwright/test";
 // Playwright config to run tests on LambdaTest platform and local
 const config: PlaywrightTestConfig = {
   testDir: "tests",
-  timeout: 120000,
+  timeout: 60000,
   use: {},
   projects: [
     // -- LambdaTest Config --

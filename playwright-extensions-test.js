@@ -58,8 +58,14 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
       await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: e.stack } })}`)
     }
 
-    await browser.close();
+    await teardown(page, browser)
   } catch (e) {
-    await browser.close();
+    await teardown(page, browser)
+    throw e
   }
 })();
+
+async function teardown(page, browser) {
+  await page.close();
+  await browser.close();
+}

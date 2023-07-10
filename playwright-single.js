@@ -41,9 +41,16 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
     expect(title).toEqual('LambdaTest at DuckDuckGo')
     // Mark the test as completed or failed
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
-  } catch {
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' } })}`)
+    await teardown(page, browser)
+  } catch (e) {
+    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: e.stack } })}`)
+    await teardown(page, browser)
+    throw e
   }
 
-  await browser.close()
 })()
+
+async function teardown(page, browser) {
+  await page.close();
+  await browser.close();
+}

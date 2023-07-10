@@ -67,17 +67,22 @@ const {expect} = require("expect");
       action: 'setTestStatus',
       arguments: { status: 'passed', remark: 'Title matched' }
     })}`)
+    await teardown(page, browser)
   } catch (err) {
-    console.log('Error while executing the test: ', err)
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({
       action: 'setTestStatus',
       arguments: { status: 'failed', remark: err.stack }
     })}`)
+    await teardown(page, browser)
+    throw err.stack
   }
 
-  await page.close()
-  await browser.close()
 })()
+
+async function teardown(page, browser) {
+  await page.close();
+  await browser.close();
+}
 
 const validateSmartUIScreenshots = async (page, screenshotName) => {
   try {

@@ -109,3 +109,8 @@ dist
 
 **/target/
 **/.DS_Store
+
+**/bin/
+**/obj/
+
+**/*.feature.cs

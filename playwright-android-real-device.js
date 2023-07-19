@@ -1,5 +1,5 @@
 const {_android} = require("playwright");
-const expect = require("chai").expect;
+const {expect} = require("expect");
 
 (async () => {
   const capabilities = {
@@ -32,23 +32,30 @@ const expect = require("chai").expect;
   let page = await context.newPage();
 
   await page.goto("https://duckduckgo.com");
-  await page.waitForLoadState('domcontentloaded')
-  let element = await page.$("[name=\"q\"]");
+  let element = await page.locator("[name=\"q\"]");
   await element.click();
   await element.type("Playwright");
   await element.press("Enter");
   let title = await page.title();
-
+  
   try {
-    expect(title).to.equal("Playwright at DuckDuckGo");
+    expect(title).toEqual("Playwright at DuckDuckGo");
     // Mark the test as completed or failed
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: "setTestStatus", arguments: {status: "passed", remark: "Assertions passed" },})}`);
+    await teardown(page, context, device)
   } catch (e) {
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: "setTestStatus", arguments: { status: "failed", remark: e.stack }})}`);
-    console.log("Error:: ", e.stack);
+    await teardown(page, context, device)
+    throw e.stack
   }
 
+})();
+
+async function teardown(page, context, device) {
   await page.close();
   await context.close();
   await device.close();
-})();
+}
+
+
+

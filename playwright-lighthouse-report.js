@@ -1,7 +1,5 @@
 const { chromium } = require('playwright')
 const {expect} = require("expect");
-const cp = require('child_process');
-const playwrightClientVersion = cp.execSync('npx playwright --version').toString().trim().split(' ')[1];
 
 (async () => {
   const capabilities = {
@@ -10,7 +8,7 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
     'LT:Options': {
       'platform': 'Windows 10',
       'build': 'Playwright Single Build',
-      'name': 'Playwright Sample Test',
+      'name': 'Playwright Test with Lighthouse report',
       'user': process.env.LT_USERNAME,
       'accessKey': process.env.LT_ACCESS_KEY,
       'network': true,
@@ -19,7 +17,6 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
       'tunnel': false, // Add tunnel configuration if testing locally hosted webpage
       'tunnelName': '', // Optional
       'geoLocation': '', // country code can be fetched from https://www.lambdatest.com/capabilities-generator/
-      'playwrightClientVersion': playwrightClientVersion
     }
   }
 
@@ -29,25 +26,33 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
 
   const page = await browser.newPage()
 
-  await page.goto("https://duckduckgo.com");
+  await page.goto('https://www.bing.com')
 
-  let element = await page.locator("[name=\"q\"]");
-  await element.click();
-  await element.type("LambdaTest");
-  await element.press("Enter");
+  // Generate the lighthouse report for the provided URL
+  await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'lighthouseReport', arguments: { url: 'https://www.bing.com' }})}`)
+
+  const element = await page.locator('[id="sb_form_q"]')
+  await element.click()
+  await element.type('LambdaTest')
+  await page.waitForTimeout(1000)
+  await page.keyboard.press('Enter')
+  await page.waitForSelector('[class=" b_active"]')
   const title = await page.title()
 
+  // Generate the lighthouse report
+  // You can generate multiple lighthouse reports in a test
+  await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'lighthouseReport', arguments: { url: "https://login.live.com" }})}`)
+
   try {
-    expect(title).toEqual('LambdaTest at DuckDuckGo')
+    expect(title).toEqual('LambdaTest - Search')
     // Mark the test as completed or failed
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
     await teardown(page, browser)
   } catch (e) {
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: e.stack } })}`)
     await teardown(page, browser)
-    throw e
+    throw e.stack
   }
-
 })()
 
 async function teardown(page, browser) {

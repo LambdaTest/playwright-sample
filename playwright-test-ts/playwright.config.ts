@@ -24,7 +24,7 @@ const config: PlaywrightTestConfig = {
       },
     },
     {
-      name: "MicrosoftEdge:90:MacOS Ventura@lambdatest",
+      name: "MicrosoftEdge:109:MacOS Ventura@lambdatest",
       use: {
         ...devices["iPhone 12 Pro Max"],
       },

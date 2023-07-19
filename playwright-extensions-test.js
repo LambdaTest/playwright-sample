@@ -1,5 +1,5 @@
 const {chromium} = require("playwright");
-const {expect} = require("@playwright/test");
+const {expect} = require("expect");
 const cp = require('child_process');
 const playwrightClientVersion = cp.execSync('npx playwright --version').toString().trim().split(' ')[1];
 
@@ -48,7 +48,7 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
     await page.goto(`chrome-extension://${extensionId}/hello.html`)
     await page.waitForTimeout(1000)
 
-    let text = await (await page.$("body > p")).textContent();
+    let text = await (await page.locator("body > p")).textContent();
 
     try {
       expect(text).toEqual('Hello, World!')
@@ -58,8 +58,14 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
       await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: e.stack } })}`)
     }
 
-    await browser.close();
+    await teardown(page, browser)
   } catch (e) {
-    await browser.close();
+    await teardown(page, browser)
+    throw e
   }
 })();
+
+async function teardown(page, browser) {
+  await page.close();
+  await browser.close();
+}

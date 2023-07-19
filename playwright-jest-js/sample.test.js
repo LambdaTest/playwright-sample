@@ -1,36 +1,43 @@
 // Needs to be higher than the default Playwright timeout
 jest.setTimeout(40 * 1000)
 
-describe("Bing Search", () => {
+describe("DuckDuckGo Search", () => {
+
+  let title1, title2
+
   beforeEach(async () => {
-    await page.goto('https://www.bing.com/')
-    await page.waitForLoadState('domcontentloaded')
-    await page.waitForTimeout(3000)
+    await page.goto('https://duckduckgo.com')
+    await page.waitForTimeout(1000)
   })
 
   afterAll(async () => {
-    await page.close()
+    try {
+      expect(title1).toEqual(expect.stringContaining("LambdaTest"))
+      expect(title2).toEqual(expect.stringContaining("LambdaTest"))
+      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'setTestStatus',arguments: {status: 'passed',remark: 'Test assertion passed'}})}`);
+      await page.close()
+    } catch (e) {
+      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'setTestStatus',arguments: {status: 'failed',remark: e.stack}})}`);
+      await page.close()
+      throw e
+    }
   })
   
-  it('title should contain LambdaTest Blog - Bing Search', async () => {
-    await page.type('[id="sb_form_q"]', "LambdaTest Blog");
-    await page.waitForTimeout(1000)
-    await page.keyboard.press("Enter");
-    await page.waitForSelector('[class=" b_active"]')
-    const title = await page.title()
-    console.log('Page title:: ', title)
-    expect(title).toBe('LambdaTest Blog - Search')
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'setTestStatus',arguments: {status: 'passed',remark: 'Test assertion passed'}})}`);
+  it('title should contain LambdaTest Blog - DuckDuckGo Search', async () => {
+    let element = await page.locator("[name='q']");
+    await element.click();
+    await element.type("LambdaTest Blog");
+    await element.press("Enter");
+    title1 = await page.title()
+    console.log('Page title1:: ', title1)
   })
 
-  it('title should contain LambdaTest - Bing Search', async () => {
-    await page.type('[id="sb_form_q"]', "LambdaTest");
-    await page.waitForTimeout(1000)
-    await page.keyboard.press("Enter");
-    await page.waitForSelector('[class=" b_active"]')
-    const title = await page.title()
-    console.log('Page title:: ', title)
-    expect(title).toBe('LambdaTest - Search')
-    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'setTestStatus',arguments: {status: 'passed',remark: 'Test assertion passed'}})}`);
+  it('title should contain LambdaTest - DuckDuckGo Search', async () => {
+    let element = await page.locator("[name='q']");
+    await element.click();
+    await element.type("LambdaTest");
+    await element.press("Enter");
+    title2 = await page.title()
+    console.log('Page title2:: ', title2)
   })
 })

@@ -24,7 +24,7 @@ const config = {
       }
     },
     {
-      name: 'MicrosoftEdge:90:MacOS Ventura@lambdatest',
+      name: 'MicrosoftEdge:109:MacOS Ventura@lambdatest',
       use: {
         ...devices['iPhone 12 Pro Max']
       }
@@ -36,7 +36,7 @@ const config = {
       }
     },
     {
-      name: 'pw-webkit:latest:Windows 10@lambdatest',
+      name: 'pw-webkit:latest:MacOS Ventura@lambdatest',
       use: {
         viewport: { width: 1920, height: 1080 }
       }

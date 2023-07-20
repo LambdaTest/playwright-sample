@@ -19,6 +19,7 @@ const {expect} = require("expect");
     }
   }
 
+  console.log(capabilities)
   const githubURL = process.env.GITHUB_URL
   if (githubURL) {
     capabilities['LT:Options']['github'] = {

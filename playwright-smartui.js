@@ -40,7 +40,7 @@ const {expect} = require("expect");
   console.log('Navigating URL')
   await page.goto('https://www.lambdatest.com/')
 
-  // Add the following command in order to take screenshot in SmartUI
+  // Add the following command in order to take screenshot in Smart-UI
   // Add a relevant screenshot name
   // Set `fullPage: true` to take full page screenshots
   await page.evaluate((_) => {}, `lambdatest_action: ${JSON.stringify({

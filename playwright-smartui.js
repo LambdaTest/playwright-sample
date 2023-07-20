@@ -20,6 +20,8 @@ const {expect} = require("expect");
   }
 
   console.log(capabilities)
+  console.log(process.env.LT_USERNAME)
+  console.log(process.env.LT_ACCESS_KEY)
   const githubURL = process.env.GITHUB_URL
   if (githubURL) {
     capabilities['LT:Options']['github'] = {
@@ -31,6 +33,7 @@ const {expect} = require("expect");
     wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
+  console.log(browser)
   console.log('Browser Launched')
   const page = await browser.newPage()
 

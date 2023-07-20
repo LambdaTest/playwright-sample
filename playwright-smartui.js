@@ -38,7 +38,7 @@ const {expect} = require("expect");
   const page = await browser.newPage()
 
   console.log('Navigating URL')
-  await page.goto('https://www.lambdatest.com')
+  await page.goto('https://percy.io/')
 
   // Add the following command in order to take screenshot in SmartUI
   // Add a relevant screenshot name

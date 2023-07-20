@@ -30,7 +30,7 @@ const {expect} = require("expect");
   }
 
   const browser = await chromium.connect({
-    wsEndpoint: `wss://cdp.lambdatestint.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
   console.log(browser)

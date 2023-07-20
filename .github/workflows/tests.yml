@@ -5,11 +5,7 @@ on:
   push:
     branches:
       - '**'
-
-  pull_request:
-    branches:
-      - '**'
-
+      
   # Trigger the workflow manually
   workflow_dispatch:
 

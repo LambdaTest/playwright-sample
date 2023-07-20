@@ -20,9 +20,9 @@ on:
 env:
   LT_USERNAME: ${{ secrets.LT_USERNAME }}
   LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
-  SMARTUI_PROJECT: ${{env.SMARTUI_PROJECT}}
+  SMARTUI_PROJECT: ${{SMARTUI_PROJECT}}
   run:
-    echo ${{env.SMARTUI_PROJECT}}
+    echo ${{SMARTUI_PROJECT}}
     echo ${{ secrets.LT_USERNAME }}
     echo ${{ secrets.LT_ACCESS_KEY }}
 

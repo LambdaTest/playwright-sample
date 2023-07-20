@@ -42,12 +42,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
+      - run:
+          echo ${{ secrets.LT_USERNAME }}
+          echo ${{ secrets.LT_ACCESS_KEY }} 
+          npm install
 
       - name: Step for push event
         run: |
-          echo ${{ secrets.LT_USERNAME }}
-          echo ${{ secrets.LT_ACCESS_KEY }}
           echo "This is a push event!"
           echo "The latest commitId $(git log -1 --format='%H')"
           echo "COMMIT_ID=$(git log -1 --format='%H')" >> $GITHUB_ENV

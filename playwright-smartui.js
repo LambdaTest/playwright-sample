@@ -14,7 +14,7 @@ const {expect} = require("expect");
       'network': true,
       'video': true,
       'console': true,
-      'smartUIProjectName': process.env.SMARTUI_PROJECT || 'Playwright-SmartUI-Project1',
+      'smartUIProjectName': process.env.SMARTUI_PROJECT || 'Playwright-SmartUI-Project2',
       'smartUIBaseline': true
     }
   }

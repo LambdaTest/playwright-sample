@@ -40,6 +40,7 @@ const {expect} = require("expect");
   const title = await page.title()
 
   // Generate the lighthouse report
+  // You can generate multiple lighthouse reports in a test
   await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'lighthouseReport', arguments: { url: "https://login.live.com" }})}`)
 
   try {

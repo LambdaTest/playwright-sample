@@ -14,11 +14,14 @@ const {expect} = require("expect");
       'network': true,
       'video': true,
       'console': true,
-      'smartUIProjectName': process.env.SMARTUI_PROJECT || 'Playwright-SmartUI-Project',
-      'smartUIBaseline': true
+      'smartUIProjectName': process.env.SMARTUI_PROJECT || 'testing-PW',
+      'smartUIBaseline': false
     }
   }
 
+  console.log(capabilities)
+  console.log(process.env.LT_USERNAME)
+  console.log(process.env.LT_ACCESS_KEY)
   const githubURL = process.env.GITHUB_URL
   if (githubURL) {
     capabilities['LT:Options']['github'] = {
@@ -30,13 +33,14 @@ const {expect} = require("expect");
     wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
+  console.log(browser)
   console.log('Browser Launched')
   const page = await browser.newPage()
 
   console.log('Navigating URL')
-  await page.goto('https://www.lambdatest.com')
+  await page.goto('https://www.lambdatest.com/')
 
-  // Add the following command in order to take screenshot in SmartUI
+  // Add the following command in order to take screenshot in Smart-UI
   // Add a relevant screenshot name
   // Set `fullPage: true` to take full page screenshots
   await page.evaluate((_) => {}, `lambdatest_action: ${JSON.stringify({

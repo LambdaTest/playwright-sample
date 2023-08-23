@@ -41,7 +41,7 @@ def run(playwright):
         title = page.title()
         is_title_matched = True if "LambdaTest" in title else False
 
-        generate_lighthouse(page, "https://duckduckgo.com")
+        generate_lighthouse_report(page, "https://duckduckgo.com")
 
         if is_title_matched:
             set_test_status(page, "passed", "Title matched")
@@ -54,7 +54,7 @@ def run(playwright):
     browser.close()
 
 
-def generate_lighthouse(page, url):
+def generate_lighthouse_report(page, url):
     page.evaluate("_ => {}", "lambdatest_action: {\"action\": \"lighthouseReport\", \"arguments\": {\"url\": \"" + url + "\"}}")
 
 def set_test_status(page, status, remark):

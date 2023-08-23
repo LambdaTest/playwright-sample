@@ -34,7 +34,10 @@ def run(playwright):
     page = browser.new_page()
     try:
         page.goto("https://duckduckgo.com")
+        # Generate lighthouse report for the required URL.
+        # You can generate multiple lighthouse reports in a test by executing this function anywhere in the test.
         generate_lighthouse_report(page, "https://duckduckgo.com")
+        
         page.fill("[name='q']", "LambdaTest")
         page.wait_for_timeout(1000)
         page.keyboard.press("Enter")

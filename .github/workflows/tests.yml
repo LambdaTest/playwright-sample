@@ -311,6 +311,9 @@ jobs:
       - name: Execute Playwright Python Sample Test
         run: python3 playwright_sample.py
 
+      - name: Execute Playwright Python Lighthouse Test
+        run: python3 playwright_lighthouse_sample.py
+
   playwright-csharp:
     runs-on: windows-latest
     defaults:

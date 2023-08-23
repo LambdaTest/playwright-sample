@@ -28,30 +28,27 @@ def run(playwright):
     playwrightVersion = str(subprocess.getoutput('playwright --version')).strip().split(" ")[1]
     capabilities['LT:Options']['playwrightClientVersion'] = playwrightVersion
 
+    lt_cdp_url = 'wss://cdp.lambdatest.com/playwright?capabilities=' + urllib.parse.quote(
+        json.dumps(capabilities))
+    browser = playwright.chromium.connect(lt_cdp_url)
+    page = browser.new_page()
     try:
-        lt_cdp_url = 'wss://cdp.lambdatest.com/playwright?capabilities=' + urllib.parse.quote(
-            json.dumps(capabilities))
-        browser = playwright.chromium.connect(lt_cdp_url)
-        page = browser.new_page()
-        try:
-            page.goto("https://duckduckgo.com")
-            generate_lighthouse_report(page, "https://duckduckgo.com")
-            page.fill("[name='q']", "LambdaTest")
-            page.wait_for_timeout(1000)
-            page.keyboard.press("Enter")
-            page.wait_for_timeout(1000)
-            title = page.title()
-            is_title_matched = True if "LambdaTest" in title else False
+        page.goto("https://duckduckgo.com")
+        generate_lighthouse_report(page, "https://duckduckgo.com")
+        page.fill("[name='q']", "LambdaTest")
+        page.wait_for_timeout(1000)
+        page.keyboard.press("Enter")
+        page.wait_for_timeout(1000)
+        title = page.title()
+        is_title_matched = True if "LambdaTest" in title else False
 
-            if is_title_matched:
-                set_test_status(page, "passed", "Title matched")
-            else:
-                set_test_status(page, "failed", "Title did not match")
-        except Exception as err:
-            print("Error:: ", err)
-            set_test_status(page, "failed", str(err))
+        if is_title_matched:
+            set_test_status(page, "passed", "Title matched")
+        else:
+            set_test_status(page, "failed", "Title did not match")
     except Exception as err:
-            print("Error:: ", err)
+        print("Error:: ", err)
+        set_test_status(page, "failed", str(err))
 
     browser.close()
 

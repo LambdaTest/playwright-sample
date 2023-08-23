@@ -30,7 +30,7 @@ def run(playwright):
 
     lt_cdp_url = 'wss://cdp.lambdatest.com/playwright?capabilities=' + urllib.parse.quote(
         json.dumps(capabilities))
-    browser = playwright.chromium.connect(lt_cdp_url)
+    browser = playwright.chromium.connect(lt_cdp_url, timeout=120000)
     page = browser.new_page()
     try:
         page.goto("https://duckduckgo.com")

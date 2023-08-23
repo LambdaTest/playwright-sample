@@ -30,23 +30,22 @@ def run(playwright):
 
     lt_cdp_url = 'wss://cdp.lambdatest.com/playwright?capabilities=' + urllib.parse.quote(
         json.dumps(capabilities))
-    iphone = playwright.devices["iPhone 11"]  # Documentation: https://playwright.dev/docs/emulation#devices
     browser = playwright.chromium.connect(lt_cdp_url, timeout=120000)
-    context = browser.new_context(**iphone)
-    page = context.new_page()
-
+    page = browser.new_page()
     try:
         page.goto("https://duckduckgo.com")
+        # Generate lighthouse report for the required URL.
+        # You can generate multiple lighthouse reports in a test by executing this function anywhere in the test.
+        generate_lighthouse_report(page, "https://duckduckgo.com")
+        
         page.fill("[name='q']", "LambdaTest")
         page.wait_for_timeout(1000)
         page.keyboard.press("Enter")
         page.wait_for_timeout(1000)
-
         title = page.title()
+        is_title_matched = True if "LambdaTest" in title else False
 
-        print("Title:: ", title)
-
-        if "LambdaTest" in title:
+        if is_title_matched:
             set_test_status(page, "passed", "Title matched")
         else:
             set_test_status(page, "failed", "Title did not match")
@@ -56,6 +55,9 @@ def run(playwright):
 
     browser.close()
 
+
+def generate_lighthouse_report(page, url):
+    page.evaluate("_ => {}", "lambdatest_action: {\"action\": \"lighthouseReport\", \"arguments\": {\"url\": \"" + url + "\"}}")
 
 def set_test_status(page, status, remark):
     page.evaluate("_ => {}",

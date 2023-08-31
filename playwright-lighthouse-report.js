@@ -7,7 +7,7 @@ const {expect} = require("expect");
     'browserVersion': 'latest',
     'LT:Options': {
       'platform': 'Windows 10',
-      'build': 'Playwright Single Build',
+      'build': 'Playwright Test Lighthouse Report',
       'name': 'Playwright Test with Lighthouse report',
       'user': process.env.LT_USERNAME,
       'accessKey': process.env.LT_ACCESS_KEY,

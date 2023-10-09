@@ -63,7 +63,9 @@ jobs:
           echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
 
       - name: Execute Playwright SmartUI Test
-        run: npm run test-smartui
+        run: |
+          echo $LT_ACCESS_KEY
+          npm run test-smartui
 
   # playwright-single-test:
   #   runs-on: ubuntu-latest

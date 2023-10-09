@@ -15,7 +15,7 @@ const {expect} = require("expect");
       'video': true,
       'console': true,
       'smartUIProjectName': process.env.SMARTUI_PROJECT || 'Playwright-SmartUI-GH-Action-Checking',
-      'smartUIBaseline': true
+      'smartUIBaseline': false
     }
   }
 

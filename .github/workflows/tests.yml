@@ -18,8 +18,8 @@ on:
   workflow_dispatch:
 
 env:
-  LT_USERNAME: ${{ secrets.LT_USERNAME }}
-  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+  LT_USERNAME: ${{secrets.LT_USERNAME}}
+  LT_ACCESS_KEY: ${{secrets.LT_ACCESS_KEY}}
 
 jobs:
   playwright-smart-ui:
@@ -64,8 +64,7 @@ jobs:
 
       - name: Execute Playwright SmartUI Test
         run: |
-          echo $LT_ACCESS_KEY
-          npm run test-smartui
+          npm run test-smartui 
 
   # playwright-single-test:
   #   runs-on: ubuntu-latest

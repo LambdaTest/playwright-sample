@@ -52,8 +52,3 @@ const playwrightClientVersion = cp.execSync('npx playwright --version').toString
         }
         //await page.waitForTimeout(5000)
         })()
-
-async function teardown(page, browser) {
-  await page.close();
-  await browser.close();
-}

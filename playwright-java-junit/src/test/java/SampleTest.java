@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
       locator.click();
       locator.type("LambdaTest");
       page.keyboard().press("Enter");
+      page.waitForTimeout(1_000);
       String title = page.title();
       if (title.equals("LambdaTest at DuckDuckGo")) {
         setTestStatus("passed", "Title matched", page);
@@ -44,8 +45,14 @@ import org.junit.runner.RunWith;
     try {
       driver = super.createConnection(capability);
       page = driver.getPage();
-      page.navigate("http://whatsmyuseragent.org/");
-      if (page.title().equalsIgnoreCase("whatsmyuseragent.org")) {
+      page.navigate("https://www.duckduckgo.com");
+      Locator locator = page.locator("[name=\"q\"]");
+      locator.click();
+      locator.type("Testing");
+      page.keyboard().press("Enter");
+      page.waitForTimeout(1_000);
+      String title = page.title();
+      if (title.equals("Testing at DuckDuckGo")) {
         super.setTestStatus("PASSED", "Title matched", page);
       } else {
         super.setTestStatus("FAILED", "Title not matched", page);

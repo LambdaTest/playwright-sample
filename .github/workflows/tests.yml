@@ -256,8 +256,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
 
-      - name: Install missing Playwright Dependencies
+      - name: Install missing Playwright
         run: npx playwright install
+
+       - name: Install missing Playwright Dependencies
+        run: npx playwright install-deps
 
       - name: Execute Playwright Test JS
         run: npm run test
@@ -279,8 +282,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
 
-      - name: Install missing Playwright Dependencies
+      - name: Install missing Playwright
         run: npx playwright install
+
+      - name: Install missing Playwright Dependencies
+        run: npx playwright install-deps
 
       - name: Execute Playwright Test TS
         run: npm run test

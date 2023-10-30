@@ -257,7 +257,7 @@ jobs:
       - run: npm install
 
       - name: Install missing Playwright Dependencies
-        run: npx playwright install-deps
+        run: npx playwright install
 
       - name: Execute Playwright Test JS
         run: npm run test
@@ -280,7 +280,7 @@ jobs:
       - run: npm install
 
       - name: Install missing Playwright Dependencies
-        run: npx playwright install-deps
+        run: npx playwright install
 
       - name: Execute Playwright Test TS
         run: npm run test

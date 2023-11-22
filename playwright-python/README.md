@@ -2,7 +2,7 @@
 
 ## Setup
 * Clone the repo. Run `cd playwright-python`
-* Install Playwright Dependency `pip3 install pytest-playwright` [Assuming For Python3]
+* Install Playwright Dependency `pip3 install playwright==1.39.0` [Assuming For Python3]
 
 ## Running your tests
 - ```python3 get_test_details_python_sample.py```

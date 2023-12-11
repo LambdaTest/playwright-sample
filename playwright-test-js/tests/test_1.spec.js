@@ -2,16 +2,30 @@ const { test } = require('../lambdatest-setup')
 const { expect } = require('@playwright/test')
 
 test.describe('Browse LambdaTest in different search engines', () => {
-  test('Search LambdaTest on DuckDuckGo', async ({ page }) => {
-    await page.goto('https://duckduckgo.com')
-    let element = await page.locator("[name=\"q\"]");
-    await element.click();
-    await element.type("LambdaTest");
-    await element.press("Enter");
-    const title = await page.title()
+ test('test_1', async({page}) => { 
+    
+    await page.goto('https://www.lambdatest.com/selenium-playground/')
+    await page.click("//a[text()='Simple Form Demo']")
+    //const url = await expect(page).toHaveURL('https://www.lambdatest.com/selenium-playground/simple-form-demo');
+    const URL = page.url()
+    if(URL.includes('simple-form-demo')){
+        console.log('simple-form-demo')
+    }
+    else{
+        console.log('simple-form-demo is not matched')
+    }
+    //console.log(url)
+    const msg = 'Welcome to Sindhuja Pathuri for Lambda Test'
+    await page.locator("//input[@id='user-message']").fill(msg)
+    await page.click("//button[text()='Get Checked Value']")
+    const msgs = await page.locator("//p[@id='message']").innerText(msg)
+    if(msg==msgs){
+        console.log(msg)
+    }
+    else{
+        console.log('Message is not matched')
+    }
+    await page.waitForTimeout(10000)
 
-    console.log('Page title:: ', title)
-    // Use the expect API for assertions provided by playwright
-    expect(title).toEqual(expect.stringContaining('LambdaTest'))
-  })
+})
 })

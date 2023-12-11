@@ -4,7 +4,7 @@ const { devices } = require('@playwright/test')
 const config = {
   testDir: 'tests',
   testMatch: '**/*.spec.js',
-  timeout: 60000,
+  timeout: 600000,
   use: {},
   projects: [
     // -- LambdaTest Config --
@@ -24,7 +24,7 @@ const config = {
       }
     },
     {
-      name: 'MicrosoftEdge:109:MacOS Ventura@lambdatest',
+      name: 'MicrosoftEdge:latest:MacOS Ventura@lambdatest',
       use: {
         ...devices['iPhone 12 Pro Max']
       }

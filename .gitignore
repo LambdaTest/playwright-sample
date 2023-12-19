@@ -106,6 +106,7 @@ dist
 
 # IDE files
 .idea/
+.vscode
 
 **/target/
 **/.DS_Store

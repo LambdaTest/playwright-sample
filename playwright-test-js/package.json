@@ -7,7 +7,8 @@
   },
   "description": "Sample project to run playwright tests using playwright runner on LambdaTest platform",
   "scripts": {
-    "test": "npx playwright test --config=./playwright.config.js"
+    "test": "npx playwright test --config=./playwright.config.js",
+    "testAndroid": "npx playwright test --config=./playwrightAndroid.config.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.35.0",

@@ -265,6 +265,9 @@ jobs:
       - name: Execute Playwright Test JS
         run: npm run test
 
+      - name: Execute Playwright Test JS on Android
+        run: npm run testAndroid
+
   playwright-test-ts:
     runs-on: ubuntu-latest
     defaults:

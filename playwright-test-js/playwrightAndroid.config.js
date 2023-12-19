@@ -9,39 +9,17 @@ const config = {
   use: {},
   projects: [
     // -- LambdaTest Config --
-    // name in the format: browserName:browserVersion:platform@lambdatest
-    // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
+    // name in the format: deviceName:platformVersion:platformName@lambdatest
     // Use additional configuration options provided by Playwright if required: https://playwright.dev/docs/api/class-testconfig
     {
-      name: 'chrome:latest:MacOS Ventura@lambdatest',
-      use: {
-        viewport: { width: 1920, height: 1080 }
-      }
+      name: 'Pixel 5:12:android@lambdatest',
+      use: {}
     },
     {
-      name: 'chrome:latest:Windows 11@lambdatest',
-      use: {
-        viewport: { width: 1280, height: 720 }
-      }
+      // Regex device name
+      name: 'Galaxy*:12:android@lambdatest',
+      use: {}
     },
-    {
-      name: 'MicrosoftEdge:109:MacOS Ventura@lambdatest',
-      use: {
-        ...devices['iPhone 12 Pro Max']
-      }
-    },
-    {
-      name: 'pw-firefox:latest:Windows 10@lambdatest',
-      use: {
-        viewport: { width: 1280, height: 720 }
-      }
-    },
-    {
-      name: 'pw-webkit:latest:MacOS Ventura@lambdatest',
-      use: {
-        viewport: { width: 1920, height: 1080 }
-      }
-    }
 
     // Config for running tests in local
     // {

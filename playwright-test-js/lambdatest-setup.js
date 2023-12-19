@@ -4,7 +4,7 @@
  */
 const base = require('@playwright/test')
 const path = require('path')
-const { chromium } = require('playwright')
+const { chromium, _android } = require('playwright')
 const cp = require('child_process');
 const playwrightClientVersion = cp.execSync('npx playwright --version').toString().trim().split(' ')[1];
 
@@ -31,11 +31,27 @@ const capabilities = {
 // Patching the capabilities dynamically according to the project name.
 const modifyCapabilities = (configName, testName) => {
   let config = configName.split('@lambdatest')[0]
-  let [browserName, browserVersion, platform] = config.split(':')
-  capabilities.browserName = browserName ? browserName : capabilities.browserName
-  capabilities.browserVersion = browserVersion ? browserVersion : capabilities.browserVersion
-  capabilities['LT:Options']['platform'] = platform ? platform : capabilities['LT:Options']['platform']
-  capabilities['LT:Options']['name'] = testName
+
+  // Check if its an android test or a desktop test
+  if (configName.match(/android/)) {
+    let [deviceName, platformVersion, platform] = config.split(':')
+    capabilities['LT:Options']['deviceName'] = deviceName
+    capabilities['LT:Options']['platformVersion'] = platformVersion
+    capabilities['LT:Options']['platformName'] = platform
+    capabilities['LT:Options']['name'] = testName
+    capabilities['LT:Options']['build'] = 'Playwright JS Android Build'
+    capabilities['LT:Options']['isRealMobile'] = true
+
+    delete capabilities.browserName;
+    delete capabilities.browserVersion;
+  } else {
+    // Desktop test
+    let [browserName, browserVersion, platform] = config.split(':')
+    capabilities.browserName = browserName ? browserName : capabilities.browserName
+    capabilities.browserVersion = browserVersion ? browserVersion : capabilities.browserVersion
+    capabilities['LT:Options']['platform'] = platform ? platform : capabilities['LT:Options']['platform']
+    capabilities['LT:Options']['name'] = testName
+  }
 }
 
 exports.test = base.test.extend({
@@ -44,12 +60,22 @@ exports.test = base.test.extend({
     let fileName = testInfo.file.split(path.sep).pop()
     if (testInfo.project.name.match(/lambdatest/)) {
       modifyCapabilities(testInfo.project.name, `${testInfo.title} - ${fileName}`)
+      let device, context, browser, ltPage;
 
-      const browser = await chromium.connect({
-        wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
-      })
+      // Check if its a desktop or an android test
+      if (testInfo.project.name.match(/android/)) {
+        // Android test
+        device = await _android.connect(`wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`);
+        await device.shell("am force-stop com.android.chrome");
+    
+        context = await device.launchBrowser();
+        ltPage = await context.newPage(testInfo.project.use);
+      } else {
+        // Desktop test
+        browser = await chromium.connect(`wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`)
+        ltPage = await browser.newPage(testInfo.project.use)
+      }
 
-      const ltPage = await browser.newPage(testInfo.project.use)
       await use(ltPage)
 
       const testStatus = {
@@ -61,8 +87,11 @@ exports.test = base.test.extend({
       }
       await ltPage.evaluate(() => {},
         `lambdatest_action: ${JSON.stringify(testStatus)}`)
+
       await ltPage.close()
-      await browser.close()
+      await context?.close();
+      await browser?.close()
+      await device?.close();
     } else {
       // Run tests in local in case of local config provided
       await use(page)

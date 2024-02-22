@@ -14,8 +14,8 @@ const {expect} = require("expect");
       'network': true,
       'video': true,
       'console': true,
-      'smartUIProjectName': process.env.SMARTUI_PROJECT || 'Playwright-SmartUI-Project',
-      'smartUIBaseline': true
+      'smartUIProjectName': process.env.SMARTUI_PROJECT || 'ignore-1',
+      'smartUIBaseline': false
     }
   }
 
@@ -34,34 +34,35 @@ const {expect} = require("expect");
   const page = await browser.newPage()
 
   console.log('Navigating URL')
-  await page.goto('https://www.lambdatest.com')
+  await page.goto('https://ipinfo.io/')
 
   // Add the following command in order to take screenshot in SmartUI
   // Add a relevant screenshot name
   // Set `fullPage: true` to take full page screenshots
   await page.evaluate((_) => {}, `lambdatest_action: ${JSON.stringify({
     action: 'smartui.takeScreenshot',
-    arguments: { fullPage: true, screenshotName: 'lambdatest-website' }
+    arguments: { fullPage: true, screenshotName: 'ipinfo',
+    selectDOM: {cssSelector:['h1.heading-h1']} }
   })}`)
 
-  await page.goto("https://duckduckgo.com");
+  await page.goto("https://demo.testim.io/");
 
   await page.evaluate((_) => {}, `lambdatest_action: ${JSON.stringify({
     action: 'smartui.takeScreenshot',
-    arguments: { fullPage: true, screenshotName: 'search-lambdatest' }
+    arguments: { fullPage: true, screenshotName: 'demo' }
   })}`)
 
-  let element = await page.locator("[name=\"q\"]");
-  await element.click();
-  await element.type("LambdaTest");
-  await element.press("Enter");
+
+  // `lambdatest_action: ${JSON.stringify({ action: "smartui.takeScreenshot", arguments: { fullPage: true, screenshotName: "arush", ignoreXPath: ['//*[@id="api-requests"]/span'] } })}`);
+
   const title = await page.title()
+  console.log(title)
 
   try {
     // Pass the `page` object. Add `screennshotName` if you want to fetch response for a specific screenshot
     await validateSmartUIScreenshots(page)
 
-    expect(title).toEqual('LambdaTest at DuckDuckGo')
+    expect(title).toEqual('Space & Beyond | Testim.io demo')
     // Mark the test as completed or failed
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({
       action: 'setTestStatus',

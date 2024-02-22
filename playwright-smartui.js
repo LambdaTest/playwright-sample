@@ -53,8 +53,6 @@ const {expect} = require("expect");
   })}`)
 
 
-  // `lambdatest_action: ${JSON.stringify({ action: "smartui.takeScreenshot", arguments: { fullPage: true, screenshotName: "arush", ignoreXPath: ['//*[@id="api-requests"]/span'] } })}`);
-
   const title = await page.title()
   console.log(title)
 

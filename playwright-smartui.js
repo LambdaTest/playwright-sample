@@ -54,7 +54,6 @@ const {expect} = require("expect");
 
 
   const title = await page.title()
-  console.log(title)
 
   try {
     // Pass the `page` object. Add `screennshotName` if you want to fetch response for a specific screenshot

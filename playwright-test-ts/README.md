@@ -2,6 +2,7 @@
 
 ## Setup
 * Clone the repo. Run `cd playwright-test-ts`
+* Install Playwright Dep `npx playwright install-deps`
 * Install dependencies. Run `npm install`
 
 ## Running your tests

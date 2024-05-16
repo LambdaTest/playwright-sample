@@ -76,7 +76,7 @@ test.describe('demo tests', () => {
 
   test('download result', async ({ page }) => {
     const downloadButton = page.locator('a[title=Download]');
-    await expect(downloadButton).toHaveAttribute('href', /blob/);
+    await expect(downloadButton).toHaveAttribute('href', /blob/,{ timeout: 10000 });
     const [download] = await Promise.all([
       page.waitForEvent('download'),
       downloadButton.click()

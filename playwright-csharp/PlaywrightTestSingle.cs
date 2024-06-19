@@ -34,10 +34,14 @@ class PlaywrightTestSingle
         await using var browser = await playwright.Chromium.ConnectAsync(cdpUrl);
         var page = await browser.NewPageAsync();
         try {
-          await page.GotoAsync("https://duckduckgo.com");
+          await page.GotoAsync("https://duckduckgo.com", new PageGotoOptions { WaitUntil = WaitUntilState.NetworkIdle });
+          // Ensure the element is available before clicking and filling
+          await page.WaitForSelectorAsync("[name='q']");
           await page.Locator("[name='q']").ClickAsync();
           await page.FillAsync("[name='q']", "LambdaTest");
           await page.Keyboard.PressAsync("Enter");
+          // Wait for the title to contain "LambdaTest"
+          await page.WaitForURLAsync(url => url.Contains("q=LambdaTest"), new PageWaitForURLOptions { Timeout = 10000 });
           var title = await page.TitleAsync();
 
           if (title.Contains("LambdaTest at DuckDuckGo"))

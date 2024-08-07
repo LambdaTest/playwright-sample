@@ -40,9 +40,7 @@ test.describe('Group 1', () => {
     testInfoGlobal = testInfo;
     await page.goto('https://duckduckgo.com')
     let element = await page.locator("[name=\"q\"]");
-    // let element = await page.locator("[name=\"A\"]");
     await element.click();
-    // await element.click({ timeout: 60000 });
     await element.type("LambdaTest");
     await element.press("Enter");
     const title = await page.title()
@@ -57,9 +55,7 @@ test.describe('Group 1', () => {
     testInfoGlobal = testInfo;
     await page.goto('https://duckduckgo.com')
     let element = await page.locator("[name=\"q\"]");
-    // let element = await page.locator("[name=\"A\"]");
     await element.click();
-    // await element.click({ timeout: 60000 });
     await element.type("LambdaTest");
     await element.press("Enter");
     const title = await page.title()

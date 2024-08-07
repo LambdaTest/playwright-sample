@@ -18,7 +18,6 @@ test.describe('Group 1', () => {
 
   test.afterAll(async () => {
     
-    // await use(ltPage)
     if (testInfoGlobal) { 
       const testStatus = {
         action: 'setTestStatus',
@@ -39,13 +38,10 @@ test.describe('Group 1', () => {
 
   
   test('test 1 Search LambdaTest on DuckDuckGo', async ({},testInfo) => {
-    // page.setTimeout(45000); 
     testInfoGlobal = testInfo;
     await page.goto('https://duckduckgo.com')
     let element = await page.locator("[name=\"q\"]");
-    // let element = await page.locator("[name=\"A\"]");
     await element.click();
-    // await element.click({ timeout: 60000 });
     await element.type("LambdaTest");
     await element.press("Enter");
     const title = await page.title()
@@ -57,13 +53,10 @@ test.describe('Group 1', () => {
   })
 
   test('test 2 Search LambdaTest on DuckDuckGo', async ({},testInfo) => {
-    // page.setTimeout(45000); 
     testInfoGlobal = testInfo;
     await page.goto('https://duckduckgo.com')
     let element = await page.locator("[name=\"q\"]");
-    // let element = await page.locator("[name=\"A\"]");
     await element.click();
-    // await element.click({ timeout: 60000 });
     await element.type("LambdaTest");
     await element.press("Enter");
     const title = await page.title()

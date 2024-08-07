@@ -4,7 +4,7 @@ const { devices } = require('@playwright/test')
 const config = {
   testDir: 'tests',
   testMatch: '**/*.spec.js',
-  timeout: 60000,
+  timeout: 120000,
   workers: 4,
   projects: [
     // -- LambdaTest Config --

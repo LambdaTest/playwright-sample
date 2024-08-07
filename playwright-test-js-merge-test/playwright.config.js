@@ -4,14 +4,9 @@ const { devices } = require('@playwright/test')
 const config = {
   testDir: 'tests',
   testMatch: '**/*.spec.js',
-  timeout: 1200000,
-  // globalTimeout: 20 * 1000,
-  // retries: 1,
+  timeout: 120000,
   workers: 5,
   use: {
-    // testIdAttribute: 'data-test'
-    // baseURL: "https://oldnavy.gapcanada.ca/",
-    // ignoreHTTPSErrors: true
   },
   projects: [
     // -- LambdaTest Config --

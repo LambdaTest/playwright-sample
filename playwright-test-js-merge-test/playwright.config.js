@@ -18,6 +18,12 @@ const config = {
       use: {
         viewport: { width: 1280, height: 720 }
       }
+    },
+    {
+      name: 'chrome:latest:MacOs Ventura@lambdatest',
+      use: {
+        viewport: { width: 1280, height: 720 }
+      }
     }
   ]
 }

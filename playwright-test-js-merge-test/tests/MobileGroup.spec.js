@@ -1,6 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { setupBrowser } = require('../lambdatest-mobile-setup')
-const { chromium, _android } = require('playwright');
+const { setupBrowser,tearDown } = require('../lambdatest-setup')
 
 // test.describe.configure({ mode: 'parallel' });
 
@@ -9,36 +8,22 @@ test.describe('Group 1', () => {
   let context;
   let page;
   let device;
-  let testInfoGlobal; 
 
-  test.beforeAll(async () => {
+  test.beforeAll(async ({}, testInfo) => {
+    const {ltPage,ltDevice,ltContext,ltBrowser} = await setupBrowser(testInfo);
+    page = ltPage;
+    device = ltDevice;
+    context = ltContext;
+    browser = ltBrowser;
+   });
 
-    page = await setupBrowser();
-  });
+  test.afterAll(async ({}, testInfo) => {
 
-  test.afterAll(async () => {
-    
-    if (testInfoGlobal) { 
-      const testStatus = {
-        action: 'setTestStatus',
-        arguments: {
-          status: testInfoGlobal.status,
-          remark: testInfoGlobal.error?.stack || testInfoGlobal.error?.message,
-        }
-      }
-      await page.evaluate(() => {},
-        `lambdatest_action: ${JSON.stringify(testStatus)}`)
-    }
-
-    await page?.close();
-    await context?.close();
-    await browser?.close();
-    await device?.close();
+    await tearDown(page,context,browser,device,testInfo);
   });
 
   
-  test('test 1 Search LambdaTest on DuckDuckGo', async ({},testInfo) => {
-    testInfoGlobal = testInfo;
+  test('test 1 Search LambdaTest on DuckDuckGo', async () => {
     await page.goto('https://duckduckgo.com')
     let element = await page.locator("[name=\"q\"]");
     await element.click();
@@ -52,8 +37,7 @@ test.describe('Group 1', () => {
     expect(title).toEqual(expect.stringContaining('LambdaTest'))
   })
 
-  test('test 2 Search LambdaTest on DuckDuckGo', async ({},testInfo) => {
-    testInfoGlobal = testInfo;
+  test('test 2 Search LambdaTest on DuckDuckGo', async () => {
     await page.goto('https://duckduckgo.com')
     let element = await page.locator("[name=\"q\"]");
     await element.click();

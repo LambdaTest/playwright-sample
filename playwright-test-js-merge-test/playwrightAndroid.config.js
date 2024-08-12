@@ -13,6 +13,10 @@ const config = {
     {
       name: '.*:.*:android@lambdatest',
       use: {}
+    },
+    {
+      name: 'Pixel 6:.*:android@lambdatest',
+      use: {}
     }
   ]
 }

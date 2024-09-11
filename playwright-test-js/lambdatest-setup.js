@@ -8,6 +8,8 @@ const { chromium, _android } = require('playwright')
 const cp = require('child_process');
 const playwrightClientVersion = cp.execSync('npx playwright --version').toString().trim().split(' ')[1];
 
+if (process.env.executeOn !== "local"){
+
 // LambdaTest capabilities
 const capabilities = {
   'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
@@ -128,3 +130,11 @@ exports.test = base.test.extend({
     { auto: true },
   ],
 });
+}else {
+  // Fallback to local if `executeOn` is not set to `lambdatest`
+  exports.test = base.test.extend({
+    page: async ({ page }, use) => {
+      await use(page); // Running locally
+    }
+  });
+}

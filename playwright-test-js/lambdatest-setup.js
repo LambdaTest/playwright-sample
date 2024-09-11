@@ -96,5 +96,35 @@ exports.test = base.test.extend({
       // Run tests in local in case of local config provided
       await use(page)
     }
-  }
-})
+  },
+  beforeEach: [
+    async ({ page }, use) => {
+      await page
+        .context()
+        .tracing.start({ screenshots: true, snapshots: true, sources: true });
+      await use();
+    },
+    { auto: true },
+  ],
+
+  afterEach: [
+    async ({ page }, use, testInfo) => {
+      await use();
+      if (testInfo.status == "failed") {
+        await page
+          .context()
+          .tracing.stop({ path: `${testInfo.outputDir}/trace.zip` });
+        await page.screenshot({ path: `${testInfo.outputDir}/screenshot.png` });
+        await testInfo.attach("screenshot", {
+          path: `${testInfo.outputDir}/screenshot.png`,
+          contentType: "image/png",
+        });
+        await testInfo.attach("trace", {
+          path: `${testInfo.outputDir}/trace.zip`,
+          contentType: "application/zip",
+        });
+      }
+    },
+    { auto: true },
+  ],
+});

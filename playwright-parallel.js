@@ -9,57 +9,57 @@ const parallelTests = async (capability) => {
   const platform = capability['LT:Options']['platform'];
   const browser = capability['browserName'];
   
-  console.log(`🚀 Starting parallel test: ${testName}`);
-  console.log(`🌐 Platform: ${platform}, Browser: ${browser}`);
-  console.log(`👤 Username: ${process.env.LT_USERNAME}`);
+  console.log(`Starting parallel test: ${testName}`);
+  console.log(`Platform: ${platform}, Browser: ${browser}`);
+  console.log(`Username: ${process.env.LT_USERNAME}`);
 
-  console.log(`🔗 Connecting to LambdaTest for ${testName}...`);
+  console.log(`Connecting to LambdaTest for ${testName}...`);
   const browserInstance = await chromium.connect({
     wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capability))}`
   })
 
-  console.log(`✅ Connected successfully for ${testName}!`);
-  console.log(`🆕 Creating new page for ${testName}...`);
+  console.log(`Connected successfully for ${testName}!`);
+  console.log(`Creating new page for ${testName}...`);
 
   const page = await browserInstance.newPage()
 
-  console.log(`🔍 Navigating to DuckDuckGo for ${testName}...`);
+  console.log(`Navigating to DuckDuckGo for ${testName}...`);
   await page.goto("https://duckduckgo.com");
 
-  console.log(`🔍 Finding search box for ${testName}...`);
+  console.log(`Finding search box for ${testName}...`);
   let element = await page.locator("[name=\"q\"]");
   
-  console.log(`👆 Clicking search box for ${testName}...`);
+  console.log(`Clicking search box for ${testName}...`);
   await element.click();
   
-  console.log(`⌨️  Typing "LambdaTest" for ${testName}...`);
+  console.log(`Typing "LambdaTest" for ${testName}...`);
   await element.type("LambdaTest");
   
-  console.log(`⏎ Pressing Enter for ${testName}...`);
+  console.log(`Pressing Enter for ${testName}...`);
   await element.press("Enter");
   
-  console.log(`⏳ Waiting for search results for ${testName}...`);
+  console.log(`Waiting for search results for ${testName}...`);
   const title = await page.title()
-  console.log(`📄 Page title for ${testName}:`, title);
+  console.log(`Page title for ${testName}:`, title);
 
   try {
-    console.log(`🧪 Verifying title for ${testName}...`);
+    console.log(`Verifying title for ${testName}...`);
     expect(title).toEqual('LambdaTest at DuckDuckGo')
-    console.log(`✅ Test PASSED for ${testName}! Title matched successfully`);
+    console.log(`Test PASSED for ${testName}! Title matched successfully`);
     
     // Mark the test as completed or failed
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
-    console.log(`📊 Marked test as PASSED in LambdaTest dashboard for ${testName}`);
+    console.log(`Marked test as PASSED in LambdaTest dashboard for ${testName}`);
     
     await teardown(page, browserInstance)
   } catch (e) {
-    console.log(`❌ Test FAILED for ${testName}!`);
-    console.log(`💥 Error for ${testName}:`, e.message);
-    console.log(`📊 Expected title: "LambdaTest at DuckDuckGo"`);
-    console.log(`📊 Actual title for ${testName}:`, title);
+    console.log(`Test FAILED for ${testName}!`);
+    console.log(`Error for ${testName}:`, e.message);
+    console.log(`Expected title: "LambdaTest at DuckDuckGo"`);
+    console.log(`Actual title for ${testName}:`, title);
     
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: e.stack } })}`)
-    console.log(`📊 Marked test as FAILED in LambdaTest dashboard for ${testName}`);
+    console.log(`Marked test as FAILED in LambdaTest dashboard for ${testName}`);
     
     await teardown(page, browserInstance)
     throw e.stack
@@ -68,15 +68,15 @@ const parallelTests = async (capability) => {
 }
 
 async function teardown(page, browser) {
-  console.log(`🧹 Cleaning up resources for test...`);
+  console.log(`Cleaning up resources for test...`);
   await page.close();
   await browser.close();
-  console.log(`✅ Test completed and resources cleaned up!`);
+  console.log(`Test completed and resources cleaned up!`);
 }
 
-console.log('🔥 Starting Playwright Parallel Tests...');
-console.log('📋 Playwright version:', playwrightClientVersion);
-console.log('📊 Running 3 parallel tests across different platforms and browsers');
+console.log('Starting Playwright Parallel Tests...');
+console.log('Playwright version:', playwrightClientVersion);
+console.log('Running 3 parallel tests across different platforms and browsers');
 
 // Capabilities array for with the respective configuration for the parallel tests
 const capabilities = [
@@ -126,15 +126,15 @@ const capabilities = [
     }
   }]
 
-console.log('🚀 Launching all parallel tests...');
+console.log('Launching all parallel tests...');
 
 const executeTests = async () => {
   try {
     const promises = capabilities.map(capability => parallelTests(capability));
     await Promise.all(promises);
-    console.log('🎉 All parallel tests completed successfully!');
+    console.log('All parallel tests completed successfully!');
   } catch (error) {
-    console.error('💥 Error in parallel tests execution:');
+    console.error('Error in parallel tests execution:');
     console.error(error);
     process.exit(1);
   }

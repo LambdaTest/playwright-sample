@@ -95,9 +95,24 @@ graph TD
 
 **Key Benefits:**
 - **Authentic Experience**: Test on real iPhone hardware, not simulators
-- **Latest Devices**: iPhone 16, 15, 14 with iOS 18, 17, 16
+- **Latest Devices**: iPhone 16, 15, 14 with iOS 18, 17
 - **Native Performance**: True Safari WebKit engine behavior
 - **Touch Accuracy**: Precise touch and gesture interactions
+
+**Supported Features for iOS Real Device Testing:**
+
+| Feature | Description |
+|---------|-------------|
+| Network Logs | Full network request/response monitoring |
+| Commands | All Playwright commands work seamlessly |
+| Meta Data | Device and test metadata available |
+| Basic Info | Device information accessible |
+| Input Config | Touch and keyboard inputs |
+| Media | Audio/video functionality |
+| Tunnel | Test local/private applications |
+| Geolocation | GPS location simulation |
+| video | Enable video recording of the entire screen |
+
 
 #### **Android Real Device Testing**
 
@@ -126,7 +141,7 @@ Comprehensive Android testing across various device manufacturers:
 | `playwright-single-on-iphone.js` | iPhone Emulation | Quick mobile testing |
 | `playwrightwebview.js` | Android WebView | Hybrid app testing |
 
-### **Advanced Testing Features**
+### **Advanced Testing Features** 
 
 | Test File | Capability | Business Value |
 |-----------|------------|----------------|

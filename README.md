@@ -1,4 +1,4 @@
-# 🎭 Playwright Testing Suite for LambdaTest Cloud
+# �� Playwright Testing on LambdaTest Cloud
 
 ![Playwright Logo](https://user-images.githubusercontent.com/70570645/169813479-9713557e-4430-42ea-91f4-70c6cb72ec0b.PNG)
 
@@ -23,638 +23,349 @@
 ## 📋 Table of Contents
 
 - [🚀 Quick Start](#-quick-start)
-- [🏗️ Test Architecture](#️-test-architecture)
-- [📱 Test Categories](#-test-categories)
-- [⚙️ Setup & Configuration](#️-setup--configuration)
-- [🎯 Running Tests](#-running-tests)
-- [📊 Test Results](#-test-results)
-- [🔧 Advanced Features](#-advanced-features)
-- [📚 Documentation](#-documentation)
+- [🎯 Testing Capabilities](#-testing-capabilities)
+- [📱 Platform Coverage](#-platform-coverage)
+- [⚙️ Setup Guide](#️-setup-guide)
+- [🎪 Test Examples](#-test-examples)
+- [📊 Results & Reporting](#-results--reporting)
+- [🏆 Best Practices](#-best-practices)
+- [📚 Resources](#-resources)
 
 ## 🚀 Quick Start
 
-Get started with Playwright testing on LambdaTest in 3 simple steps:
+Get started with Playwright testing on LambdaTest in under 5 minutes:
 
 ```bash
-# 1. Clone the repository
+# 1. Clone the sample repository
 git clone https://github.com/LambdaTest/playwright-sample.git
 cd playwright-sample
 
 # 2. Install dependencies
 npm install
 
-# 3. Configure credentials and run your first test
+# 3. Set up your credentials and run your first test
 node playwright-single.js
 ```
 
-## 🏗️ Test Architecture
+## 🎯 Testing Capabilities
 
-Our comprehensive test suite covers multiple platforms and testing scenarios:
+### 🌐 **Cross-Browser Testing**
 
-```mermaid
-graph TB
-    A["Playwright Test Suite"] --> B["Desktop Browsers"]
-    A --> C["Mobile Devices"]
-    A --> D["Advanced Testing"]
-    A --> E["Test Frameworks"]
-    
-    B --> B1["Chrome/Chromium"]
-    B --> B2["Firefox/WebKit"]
-    B --> B3["Microsoft Edge"]
-    
-    C --> C1["Real Android Devices"]
-    C --> C2["Real iOS Devices"]
-    C --> C3["Mobile Emulation"]
-    C --> C4["WebView Testing"]
-    
-    D --> D1["Browser Extensions"]
-    D --> D2["Lighthouse Reports"]
-    D --> D3["Visual Testing SmartUI"]
-    D --> D4["Parallel Execution"]
-    
-    E --> E1["Playwright Test Runner"]
-    E --> E2["TypeScript Tests"]
-    E --> E3["Cucumber Integration"]
-    E --> E4["Jest Integration"]
-```
-
-### 📱 **iOS Real Device Testing Architecture**
+Test across multiple browsers and operating systems simultaneously:
 
 ```mermaid
 graph LR
-    A["Test Script"] --> B["LambdaTest Cloud"]
-    B --> C["Real iPhone Hardware"]
-    C --> D["iOS Safari Browser"]
-    D --> E["WebKit Engine"]
-    E --> F["Test Execution"]
-    F --> G["Results Dashboard"]
+    A["Your Test Script"] --> B["LambdaTest Platform"]
+    B --> C["Chrome"]
+    B --> D["Firefox"]
+    B --> E["Safari"]
+    B --> F["Edge"]
     
-    C --> C1["iPhone 16"]
-    C --> C2["iPhone 15"]
-    C --> C3["iPhone 14"]
+    C --> C1["Windows"]
+    C --> C2["macOS"]
+    C --> C3["Linux"]
     
-    F --> F1["Touch Interactions"]
-    F --> F2["Native iOS Features"]
-    F --> F3["Performance Metrics"]
+    D --> D1["Windows"]
+    D --> D2["macOS"]
+    D --> D3["Linux"]
 ```
 
-### 🔄 **iOS Test Execution Flow**
+### 📱 **Mobile Testing Excellence**
+
+#### 🍎 **iOS Real Device Testing**
+
+Experience authentic iOS testing on actual iPhone hardware:
 
 ```mermaid
-sequenceDiagram
-    participant Script as Test Script
-    participant LT as LambdaTest Cloud
-    participant iPhone as Real iPhone Device
-    participant Safari as iOS Safari
-    participant Dashboard as Results Dashboard
+graph TD
+    A["iOS Testing"] --> B["Real iPhone Devices"]
+    A --> C["Native Safari Testing"]
+    A --> D["Touch & Gesture Support"]
     
-    Script->>LT: Connect with iOS capabilities
-    LT->>iPhone: Allocate iPhone 16 device
-    iPhone->>Safari: Launch Safari browser
-    Safari->>Script: WebKit connection ready
-    Script->>Safari: Execute test commands
-    Safari->>Script: Return test results
-    Script->>LT: Report test status
-    LT->>Dashboard: Update with results
-    Dashboard->>Script: Test completion confirmed
+    B --> B1["iPhone 16"]
+    B --> B2["iPhone 15"]
+    B --> B3["iPhone 14"]
+    
+    C --> C1["WebKit Engine"]
+    C --> C2["iOS-Specific Features"]
+    
+    D --> D1["Tap Interactions"]
+    D --> D2["Swipe Gestures"]
 ```
 
-## 📱 Test Categories
+**Key Benefits:**
+- ✅ **Authentic Experience**: Test on real iPhone hardware, not simulators
+- ✅ **Latest Devices**: iPhone 16, 15, 14 with iOS 18, 17, 16
+- ✅ **Native Performance**: True Safari WebKit engine behavior
+- ✅ **Touch Accuracy**: Precise touch and gesture interactions
+
+#### 🤖 **Android Real Device Testing**
+
+Comprehensive Android testing across various device manufacturers:
+
+- **Real Hardware**: Galaxy S21, Pixel devices, and more
+- **Multiple Android Versions**: Android 12, 11, 10
+- **WebView Support**: Test hybrid applications
+- **Native Interactions**: Touch, gestures, and device-specific features
+
+## 📱 Platform Coverage
 
 ### 🖥️ **Desktop Browser Tests**
 
-| Test File | Description | Platform | Features |
-|-----------|-------------|----------|----------|
-| `playwright-single.js` | Basic DuckDuckGo search test | Chrome/Windows | ✅ Comprehensive logging |
-| `playwright-parallel.js` | Multi-browser parallel testing | Chrome, Edge, Safari | ⚡ Parallel execution |
+| Test File | Purpose | Platforms |
+|-----------|---------|-----------|
+| `playwright-single.js` | Single browser testing | Chrome, Firefox, Safari, Edge |
+| `playwright-parallel.js` | Parallel cross-browser testing | All major browsers simultaneously |
 
 ### 📱 **Mobile Device Tests**
 
-| Test File | Description | Device | Features |
-|-----------|-------------|--------|----------|
-| `playwright-android-real-device.js` | Real Android device testing | Galaxy S21 5G | 🤖 Real hardware, Touch interactions |
-| `playwright-ios-real-device.js` | Real iOS device testing | iPhone 16 | 🍎 Real hardware, Wikipedia test |
-| `playwright-single-on-iphone.js` | iPhone emulation | iPhone 11 | 📲 Device emulation |
-| `playwrightwebview.js` | Android WebView testing | Android WebView | 🌐 Hybrid app testing |
+| Test File | Device Type | Key Features |
+|-----------|-------------|--------------|
+| `playwright-ios-real-device.js` | iPhone 16 (Real Device) | Safari WebKit, Touch interactions |
+| `playwright-android-real-device.js` | Galaxy S21 (Real Device) | Chrome browser, Android gestures |
+| `playwright-single-on-iphone.js` | iPhone Emulation | Quick mobile testing |
+| `playwrightwebview.js` | Android WebView | Hybrid app testing |
 
 ### 🧪 **Advanced Testing Features**
 
-| Test File | Description | Specialty | Features |
-|-----------|-------------|-----------|----------|
-| `playwright-extensions-test.js` | Browser extension testing | Chrome Extensions | 🔌 Extension loading & verification |
-| `playwright-lighthouse-report.js` | Performance testing | Lighthouse | 🚦 Performance metrics |
-| `playwright-smartui.js` | Visual regression testing | SmartUI | 🎨 Screenshot comparison |
+| Test File | Capability | Business Value |
+|-----------|------------|----------------|
+| `playwright-extensions-test.js` | Browser Extension Testing | Validate Chrome extensions |
+| `playwright-lighthouse-report.js` | Performance Testing | Measure page speed & SEO |
+| `playwright-smartui.js` | Visual Regression Testing | Catch visual bugs automatically |
 
-### 🔧 **Test Framework Integration**
+### 🔧 **Framework Integration**
 
-| Directory | Framework | Language | Features |
-|-----------|-----------|----------|----------|
-| `playwright-test-js/` | Playwright Test Runner | JavaScript | 🧪 Built-in test runner |
-| `playwright-test-ts/` | Playwright Test Runner | TypeScript | 📝 Type safety |
-| `playwright-cucumber-js/` | Cucumber.js | JavaScript | 🥒 BDD testing |
-| `playwright-jest-js/` | Jest | JavaScript | 🃏 Jest integration |
+| Directory | Framework | Use Case |
+|-----------|-----------|----------|
+| `playwright-test-js/` | Playwright Test Runner | Built-in test organization |
+| `playwright-test-ts/` | TypeScript Support | Type-safe testing |
+| `playwright-cucumber-js/` | BDD Testing | Behavior-driven development |
+| `playwright-jest-js/` | Jest Integration | JavaScript testing ecosystem |
 
-## 🍎 iOS Real Device Testing
-
-### 📱 **iOS Device Capabilities**
-
-Our iOS testing suite provides comprehensive real device testing on actual iPhone hardware:
-
-```mermaid
-graph TB
-    A["iOS Real Device Testing"] --> B["Supported Devices"]
-    A --> C["iOS Features"]
-    A --> D["Test Capabilities"]
-    A --> E["Integration Features"]
-    
-    B --> B1["iPhone 16 - iOS 18"]
-    B --> B2["iPhone 15 - iOS 17"]
-    B --> B3["iPhone 14 - iOS 16"]
-    
-    C --> C1["Safari WebKit Engine"]
-    C --> C2["Touch Interactions"]
-    C --> C3["Device Orientation"]
-    C --> C4["Native iOS Gestures"]
-    
-    D --> D1["Wikipedia Search Testing"]
-    D --> D2["Form Interactions"]
-    D --> D3["Navigation Testing"]
-    D --> D4["User Agent Verification"]
-    
-    E --> E1["LambdaTest Dashboard"]
-    E --> E2["Video Recording"]
-    E --> E3["Test Logs"]
-    E --> E4["Screenshot Capture"]
-```
-
-### ⚙️ **iOS Test Configuration**
-
-#### 🔐 **Environment Setup for iOS**
-
-Add these iOS-specific variables to your `.env` file:
-
-```env
-# iOS Device Configuration
-LT_PLATFORM_NAME=ios
-LT_DEVICE_NAME=iPhone 16
-LT_PLATFORM_VERSION=18
-LT_BUILD=Playwright iOS Build V
-LT_TEST_NAME=Playwright iOS webkit test
-LT_PROJECT_NAME=New UI iOS
-LT_GEO_LOCATION=US
-```
-
-#### 📋 **iOS Device Capabilities**
-
-```javascript
-const capabilities = {
-  "LT:Options": {
-    "platformName": "ios",
-    "deviceName": "iPhone 16",           // iPhone 16, iPhone 15, iPhone 14
-    "platformVersion": "18",             // iOS 18, 17, 16
-    "isRealMobile": true,               // Ensures real device allocation
-    "build": "Playwright iOS Build",
-    "name": "iOS Real Device Test",
-    "user": process.env.LT_USERNAME,
-    "accessKey": process.env.LT_ACCESS_KEY,
-    "network": true,                    // Network logs
-    "video": true,                      // Video recording
-    "console": true,                    // Console logs
-    "projectName": "iOS Testing Project"
-  }
-};
-```
-
-### 🎯 **Running iOS Tests**
-
-#### 🚀 **Quick Start - iOS Testing**
-
-```bash
-# 1. Ensure iOS configuration in .env file
-echo "LT_DEVICE_NAME=iPhone 16" >> .env
-echo "LT_PLATFORM_VERSION=18" >> .env
-
-# 2. Run iOS real device test
-node playwright-ios-real-device.js
-
-# 3. View results in LambdaTest Dashboard
-# Test will automatically report to dashboard with video recording
-```
-
-#### 📱 **iOS Test Example**
-
-Here's how our iOS test works:
-
-```javascript
-// iOS Real Device Test Example
-const { webkit } = require("playwright");
-
-// Connect to real iPhone hardware
-const browser = await webkit.connect(
-  `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
-);
-
-// Create iOS-optimized context
-const context = await browser.newContext({
-  hasTouch: true,  // Enable touch support
-  isMobile: true   // Mobile viewport
-});
-
-// Execute test on real iPhone
-const page = await context.newPage();
-await page.goto('https://www.wikipedia.org/');
-
-// iOS-specific interactions
-await page.locator('input[name="search"]').click();
-await page.locator('input[name="search"]').fill('playwright');
-await page.locator('#search-form > fieldset > button').click();
-
-// Verify results
-const count = await page.getByText('19th century').count();
-expect(count).toEqual(3);
-```
-
-### 🔍 **iOS Testing Features**
-
-#### ✨ **What Makes iOS Testing Special**
-
-| Feature | Description | Benefit |
-|---------|-------------|---------|
-| 📱 **Real Hardware** | Actual iPhone devices (not simulators) | Authentic user experience testing |
-| 🍎 **Native Safari** | Real iOS Safari with WebKit engine | True browser behavior |
-| 👆 **Touch Interactions** | Native iOS touch, tap, swipe gestures | Accurate mobile interaction testing |
-| 🔄 **Device Rotation** | Portrait/landscape orientation testing | Responsive design validation |
-| 📶 **Network Conditions** | Real cellular/WiFi network simulation | Performance under real conditions |
-| 🎥 **Video Recording** | Full test execution recording | Visual debugging and reporting |
-
-#### 🧪 **iOS Test Scenarios Covered**
-
-1. **📝 Form Interactions**
-   - Text input with iOS keyboard
-   - Touch-based form submissions
-   - iOS autocomplete behavior
-
-2. **🔍 Search Functionality**
-   - Wikipedia search implementation
-   - Mobile search interfaces
-   - iOS Safari search behavior
-
-3. **👆 Touch Gestures**
-   - Tap, double-tap, long press
-   - Swipe gestures (left, right, up, down)
-   - Pinch-to-zoom interactions
-
-4. **📱 Device Features**
-   - Viewport adaptation
-   - iOS-specific CSS behaviors
-   - Safari-specific JavaScript APIs
-
-### 📊 **iOS Test Results & Monitoring**
-
-#### 🎬 **Real-Time Monitoring**
-
-```mermaid
-graph LR
-    A["iOS Test Execution"] --> B["Live Video Stream"]
-    A --> C["Real-Time Logs"]
-    A --> D["Performance Metrics"]
-    
-    B --> B1["Touch Interactions Visible"]
-    B --> B2["Screen Recordings"]
-    
-    C --> C1["Console Outputs"]
-    C --> C2["Network Requests"]
-    C --> C3["Error Messages"]
-    
-    D --> D1["Load Times"]
-    D --> D2["Touch Response Times"]
-    D --> D3["Memory Usage"]
-```
-
-#### 📈 **iOS Performance Insights**
-
-- **⏱️ Connection Time**: 60-90 seconds (real device allocation)
-- **🔄 Test Execution**: 30-60 seconds (depending on test complexity)  
-- **📹 Video Quality**: HD recording of all interactions
-- **📊 Success Rate**: 99%+ with proper error handling
-
-### 🛠️ **iOS Troubleshooting**
-
-#### 🔧 **Common iOS Testing Scenarios**
-
-| Issue | Solution | Code Example |
-|-------|----------|--------------|
-| **Slow Loading** | Add proper timeouts | `{ timeout: 30000 }` |
-| **Touch Issues** | Enable touch context | `hasTouch: true` |
-| **Keyboard Problems** | Use fill() instead of type() | `element.fill('text')` |
-| **Form Submission** | Click submit button directly | `button.click()` |
-
-#### 📱 **iOS-Specific Best Practices**
-
-```javascript
-// ✅ iOS Best Practices
-const context = await browser.newContext({
-  hasTouch: true,      // Essential for iOS
-  isMobile: true,      // Mobile viewport
-  viewport: { width: 375, height: 812 }  // iPhone dimensions
-});
-
-// ✅ iOS-friendly interactions
-await element.click();           // Better than tap() for forms
-await element.fill('text');      // Better than type() for iOS
-await page.waitForTimeout(3000); // Allow iOS processing time
-
-// ✅ iOS error handling
-try {
-  await element.click({ timeout: 10000 });
-} catch (error) {
-  console.log('iOS interaction failed:', error.message);
-}
-```
-
-### 🎯 **iOS Testing Roadmap**
-
-#### 🔮 **Current Capabilities**
-- ✅ iPhone 16, 15, 14 support
-- ✅ iOS 18, 17, 16 versions
-- ✅ Safari WebKit engine
-- ✅ Touch gesture support
-- ✅ Video recording
-- ✅ Network monitoring
-
-#### 🚀 **Planned Enhancements**
-- 🔄 iPad support
-- 🔄 iOS accessibility testing
-- 🔄 Camera/GPS simulation
-- 🔄 Push notification testing
-- 🔄 App clip testing
-
-## ⚙️ Setup & Configuration
+## ⚙️ Setup Guide
 
 ### 📋 Prerequisites
 
-1. **Node.js** (v14 or higher)
-2. **npm** or **yarn**
-3. **LambdaTest Account** ([Sign up free](https://accounts.lambdatest.com/register))
+1. **Node.js** (v14 or higher) - [Download here](https://nodejs.org/)
+2. **LambdaTest Account** - [Sign up free](https://accounts.lambdatest.com/register)
+3. **Your LambdaTest Credentials** - Available in your dashboard
 
-### 🔐 Environment Configuration
+### 🔐 Configuration
 
-Create a `.env` file in the root directory:
+Create a `.env` file in your project root:
 
 ```env
-# LambdaTest Credentials (Required)
-LT_USERNAME=your_username_here
-LT_ACCESS_KEY=your_access_key_here
+# Your LambdaTest credentials
+LT_USERNAME=your_username
+LT_ACCESS_KEY=your_access_key
 
-# iOS Device Configuration (Optional)
-LT_PLATFORM_NAME=ios
+# Optional: iOS-specific settings
 LT_DEVICE_NAME=iPhone 16
 LT_PLATFORM_VERSION=18
-LT_BUILD=Playwright iOS Build V
-LT_TEST_NAME=Playwright iOS webkit test
-LT_PROJECT_NAME=New UI iOS
-LT_GEO_LOCATION=US
+LT_PROJECT_NAME=My iOS Tests
 ```
 
 ### 📦 Installation
 
 ```bash
-# Install all dependencies
+# Install project dependencies
 npm install
 
-# Install Playwright browsers (for local testing)
+# Optional: Install Playwright browsers for local development
 npx playwright install
 ```
 
-## 🎯 Running Tests
+## 🎪 Test Examples
 
-### 🖥️ Desktop Browser Tests
+### 🖥️ **Cross-Browser Testing**
 
 ```bash
 # Single browser test
 node playwright-single.js
 
-# Parallel browser testing
+# Run the same test across multiple browsers
 node playwright-parallel.js
 ```
 
-### 📱 Mobile Device Tests
+### 📱 **Mobile Testing**
 
 ```bash
-# Real Android device
-node playwright-android-real-device.js
-
-# Real iOS device (iPhone 16)
+# Test on real iPhone 16
 node playwright-ios-real-device.js
 
-# iPhone emulation
-node playwright-single-on-iphone.js
+# Test on real Android device
+node playwright-android-real-device.js
 
-# Android WebView
-node playwrightwebview.js
+# Quick mobile emulation
+node playwright-single-on-iphone.js
 ```
 
-### 🧪 Advanced Feature Tests
+### 🧪 **Specialized Testing**
 
 ```bash
-# Browser extensions
-node playwright-extensions-test.js
-
-# Lighthouse performance testing
+# Performance testing with Lighthouse
 node playwright-lighthouse-report.js
 
 # Visual regression testing
 node playwright-smartui.js
+
+# Browser extension testing
+node playwright-extensions-test.js
 ```
 
-### 🔧 Framework-Specific Tests
+### 🔧 **Framework-Based Testing**
 
 ```bash
-# Playwright Test Runner (JavaScript)
-cd playwright-test-js
-npx playwright test
+# Using Playwright Test Runner
+cd playwright-test-js && npx playwright test
 
-# Playwright Test Runner (TypeScript)
-cd playwright-test-ts
-npx playwright test
+# TypeScript testing
+cd playwright-test-ts && npx playwright test
 
-# Cucumber.js BDD tests
-cd playwright-cucumber-js
-npm test
+# BDD with Cucumber
+cd playwright-cucumber-js && npm test
 
 # Jest integration
-cd playwright-jest-js
-npm test
+cd playwright-jest-js && npm test
 ```
 
-## 📊 Test Results
+## 📊 Results & Reporting
 
-### 🎭 **LambdaTest Dashboard**
+### 🎯 **Comprehensive Test Insights**
 
-All test results are automatically reported to your LambdaTest dashboard:
+Every test execution provides:
 
 ```mermaid
 graph LR
-    A[🧪 Test Execution] --> B[📊 LambdaTest Dashboard]
-    B --> C[📹 Video Recording]
-    B --> D[📋 Test Logs]
-    B --> E[🖼️ Screenshots]
-    B --> F[📈 Analytics]
+    A["Test Execution"] --> B["Detailed Reports"]
+    B --> C["Video Recordings"]
+    B --> D["Screenshots"]
+    B --> E["Performance Metrics"]
+    B --> F["Console Logs"]
     
-    C --> G[🎬 Full test replay]
-    D --> H[📝 Detailed execution logs]
-    E --> I[🖼️ Failure screenshots]
-    F --> J[📊 Performance metrics]
+    C --> C1["Full session replay"]
+    D --> D1["Failure screenshots"]
+    E --> E1["Load times & metrics"]
+    F --> F1["Debug information"]
 ```
 
-### 📈 **Test Execution Flow**
+**What You Get:**
+- 📹 **HD Video Recording**: Watch exactly what happened during your test
+- 📊 **Performance Metrics**: Load times, network activity, resource usage
+- 🖼️ **Automatic Screenshots**: Capture failures and key test moments
+- 📋 **Detailed Logs**: Console outputs, network requests, errors
+- 📈 **Analytics Dashboard**: Test trends, success rates, team insights
 
-```mermaid
-sequenceDiagram
-    participant T as Test Script
-    participant L as LambdaTest Cloud
-    participant D as Device/Browser
-    participant R as Results Dashboard
-    
-    T->>L: Connect with capabilities
-    L->>D: Allocate device/browser
-    D->>T: Ready for testing
-    T->>D: Execute test steps
-    D->>T: Return results
-    T->>L: Report test status
-    L->>R: Update dashboard
-    R->>T: Test completion
-```
+### 🔍 **iOS Testing Results**
 
-## 🔧 Advanced Features
+When running iOS tests, you'll see:
+- ✅ **Real Device Information**: Actual iPhone model and iOS version
+- 👆 **Touch Interaction Logs**: Tap, swipe, and gesture confirmations  
+- 🍎 **Safari-Specific Metrics**: WebKit performance data
+- 📱 **Mobile-Optimized Reports**: Tailored for mobile testing insights
 
-### ⚡ **Parallel Testing**
+## 🏆 Best Practices
 
-Run multiple tests simultaneously across different browsers:
+### 📱 **iOS Testing Excellence**
 
 ```javascript
-// Example: playwright-parallel.js
-const capabilities = [
-  { browserName: 'Chrome', platform: 'Windows 10' },
-  { browserName: 'Firefox', platform: 'macOS Monterey' },
-  { browserName: 'Safari', platform: 'macOS Big Sur' }
-];
-
-// Execute all tests in parallel
-capabilities.forEach(async (capability) => {
-  await runTest(capability);
-});
-```
-
-### 🎨 **Visual Testing (SmartUI)**
-
-Capture and compare screenshots for visual regression:
-
-```javascript
-// Take SmartUI screenshot
-await page.evaluate((_) => {}, `lambdatest_action: ${JSON.stringify({
-  action: 'smartui.takeScreenshot',
-  arguments: { 
-    fullPage: true, 
-    screenshotName: 'homepage-desktop' 
+// Recommended iOS test structure
+const capabilities = {
+  "LT:Options": {
+    "platformName": "ios",
+    "deviceName": "iPhone 16",
+    "platformVersion": "18",
+    "isRealMobile": true,
+    "build": "Production iOS Tests",
+    "name": "Critical User Journey",
+    "network": true,
+    "video": true
   }
-})}`);
+};
+
+// iOS-optimized interactions
+const context = await browser.newContext({
+  hasTouch: true,
+  isMobile: true
+});
+
+// Reliable iOS element interactions
+await page.locator('input[name="search"]').click();
+await page.locator('input[name="search"]').fill('test query');
+await page.locator('button[type="submit"]').click();
 ```
 
-### 🚦 **Performance Testing**
+### ⚡ **Performance Optimization**
 
-Generate Lighthouse reports during test execution:
+- **Parallel Execution**: Run tests simultaneously across multiple browsers
+- **Smart Timeouts**: Use appropriate timeouts for real device testing
+- **Resource Management**: Proper cleanup ensures consistent performance
+- **Error Handling**: Robust error handling for stable test execution
 
-```javascript
-// Generate Lighthouse report
-await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({
-  action: 'lighthouseReport',
-  arguments: { url: 'https://example.com' }
-})}`);
-```
+### 🎯 **Test Organization**
 
-### 📱 **Real Device Testing**
+- **Descriptive Names**: Clear test and build names for easy identification
+- **Logical Grouping**: Organize tests by feature, platform, or priority
+- **Environment Configuration**: Separate configs for dev, staging, production
+- **Version Control**: Track test changes alongside application code
 
-Test on actual mobile devices for authentic user experience:
+## 📚 Resources
 
-- **Real iOS Devices**: iPhone 15, iPhone 16
-- **Real Android Devices**: Galaxy S21, Pixel series
-- **Touch interactions**: Tap, swipe, pinch gestures
-- **Device-specific features**: Camera, GPS, sensors
+### 📖 **Documentation & Guides**
 
-## 📚 Documentation
+- [🔄 Migrate Existing Tests](pw-docs/migrate-playwright-tests.md)
+- [⚙️ Advanced Configuration](pw-docs/test-execution-setup.md)
+- [🌐 Local Testing Setup](pw-docs/local-testing.md)
+- [🧪 Test Runner Integration](pw-docs/playwright-test-runner.md)
+- [🥒 BDD with Cucumber](pw-docs/cucumberjs.md)
+- [🔄 CI/CD Pipeline Integration](pw-docs/playwright-with-cicd.md)
 
-### 📖 **Detailed Guides**
-
-- [🔄 Migrate Playwright Tests](pw-docs/migrate-playwright-tests.md)
-- [⚙️ Test Execution Setup](pw-docs/test-execution-setup.md)
-- [🌐 Local Testing](pw-docs/local-testing.md)
-- [🧪 Playwright Test Runner](pw-docs/playwright-test-runner.md)
-- [🥒 Cucumber.js Integration](pw-docs/cucumberjs.md)
-- [🔄 CI/CD Integration](pw-docs/playwright-with-cicd.md)
-
-### 🎓 **Learning Resources**
+### 🎓 **Learning & Support**
 
 - [📚 LambdaTest Documentation](https://www.lambdatest.com/support/docs/)
-- [📝 LambdaTest Blog](https://www.lambdatest.com/blog/)
-- [🎓 Learning Hub](https://www.lambdatest.com/learning-hub/)
-- [🏆 Certifications](https://www.lambdatest.com/certifications/)
+- [📝 Testing Blog & Tutorials](https://www.lambdatest.com/blog/)
+- [🎓 Free Testing Courses](https://www.lambdatest.com/learning-hub/)
+- [🏆 Testing Certifications](https://www.lambdatest.com/certifications/)
 
-### 🔗 **API References**
+### 💬 **Community & Help**
 
-- [Playwright API](https://playwright.dev/docs/api/class-playwright)
-- [LambdaTest Capabilities](https://www.lambdatest.com/support/docs/selenium-automation-capabilities/)
-- [SmartUI Documentation](https://www.lambdatest.com/support/docs/smart-ui-cypress/)
+- [Community Forum](https://community.lambdatest.com/) - Connect with testing professionals
+- [24/7 Support](mailto:support@lambdatest.com) - Get expert help anytime
+- [GitHub Issues](https://github.com/LambdaTest/playwright-sample/issues) - Report issues or request features
 
 ## 🚀 Try in Gitpod
 
-Launch a complete development environment with one click:
+Experience Playwright testing instantly with our pre-configured environment:
 
 [<img alt="Run in Gitpod" width="200px" align="center" src="https://user-images.githubusercontent.com/70570645/169987363-1408c494-4e2a-4f12-8828-c931eac716b0.png" />](https://gitpod.io/#https://github.com/LambdaTest/playwright-sample)
 
 ```bash
-# Set environment variables in Gitpod
-eval $(gp env -e LT_USERNAME=******)
-eval $(gp env -e LT_ACCESS_KEY=******)
+# Set your credentials in Gitpod
+eval $(gp env -e LT_USERNAME=your_username)
+eval $(gp env -e LT_ACCESS_KEY=your_access_key)
 ```
 
-## 🤝 Community & Support
+## 🌟 Why Choose LambdaTest for Playwright Testing?
 
-### 💬 **LambdaTest Community**
+### ✨ **Enterprise-Grade Platform**
 
-- [Community Forum](https://community.lambdatest.com/) - Connect with testing enthusiasts
-- [Discord Channel](https://discord.gg/lambdatest) - Real-time discussions
-- [GitHub Issues](https://github.com/LambdaTest/playwright-sample/issues) - Report bugs & feature requests
+- 🌐 **3000+ Browser-OS Combinations** - Comprehensive coverage
+- 📱 **Real Device Cloud** - Authentic testing on actual devices
+- ⚡ **HyperExecute** - Fastest test orchestration platform
+- 🎯 **Smart Test Analytics** - AI-powered insights and optimization
+- 🔧 **120+ Integrations** - Seamless workflow integration
 
-### 🆘 **Get Help**
+### 📊 **Trusted Globally**
 
-- **24/7 Support**: [support@lambdatest.com](mailto:support@lambdatest.com)
-- **Documentation**: [LambdaTest Docs](https://www.lambdatest.com/support/docs/)
-- **Status Page**: [status.lambdatest.com](https://status.lambdatest.com/)
-
-## 🌟 About LambdaTest
-
-[LambdaTest](https://www.lambdatest.com) is a leading test execution and orchestration platform enabling:
-
-### ✨ **Key Features**
-
-- 🌐 **3000+ Browser-OS Combinations** - Real browsers and devices
-- 📱 **Real Device Cloud** - Physical iOS and Android devices  
-- ⚡ **HyperExecute** - Blazing fast test orchestration
-- 🎯 **Test At Scale** - Intelligent test optimization
-- 🎨 **Smart Visual Testing** - AI-powered visual regression
-- 🔧 **120+ Integrations** - Seamless CI/CD pipeline integration
-
-### 📊 **Trusted By**
-
-- **500+ Enterprises** worldwide
-- **1M+ Users** across 130+ countries
-- **Fortune 500 Companies** for critical testing needs
+- **500+ Enterprises** rely on LambdaTest for critical testing
+- **1M+ Developers** worldwide use our platform
+- **99.9% Uptime** ensuring your tests run when you need them
 
 [<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
 
 ---
 
 <p align="center">
-  <b>🎭 Happy Testing with Playwright on LambdaTest! 🚀</b>
+  <b>🎭 Start Testing with Playwright on LambdaTest Today! 🚀</b>
 </p>

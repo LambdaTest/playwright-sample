@@ -1,15 +1,11 @@
-# Playwright Testing on LambdaTest Cloud
+# Playwright Cloud ![pw](https://user-images.githubusercontent.com/70570645/169813479-9713557e-4430-42ea-91f4-70c6cb72ec0b.PNG)
 
-![Playwright Logo](https://user-images.githubusercontent.com/70570645/169813479-9713557e-4430-42ea-91f4-70c6cb72ec0b.PNG)
-
-<p align="center">
-  <img height="400" src="https://user-images.githubusercontent.com/70570645/171361733-065df506-c302-452d-8bc7-e63047377f8e.png">
-</p>
+<img height="400" src="https://user-images.githubusercontent.com/70570645/171361733-065df506-c302-452d-8bc7-e63047377f8e.png">
 
 <p align="center">
   <a href="https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Blog</a>
   &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Documentation</a>
+  <a href="https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Docs</a>
   &nbsp; &#8901; &nbsp;
   <a href="https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Learning Hub</a>
   &nbsp; &#8901; &nbsp;
@@ -19,368 +15,198 @@
   &nbsp; &#8901; &nbsp;
   <a href="https://www.youtube.com/c/LambdaTest" target="_bank">YouTube</a>
 </p>
-
-## Table of Contents
-
-- [Quick Start](#quick-start)
-- [Testing Capabilities](#testing-capabilities)
-- [Platform Coverage](#platform-coverage)
-- [Setup Guide](#setup-guide)
-- [Test Examples](#test-examples)
-- [Results & Reporting](#results--reporting)
-- [Best Practices](#best-practices)
-- [Resources](#resources)
-
-## Quick Start
-
-Get started with Playwright testing on LambdaTest in under 5 minutes:
-
-```bash
-# 1. Clone the sample repository
-git clone https://github.com/LambdaTest/playwright-sample.git
-cd playwright-sample
-
-# 2. Install dependencies
-npm install
-
-# 3. Set up your credentials and run your first test
-node playwright-single.js
-```
-
-## Testing Capabilities
-
-### **Cross-Browser Testing**
-
-Test across multiple browsers and operating systems simultaneously:
-
-```mermaid
-graph LR
-    A["Your Test Script"] --> B["LambdaTest Platform"]
-    B --> C["Chrome"]
-    B --> D["Firefox"]
-    B --> E["Safari"]
-    B --> F["Edge"]
-    
-    C --> C1["Windows"]
-    C --> C2["macOS"]
-    C --> C3["Linux"]
-    
-    D --> D1["Windows"]
-    D --> D2["macOS"]
-    D --> D3["Linux"]
-```
-
-### **Mobile Testing Excellence**
-
-#### **iOS Real Device Testing**
-
-Experience authentic iOS testing on actual iPhone hardware:
-
-```mermaid
-graph TD
-    A["iOS Testing"] --> B["Real iPhone Devices"]
-    A --> C["Native Safari Testing"]
-    A --> D["Touch & Gesture Support"]
-    
-    B --> B1["iPhone 16"]
-    B --> B2["iPhone 15"]
-    B --> B3["iPhone 14"]
-    
-    C --> C1["WebKit Engine"]
-    C --> C2["iOS-Specific Features"]
-    
-    D --> D1["Tap Interactions"]
-    D --> D2["Swipe Gestures"]
-```
-
-**Key Benefits:**
-- **Authentic Experience**: Test on real iPhone hardware, not simulators
-- **Latest Devices**: iPhone 16, 15, 14 with iOS 18, 17
-- **Native Performance**: True Safari WebKit engine behavior
-- **Touch Accuracy**: Precise touch and gesture interactions
-
-**Supported Features for iOS Real Device Testing:**
-
-| Feature | Description |
-|---------|-------------|
-| Network Logs | Full network request/response monitoring |
-| Commands | All Playwright commands work seamlessly |
-| Meta Data | Device and test metadata available |
-| Basic Info | Device information accessible |
-| Input Config | Touch and keyboard inputs |
-| Media | Audio/video functionality |
-| Tunnel | Test local/private applications |
-| Geolocation | GPS location simulation |
-| video | Enable video recording of the entire screen |
-
-
-#### **Android Real Device Testing**
-
-Comprehensive Android testing across various device manufacturers:
-
-- **Real Hardware**: Galaxy S21, Pixel devices, and more
-- **Multiple Android Versions**: Android 12, 11, 10
-- **WebView Support**: Test hybrid applications
-- **Native Interactions**: Touch, gestures, and device-specific features
-
-## Platform Coverage
-
-### **Desktop Browser Tests**
-
-| Test File | Purpose | Platforms |
-|-----------|---------|-----------|
-| `playwright-single.js` | Single browser testing | Chrome, Firefox, Safari, Edge |
-| `playwright-parallel.js` | Parallel cross-browser testing | All major browsers simultaneously |
-
-### **Mobile Device Tests**
-
-| Test File | Device Type | Key Features |
-|-----------|-------------|--------------|
-| `playwright-ios-real-device.js` | iPhone 16 (Real Device) | Safari WebKit, Touch interactions |
-| `playwright-android-real-device.js` | Galaxy S21 (Real Device) | Chrome browser, Android gestures |
-| `playwright-single-on-iphone.js` | iPhone Emulation | Quick mobile testing |
-| `playwrightwebview.js` | Android WebView | Hybrid app testing |
-
-### **Advanced Testing Features** 
-
-| Test File | Capability | Business Value |
-|-----------|------------|----------------|
-| `playwright-extensions-test.js` | Browser Extension Testing | Validate Chrome extensions |
-| `playwright-lighthouse-report.js` | Performance Testing | Measure page speed & SEO |
-| `playwright-smartui.js` | Visual Regression Testing | Catch visual bugs automatically |
-
-### **Framework Integration**
-
-| Directory | Framework | Use Case |
-|-----------|-----------|----------|
-| `playwright-test-js/` | Playwright Test Runner | Built-in test organization |
-| `playwright-test-ts/` | TypeScript Support | Type-safe testing |
-| `playwright-cucumber-js/` | BDD Testing | Behavior-driven development |
-| `playwright-jest-js/` | Jest Integration | JavaScript testing ecosystem |
-
-## Setup Guide
-
-### Prerequisites
-
-1. **Node.js** (v14 or higher) - [Download here](https://nodejs.org/)
-2. **LambdaTest Account** - [Sign up free](https://accounts.lambdatest.com/register)
-3. **Your LambdaTest Credentials** - Available in your dashboard
-
-### Configuration
-
-Create a `.env` file in your project root:
-
-```env
-# Your LambdaTest credentials
-LT_USERNAME=your_username
-LT_ACCESS_KEY=your_access_key
-
-# Optional: iOS-specific settings
-LT_DEVICE_NAME=iPhone 16
-LT_PLATFORM_VERSION=18
-LT_PROJECT_NAME=My iOS Tests
-```
-
-### Installation
-
-```bash
-# Install project dependencies
-npm install
-
-# Optional: Install Playwright browsers for local development
-npx playwright install
-```
-
-## Test Examples
-
-### **Cross-Browser Testing**
-
-```bash
-# Single browser test
-node playwright-single.js
-
-# Run the same test across multiple browsers
-node playwright-parallel.js
-```
-
-### **Mobile Testing**
-
-```bash
-# Test on real iPhone 16
-node playwright-ios-real-device.js
-
-# Test on real Android device
-node playwright-android-real-device.js
-
-# Quick mobile emulation
-node playwright-single-on-iphone.js
-```
-
-### **Specialized Testing**
-
-```bash
-# Performance testing with Lighthouse
-node playwright-lighthouse-report.js
-
-# Visual regression testing
-node playwright-smartui.js
-
-# Browser extension testing
-node playwright-extensions-test.js
-```
-
-### **Framework-Based Testing**
-
-```bash
-# Using Playwright Test Runner
-cd playwright-test-js && npx playwright test
-
-# TypeScript testing
-cd playwright-test-ts && npx playwright test
-
-# BDD with Cucumber
-cd playwright-cucumber-js && npm test
-
-# Jest integration
-cd playwright-jest-js && npm test
-```
-
-## Results & Reporting
-
-### **Comprehensive Test Insights**
-
-Every test execution provides:
-
-```mermaid
-graph LR
-    A["Test Execution"] --> B["Detailed Reports"]
-    B --> C["Video Recordings"]
-    B --> D["Screenshots"]
-    B --> E["Performance Metrics"]
-    B --> F["Console Logs"]
-    
-    C --> C1["Full session replay"]
-    D --> D1["Failure screenshots"]
-    E --> E1["Load times & metrics"]
-    F --> F1["Debug information"]
-```
-
-**What You Get:**
-- **HD Video Recording**: Watch exactly what happened during your test
-- **Performance Metrics**: Load times, network activity, resource usage
-- **Automatic Screenshots**: Capture failures and key test moments
-- **Detailed Logs**: Console outputs, network requests, errors
-- **Analytics Dashboard**: Test trends, success rates, team insights
-
-### **iOS Testing Results**
-
-When running iOS tests, you'll see:
-- **Real Device Information**: Actual iPhone model and iOS version
-- **Touch Interaction Logs**: Tap, swipe, and gesture confirmations  
-- **Safari-Specific Metrics**: WebKit performance data
-- **Mobile-Optimized Reports**: Tailored for mobile testing insights
-
-## Best Practices
-
-### **iOS Testing Excellence**
-
-```javascript
-// Recommended iOS test structure
-const capabilities = {
-  "LT:Options": {
-    "platformName": "ios",
-    "deviceName": "iPhone 16",
-    "platformVersion": "18",
-    "isRealMobile": true,
-    "build": "Production iOS Tests",
-    "name": "Critical User Journey",
-    "network": true,
-    "video": true
-  }
-};
-
-// iOS-optimized interactions
-const context = await browser.newContext({
-  hasTouch: true,
-  isMobile: true
-});
-
-// Reliable iOS element interactions
-await page.locator('input[name="search"]').click();
-await page.locator('input[name="search"]').fill('test query');
-await page.locator('button[type="submit"]').click();
-```
-
-### **Performance Optimization**
-
-- **Parallel Execution**: Run tests simultaneously across multiple browsers
-- **Smart Timeouts**: Use appropriate timeouts for real device testing
-- **Resource Management**: Proper cleanup ensures consistent performance
-- **Error Handling**: Robust error handling for stable test execution
-
-### **Test Organization**
-
-- **Descriptive Names**: Clear test and build names for easy identification
-- **Logical Grouping**: Organize tests by feature, platform, or priority
-- **Environment Configuration**: Separate configs for dev, staging, production
-- **Version Control**: Track test changes alongside application code
-
-## Resources
-
-### **Documentation & Guides**
-
-- [Migrate Existing Tests](pw-docs/migrate-playwright-tests.md)
-- [Advanced Configuration](pw-docs/test-execution-setup.md)
-- [Local Testing Setup](pw-docs/local-testing.md)
-- [Test Runner Integration](pw-docs/playwright-test-runner.md)
-- [BDD with Cucumber](pw-docs/cucumberjs.md)
-- [CI/CD Pipeline Integration](pw-docs/playwright-with-cicd.md)
-
-### **Learning & Support**
-
-- [LambdaTest Documentation](https://www.lambdatest.com/support/docs/)
-- [Testing Blog & Tutorials](https://www.lambdatest.com/blog/)
-- [Free Testing Courses](https://www.lambdatest.com/learning-hub/)
-- [Testing Certifications](https://www.lambdatest.com/certifications/)
-
-### **Community & Help**
-
-- [Community Forum](https://community.lambdatest.com/) - Connect with testing professionals
-- [24/7 Support](mailto:support@lambdatest.com) - Get expert help anytime
-- [GitHub Issues](https://github.com/LambdaTest/playwright-sample/issues) - Report issues or request features
-
-## Try in Gitpod
-
-Experience Playwright testing instantly with our pre-configured environment:
-
-[<img alt="Run in Gitpod" width="200px" align="center" src="https://user-images.githubusercontent.com/70570645/169987363-1408c494-4e2a-4f12-8828-c931eac716b0.png" />](https://gitpod.io/#https://github.com/LambdaTest/playwright-sample)
-
-```bash
-# Set your credentials in Gitpod
-eval $(gp env -e LT_USERNAME=your_username)
-eval $(gp env -e LT_ACCESS_KEY=your_access_key)
-```
-
-## Why Choose LambdaTest for Playwright Testing?
-
-### **Enterprise-Grade Platform**
-
-- **3000+ Browser-OS Combinations** - Comprehensive coverage
-- **Real Device Cloud** - Authentic testing on actual devices
-- **HyperExecute** - Fastest test orchestration platform
-- **Smart Test Analytics** - AI-powered insights and optimization
-- **120+ Integrations** - Seamless workflow integration
-
-### **Trusted Globally**
-
-- **500+ Enterprises** rely on LambdaTest for critical testing
-- **1M+ Developers** worldwide use our platform
-- **99.9% Uptime** ensuring your tests run when you need them
+&emsp;
+&emsp;
+&emsp;
+
+*Learn the how to get started with Playwright testing on the LambdaTest platform.*
 
 [<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
 
----
+## Table of Contents:
 
-<p align="center">
-  <b>Start Testing with Playwright on LambdaTest Today!</b>
-</p>
+* [Pre-requisites](#pre-requisites)
+* [Running Your First Playwright Test](#running-your-first-playwright-test)
+* [Parallel Testing](#parallel-testing)
+* [Real Device iOS Testing](#real-device-ios-testing)
+* [Migrate Playwright Tests](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/migrate-playwright-tests.md)
+* [Test Execution Setup](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/test-execution-setup.md)
+* [Local Testing](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/local-testing.md)
+* [Integrate With Playwright Test Runner](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/playwright-test-runner.md)
+* [Integrate With Cucumber.js](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/cucumberjs.md)
+* [Playwright Testing With CI/CD](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/playwright-with-cicd.md)
+
+## Pre-requisites
+
+1. Clone the LambdaTest-Playwright repository on your system.
+
+2. Install the npm dependencies.
+
+```
+npm install
+```
+
+3. In order to run your Playwright tests, you will need to set your LambdaTest username and access key in the environment variables. Click the **Access Key** button at the top-right of the Automation Dashboard to access it.
+
+<img height="300" src="https://user-images.githubusercontent.com/70570645/169819599-127dd293-347d-45b6-9651-e46f2b038583.png"/>
+
+**Windows**
+
+```js
+set LT_USERNAME="YOUR_LAMBDATEST_USERNAME"
+set LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
+```
+
+**macOS/Linux**
+
+```js
+export LT_USERNAME="YOUR_LAMBDATEST_USERNAME"
+export LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
+```
+
+## Run Your First Playwright Test
+
+>**Test Scenario**: The sample playwright-single.js file search the term 'LambdaTest' on Bing.
+
+Shown below are the steps on running Playwright tests on the LambdaTest platform. 
+
+1. Clone the LambdaTest-Playwright GitHub repository and switch to the cloned directory.
+
+```js
+git clone https://github.com/LambdaTest/playwright-sample.git
+cd playwright-sample
+```
+
+2. Ensure you have npm dependencies installed. 
+
+3. Configure your LambdaTest authentication credentials.
+
+Once you are done with the above-mentioned steps, you can initiate your first Playwright test on LambdaTest. 
+
+Check out [playwright-single.js](https://github.com/LambdaTest/playwright-sample/blob/main/playwright-single.js) file to view the sample test script.
+
+
+4. Pass the below command to run the test.
+
+```
+node playwright-single.js
+```
+
+## View your Playwright test results
+
+The LambdaTest Automation Dashboard is where you can see the results of your Playwright tests after running them on the LambdaTest platform. 
+
+The below screenshot of LambdaTest Automation Dashboard shows the Playwright build on the left and the build sessions associated with the selected build on the right.
+
+<img height="400" src="https://user-images.githubusercontent.com/70570645/169819291-57072893-32a4-48bc-b7a3-6c442911eb31.png"/>
+
+On clicking the session name of the respective test, you can view the details of Playwright test session that you just executed. For example, the below screenshot shows a test execution details of Playwright test like Test Name, Test ID, selected configurations, test logs, basic info, input config, and test session video. 
+
+<img height="400" src="https://user-images.githubusercontent.com/70570645/169819492-9b89a3ec-3db3-44f7-8ced-11eb747b9f2c.png"/>
+
+## Parallel Testing With Playwright
+
+
+LambdaTest allows you to perform parallel testing with Playwright across 40+ browsers and OS to automate your several test cases simultaneously. You can run one test case across various browsers, or you can run multiple test case scenarios in the same browser with different browser versions.
+
+
+Shown below are the steps on running parallel tests with Playright on the LambdaTest platform. 
+
+1. Clone the LambdaTest-Playwright GitHub repository and switch to the cloned directory.
+
+```js
+git clone https://github.com/LambdaTest/playwright-sample.git
+cd playwright-sample
+```
+
+2. Ensure you have npm dependencies installed. 
+
+3. Configure your LambdaTest authentication credentials.
+
+Once you are done with the above-mentioned steps, you can run your parallel tests with Playwright on LambdaTest. 
+
+**Test Scenario**: Check out [playwright-parallel.js](https://github.com/LambdaTest/playwright-sample/blob/main/playwright-parallel.js) file to view the sample test script.
+
+4. Pass the below command to run the test.
+
+```
+node playwright-parallel.js
+```
+
+## Real Device iOS Testing
+
+LambdaTest supports Playwright testing on real iOS devices, allowing you to test your web applications on actual iPhone hardware for authentic mobile testing experiences.
+
+**Test Scenario**: Check out [playwright-ios-real-device.js](https://github.com/LambdaTest/playwright-sample/blob/main/playwright-ios-real-device.js) file to view the sample test script for iOS real device testing.
+
+Run the below command to execute your test on a real iOS device:
+
+```
+node playwright-ios-real-device.js
+```
+
+**Supported Features:**
+- Network Logs, Commands, Meta Data, Basic Info
+- Input Config, Media, Tunnel, Geolocation, Video
+
+## Run Playwright Tests In Gitpod
+
+Select the button below to try this demo in [Gitpod](https://www.gitpod.io/)
+
+[<img alt="Run in Gitpod" width="200px" align="center" src="https://user-images.githubusercontent.com/70570645/169987363-1408c494-4e2a-4f12-8828-c931eac716b0.png" />](https://gitpod.io/#https://github.com/LambdaTest/playwright-sample)
+
+* After the Gitpod session launches, navigate to the terminal and run the following commands to save your [LambdaTest Credentials](https://accounts.lambdatest.com/detail/profile) to Gitpod as environment variables:
+
+```
+eval $(gp env -e LT_USERNAME=******)
+eval $(gp env -e LT_ACCESS_KEY=******)
+  ```
+
+* Click the following link if you're unsure how to [access your LambdaTest credentials.](https://www.lambdatest.com/support/docs/using-environment-variables-for-authentication-credentials/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample). Also, if you start a new terminal in Gitpod, you have to run the following command to reset envrionment variables:
+```
+ eval $(gp env -e)
+```
+For more information, refer to [Gitpod documentation](https://www.gitpod.io/docs/47_environment_variables/)
+
+## Documentation & Resources :books:
+
+      
+Visit the following links to learn more about LambdaTest's features, setup and tutorials around test automation, mobile app testing, responsive testing, and manual testing.
+
+* [LambdaTest Documentation](https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
+* [LambdaTest Blog](https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
+* [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)    
+
+## LambdaTest Community :busts_in_silhouette:
+
+The [LambdaTest Community](https://community.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe 🌎
+
+## What's New At LambdaTest ❓
+
+To stay updated with the latest features and product add-ons, visit [Changelog](https://changelog.lambdatest.com/) 
+      
+## About LambdaTest
+
+[LambdaTest](https://www.lambdatest.com?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.    
+
+### Features
+
+* Run Selenium, Cypress, Puppeteer, Playwright, and Appium automation tests across 3000+ real desktop and mobile environments.
+* Real-time cross browser testing on 3000+ environments.
+* Test on Real device cloud
+* Blazing fast test automation with HyperExecute
+* Accelerate testing, shorten job times and get faster feedback on code changes with Test At Scale.
+* Smart Visual Regression Testing on cloud
+* 120+ third-party integrations with your favorite tool for CI/CD, Project Management, Codeless Automation, and more.
+* Automated Screenshot testing across multiple browsers in a single click.
+* Local testing of web and mobile apps.
+* Online Accessibility Testing across 3000+ desktop and mobile browsers, browser versions, and operating systems.
+* Geolocation testing of web and mobile apps across 53+ countries.
+* LT Browser - for responsive testing across 50+ pre-installed mobile, tablets, desktop, and laptop viewports
+    
+[<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
+      
+## We are here to help you :headphones:
+
+* Got a query? we are available 24x7 to help. [Contact Us](mailto:support@lambdatest.com)
+* For more info, visit - [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)

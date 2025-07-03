@@ -28,6 +28,7 @@
 * [Pre-requisites](#pre-requisites)
 * [Running Your First Playwright Test](#running-your-first-playwright-test)
 * [Parallel Testing](#parallel-testing)
+* [Real Device iOS Testing](#real-device-ios-testing)
 * [Migrate Playwright Tests](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/migrate-playwright-tests.md)
 * [Test Execution Setup](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/test-execution-setup.md)
 * [Local Testing](https://github.com/LambdaTest/playwright-sample/blob/main/pw-docs/local-testing.md)
@@ -131,6 +132,22 @@ Once you are done with the above-mentioned steps, you can run your parallel test
 ```
 node playwright-parallel.js
 ```
+
+## Real Device iOS Testing
+
+LambdaTest supports Playwright testing on real iOS devices, allowing you to test your web applications on actual iPhone hardware for authentic mobile testing experiences.
+
+**Test Scenario**: Check out [playwright-ios-real-device.js](https://github.com/LambdaTest/playwright-sample/blob/main/playwright-ios-real-device.js) file to view the sample test script for iOS real device testing.
+
+Run the below command to execute your test on a real iOS device:
+
+```
+node playwright-ios-real-device.js
+```
+
+**Supported Features:**
+- Network Logs, Commands, Meta Data, Basic Info
+- Input Config, Media, Tunnel, Geolocation, Video
 
 ## Run Playwright Tests In Gitpod
 

@@ -13,9 +13,10 @@
     "node": ">=12.7.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.35.0",
-    "playwright": "^1.35.0",
     "@cucumber/cucumber": "^7.3.2",
-    "expect": "^29.5.0"
+    "@playwright/test": "^1.35.0",
+    "expect": "^29.5.0",
+    "playwright": "^1.35.0",
+    "dotenv": "^16.0.3"
   }
 }

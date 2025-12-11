@@ -1,0 +1,5 @@
+.DS_Store
+venv
+package-lock.json
+node-modules
+test-results

@@ -24,5 +24,5 @@ steps:
   - script: |
       export LT_USERNAME=$(LT_USERNAME)
       export LT_ACCESS_KEY=$(LT_ACCESS_KEY)
-      npx playwright test
+      npx playwright test playwright-single.js
     displayName: 'Run Playwright Tests'

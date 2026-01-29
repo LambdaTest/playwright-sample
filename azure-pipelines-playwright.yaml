@@ -26,5 +26,5 @@ steps:
   - script: |
       set LT_USERNAME=$(USER_VAL)
       set LT_ACCESS_KEY=$(KEY_VAL)
-      npx playwright test playwright-single.js
+      npx playwright test ./playwright-single.js
     displayName: 'Run Single Windows Test'

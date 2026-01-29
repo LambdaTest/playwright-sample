@@ -18,7 +18,7 @@ steps:
     displayName: 'Install Playwright Browser'
 
   # Fix: Use the direct file path and ensure it's treated as a test
-  - script: npx playwright test ./playwright-single.js --project=chromium
+  - script: node ./playwright-single.js
     displayName: 'Run Single Windows Test'
     env:
       LT_USERNAME: $(LT_USERNAME)

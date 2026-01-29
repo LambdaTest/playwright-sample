@@ -2,14 +2,7 @@ trigger:
   - main
 
 pool:
-  # Using Windows agent as requested for Windows tests
   vmImage: 'windows-latest' 
-
-variables:
-  # Use DIFFERENT names here to break the cycle. 
-  # In the ADO UI "Variables" section, name your secrets 'LT_USER_SECRET' and 'LT_KEY_SECRET'
-  LT_USERNAME: $(LT_USER_SECRET)
-  LT_ACCESS_KEY: $(LT_KEY_SECRET)
 
 steps:
   - task: NodeTool@0
@@ -20,11 +13,13 @@ steps:
   - script: npm install
     displayName: 'Install dependencies'
 
-  - script: npx playwright install --with-deps
-    displayName: 'Install Playwright Browsers'
+  # Speed Optimization: Only install Chromium for Windows testing
+  - script: npx playwright install chromium --with-deps
+    displayName: 'Install Playwright Browser'
 
-  - script: |
-      set LT_USERNAME=$(USER_VAL)
-      set LT_ACCESS_KEY=$(KEY_VAL)
-      npx playwright test ./playwright-single.js
+  # Fix: Use the direct file path and ensure it's treated as a test
+  - script: npx playwright test ./playwright-single.js --project=chromium
     displayName: 'Run Single Windows Test'
+    env:
+      LT_USERNAME: $(LT_USERNAME)
+      LT_ACCESS_KEY: $(LT_ACCESS_KEY)

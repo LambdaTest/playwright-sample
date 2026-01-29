@@ -2,12 +2,14 @@ trigger:
   - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  # Using Windows agent as requested for Windows tests
+  vmImage: 'windows-latest' 
 
 variables:
-  # Do not hardcode these! Use ADO Secret Variables (see Phase 4)
-  LT_USERNAME: $(LT_USERNAME)
-  LT_ACCESS_KEY: $(LT_ACCESS_KEY)
+  # Use DIFFERENT names here to break the cycle. 
+  # In the ADO UI "Variables" section, name your secrets 'LT_USER_SECRET' and 'LT_KEY_SECRET'
+  LT_USERNAME: $(LT_USER_SECRET)
+  LT_ACCESS_KEY: $(LT_KEY_SECRET)
 
 steps:
   - task: NodeTool@0
@@ -22,7 +24,7 @@ steps:
     displayName: 'Install Playwright Browsers'
 
   - script: |
-      export LT_USERNAME=$(LT_USERNAME)
-      export LT_ACCESS_KEY=$(LT_ACCESS_KEY)
+      set LT_USERNAME=$(USER_VAL)
+      set LT_ACCESS_KEY=$(KEY_VAL)
       npx playwright test playwright-single.js
-    displayName: 'Run Playwright Tests'
+    displayName: 'Run Single Windows Test'

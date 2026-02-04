@@ -32,11 +32,16 @@ public class PlaywrightTestSingle {
                 page.navigate("https://www.duckduckgo.com");
                 Locator locator = page.locator("[name=\"q\"]");
                 locator.click();
-                locator.type("LambdaTest");
+                locator.type("TestMu AI");
                 page.keyboard().press("Enter");
+
+                Thread.sleep(2000);
+
                 String title = page.title();
 
-                if (title.equals("LambdaTest at DuckDuckGo")) {
+                Thread.sleep(2000);
+
+                if (title.equals("TestMu AI at DuckDuckGo")) {
                     // Use the following code to mark the test status.
                     setTestStatus("passed", "Title matched", page);
                 } else {
@@ -47,6 +52,9 @@ public class PlaywrightTestSingle {
                 setTestStatus("failed", err.getMessage(), page);
                 err.printStackTrace();
             }
+
+            Thread.sleep(2000);
+
             browser.close();
         } catch (Exception err) {
             err.printStackTrace();

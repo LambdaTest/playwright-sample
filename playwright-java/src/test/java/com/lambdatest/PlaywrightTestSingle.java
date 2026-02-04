@@ -35,11 +35,10 @@ public class PlaywrightTestSingle {
                 locator.type("TestMu AI");
                 page.keyboard().press("Enter");
 
-                Thread.sleep(2000);
+
+                page.waitForTimeout(2000);
 
                 String title = page.title();
-
-                Thread.sleep(2000);
 
                 if (title.equals("TestMu AI at DuckDuckGo")) {
                     // Use the following code to mark the test status.
@@ -53,7 +52,6 @@ public class PlaywrightTestSingle {
                 err.printStackTrace();
             }
 
-            Thread.sleep(2000);
 
             browser.close();
         } catch (Exception err) {

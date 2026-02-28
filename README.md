@@ -110,7 +110,7 @@ On clicking the session name of the respective test, you can view the details of
 LambdaTest allows you to perform parallel testing with Playwright across 40+ browsers and OS to automate your several test cases simultaneously. You can run one test case across various browsers, or you can run multiple test case scenarios in the same browser with different browser versions.
 
 
-Shown below are the steps on running parallel tests with Playright on the LambdaTest platform. 
+Shown below are the steps on running parallel tests with Playwright on the LambdaTest platform. 
 
 1. Clone the LambdaTest-Playwright GitHub repository and switch to the cloned directory.
 
@@ -162,7 +162,7 @@ eval $(gp env -e LT_USERNAME=******)
 eval $(gp env -e LT_ACCESS_KEY=******)
   ```
 
-* Click the following link if you're unsure how to [access your LambdaTest credentials.](https://www.lambdatest.com/support/docs/using-environment-variables-for-authentication-credentials/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample). Also, if you start a new terminal in Gitpod, you have to run the following command to reset envrionment variables:
+* Click the following link if you're unsure how to [access your LambdaTest credentials.](https://www.lambdatest.com/support/docs/using-environment-variables-for-authentication-credentials/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample). Also, if you start a new terminal in Gitpod, you have to run the following command to reset environment variables:
 ```
  eval $(gp env -e)
 ```

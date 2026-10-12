@@ -1,5 +1,7 @@
 # Testing Playwright Parallel with XUnit and SpecFlow in C# on LambdaTest
 
+> Automated End-to-End (E2E) testing of web apps with Playwright, C#, SpecFlow, and xUnit across real browsers and operating systems on TestMu AI.
+
 ## Setup
 
 * Clone the repo and run `cd SpecFlowPlaywrightXunit`

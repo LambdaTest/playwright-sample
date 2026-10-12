@@ -1,134 +1,99 @@
-# Playwright Cloud ![pw](https://user-images.githubusercontent.com/70570645/169813479-9713557e-4430-42ea-91f4-70c6cb72ec0b.PNG)
+# Run Playwright Tests with Java and JUnit on TestMu AI (Formerly LambdaTest)
 
 > Automated End-to-End (E2E) testing of web apps with Playwright, Java, and JUnit across real browsers and operating systems on TestMu AI.
 
-<img height="400" src="https://user-images.githubusercontent.com/70570645/171361733-065df506-c302-452d-8bc7-e63047377f8e.png">
-
 <p align="center">
-  <a href="https://www.testmuai.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Blog</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Docs</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Learning Hub</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/newsletter/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Newsletter</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/certifications/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Certifications</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.youtube.com/c/LambdaTest" target="_bank">YouTube</a>
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://central.sonatype.com/artifact/com.microsoft.playwright/playwright"><img src="https://img.shields.io/maven-central/v/com.microsoft.playwright/playwright.svg?style=for-the-badge&labelColor=000000" alt="Playwright version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
 </p>
-&emsp;
-&emsp;
-&emsp;
 
-*Learn the how to get started with Playwright testing on the LambdaTest platform.*
+## Getting Started
 
-[<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://www.testmuai.com/register/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks.
 
+With TestMu AI (Formerly LambdaTest), you can run Playwright tests across real browsers and operating systems. This sample shows how to run Playwright tests in Java with JUnit on the TestMu AI cloud.
 
-## Pre-requisites
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [Run Playwright tests on TestMu AI](https://www.testmuai.com/support/docs/playwright-testing/) for the full setup walkthrough.
 
-1. Clone the LambdaTest-Playwright repository on your system.
-2. Navigate to playwright-java-junit.
-3. Install the pom dependencies
-4. In order to run your Playwright tests, you will need to set your LambdaTest username and access key in the environment variables. Click the **Access Key** button at the top-right of the Automation Dashboard to access it.
+### Prerequisites
 
-<img height="300" src="https://user-images.githubusercontent.com/70570645/169819599-127dd293-347d-45b6-9651-e46f2b038583.png"/>
+- Java JDK 8 or higher
+- Maven
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
 
-**Windows**
+### Setup
 
-```js
-set LT_USERNAME="YOUR_LAMBDATEST_USERNAME"
-set LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
+Clone the repo and move into this sample:
+
+```bash
+git clone https://github.com/LambdaTest/playwright-sample && cd playwright-sample/playwright-java-junit
 ```
 
-**macOS/Linux**
+Set your credentials as environment variables.
 
-```js
-export LT_USERNAME="YOUR_LAMBDATEST_USERNAME"
-export LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
+**macOS / Linux:**
+
+```bash
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
 ```
 
-## Run Your First Playwright Test
+**Windows:**
 
->**Test Scenario**: The sample playwright-single.js file search the term 'LambdaTest' on DuckDuckGo.
-
-Shown below are the steps on running Playwright tests on the LambdaTest platform. 
-
-1. Clone the LambdaTest-Playwright GitHub repository and switch to the cloned directory.
-
-```js
-git clone https://github.com/LambdaTest/playwright-sample.git
-cd playwright-sample
-cd playwright-java-junit
+```bash
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
 ```
 
-2. Ensure you have pom dependencies installed. 
+### Run tests
 
-3. Configure your LambdaTest authentication credentials.
-
-Once you are done with the above-mentioned steps, you can initiate your first Playwright test on LambdaTest. 
-
-Check out [SampleTest.java](https://github.com/LambdaTest/playwright-sample/blob/main/playwright-java-junit/src/test/java/SampleTest.java) file to view the sample test script.
-
-
-4. Pass the below command to run the test.
-
-```
+```bash
 mvn clean test
 ```
 
-## View your Playwright test results
+Maven resolves the pom dependencies and runs the JUnit tests (see `src/test/java/SampleTest.java`) on TestMu AI. View results on your TestMu AI dashboard.
 
-The LambdaTest Automation Dashboard is where you can see the results of your Playwright tests after running them on the LambdaTest platform. 
+### Local testing with TestMu AI Tunnel
 
-The below screenshot of LambdaTest Automation Dashboard shows the Playwright build on the left and the build sessions associated with the selected build on the right.
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
 
-<img height="400" src="https://user-images.githubusercontent.com/70570645/169819291-57072893-32a4-48bc-b7a3-6c442911eb31.png"/>
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
 
-On clicking the session name of the respective test, you can view the details of Playwright test session that you just executed. For example, the below screenshot shows a test execution details of Playwright test like Test Name, Test ID, selected configurations, test logs, basic info, input config, and test session video. 
+Enable the `tunnel` capability (set `tunnel` to `true`) in your test configuration.
 
-<img height="400" src="https://user-images.githubusercontent.com/70570645/169819492-9b89a3ec-3db3-44f7-8ced-11eb747b9f2c.png"/>
+## Contributions
 
-## Documentation & Resources :books:
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Java version, OS, and Playwright version.
 
-      
-Visit the following links to learn more about LambdaTest's features, setup and tutorials around test automation, mobile app testing, responsive testing, and manual testing.
+## TestMu AI (Formerly LambdaTest) Community
 
-* [LambdaTest Documentation](https://www.testmuai.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
-* [LambdaTest Blog](https://www.testmuai.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
-* [LambdaTest Learning Hub](https://www.testmuai.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)    
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
 
-## LambdaTest Community :busts_in_silhouette:
+## TestMu AI (Formerly LambdaTest) Certifications
 
-The [LambdaTest Community](https://community.testmuai.com/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe 🌎
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-## What's New At LambdaTest ❓
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
-To stay updated with the latest features and product add-ons, visit [Changelog](https://changelog.testmuai.com/) 
-      
-## About LambdaTest
+Learn modern testing through tutorials, guides, videos, and weekly updates:
 
-[LambdaTest](https://www.testmuai.com?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.    
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
 
-### Features
+## LambdaTest is Now TestMu AI
 
-* Run Selenium, Cypress, Puppeteer, Playwright, and Appium automation tests across 3000+ real desktop and mobile environments.
-* Real-time cross browser testing on 3000+ environments.
-* Test on Real device cloud
-* Blazing fast test automation with HyperExecute
-* Accelerate testing, shorten job times and get faster feedback on code changes with Test At Scale.
-* Smart Visual Regression Testing on cloud
-* 120+ third-party integrations with your favorite tool for CI/CD, Project Management, Codeless Automation, and more.
-* Automated Screenshot testing across multiple browsers in a single click.
-* Local testing of web and mobile apps.
-* Online Accessibility Testing across 3000+ desktop and mobile browsers, browser versions, and operating systems.
-* Geolocation testing of web and mobile apps across 53+ countries.
-* LT Browser - for responsive testing across 50+ pre-installed mobile, tablets, desktop, and laptop viewports
-    
-[<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://www.testmuai.com/register/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
-      
-## We are here to help you :headphones:
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
 
-* Got a query? we are available 24x7 to help. [Contact Us](support@testmuai.com)
-* For more info, visit - [LambdaTest](https://www.testmuai.com/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample)
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
+
+👉 Find the new home for [LambdaTest](https://www.testmuai.com).
+
+## Support
+
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.

@@ -2,7 +2,7 @@
 
 > Automated End-to-End (E2E) testing of web apps with Playwright and BDD across real browsers and operating systems on TestMu AI.
 
-In this 'Playwright BDD Demo with Cloud Grid' repo, we have covered the usage of the [LambdaTest Playwright-Node.js SDK](https://www.lambdatest.com/support/docs/playwright-sdk/) to automate tests on the LambdaTest platform. Here is the top-level view of the internal working of the Playwright-BDD framework:
+In this 'Playwright BDD Demo with Cloud Grid' repo, we have covered the usage of the [LambdaTest Playwright-Node.js SDK](https://www.testmuai.com/support/docs/playwright-sdk/) to automate tests on the LambdaTest platform. Here is the top-level view of the internal working of the Playwright-BDD framework:
 
 <a href="https://github.com/user-attachments/assets/adb3dab7-e663-4657-9eed-9b58a7ff1b83" target="_blank">
     <img src="https://github.com/user-attachments/assets/adb3dab7-e663-4657-9eed-9b58a7ff1b83"  alt="Playwright BDD Schema" width="1000" height="450" />
@@ -38,9 +38,9 @@ npm install
 
 With this, all the dependencies and environment variables are set. We can now harness the combination of (playwright-bdd + LambdaTest Playwright-Node.js SDK) for running web  - desktop + mobile (Android + iOS) tests on the LambdaTest cloud grid.
 
-You can add/remove the browser, OS, and device(s) from [lambdatest.yml](https://github.com/hjsblogger/playwright-cucumber-bdd-demo/blob/main/lambdatest.yml) by selecting the appropriate combination from the [LambdaTest Capabilities Generator](https://www.lambdatest.com/capabilities-generator).
+You can add/remove the browser, OS, and device(s) from [lambdatest.yml](https://github.com/hjsblogger/playwright-cucumber-bdd-demo/blob/main/lambdatest.yml) by selecting the appropriate combination from the [LambdaTest Capabilities Generator](https://www.testmuai.com/capabilities-generator).
 
-You can find the list of available real devces on LambdaTest in the [LambdaTest Real Devices Page](https://www.lambdatest.com/list-of-real-devices).
+You can find the list of available real devces on LambdaTest in the [LambdaTest Real Devices Page](https://www.testmuai.com/list-of-real-devices).
 
 **Step 5:** Trigger the command ```npx bddgen && npx playwright-node-sdk playwright test``` on the terminal. The command does the following:
 

@@ -1,62 +1,101 @@
-# LambdaTest PlayWright BDD Tests
+# Run Playwright BDD Tests on TestMu AI (Formerly LambdaTest)
 
 > Automated End-to-End (E2E) testing of web apps with Playwright and BDD across real browsers and operating systems on TestMu AI.
 
-In this 'Playwright BDD Demo with Cloud Grid' repo, we have covered the usage of the [LambdaTest Playwright-Node.js SDK](https://www.testmuai.com/support/docs/playwright-sdk/) to automate tests on the LambdaTest platform. Here is the top-level view of the internal working of the Playwright-BDD framework:
+<p align="center">
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://www.npmjs.com/package/playwright"><img src="https://img.shields.io/npm/v/playwright.svg?style=for-the-badge&labelColor=000000" alt="Playwright version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
+</p>
 
-<a href="https://github.com/user-attachments/assets/adb3dab7-e663-4657-9eed-9b58a7ff1b83" target="_blank">
-    <img src="https://github.com/user-attachments/assets/adb3dab7-e663-4657-9eed-9b58a7ff1b83"  alt="Playwright BDD Schema" width="1000" height="450" />
-</a>
+## Getting Started
 
-You can find more information about Playwright-BDD in the [Playwright-BDD GitHub Repository](https://github.com/vitalets/playwright-bdd).
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks.
 
-## Steps for test execution
+With TestMu AI (Formerly LambdaTest), you can run Playwright tests across real browsers and operating systems. This sample shows how to run Playwright BDD tests with the TestMu AI Playwright Node.js SDK on the TestMu AI cloud.
 
-**Step 1:** Create a virtual environment by triggering the *virtualenv venv* command on the terminal
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [Run Playwright tests on TestMu AI](https://www.testmuai.com/support/docs/playwright-testing/) for the full setup walkthrough.
 
-```bash
-virtualenv venv
-```
-<img width="1418" alt="VirtualEnvironment" src="https://github.com/hjsblogger/web-scraping-with-python/assets/1688653/89beb6af-549f-42ac-a063-e5f715018ef8">
+### Prerequisites
 
-**Step 2:** Navigate the newly created virtual environment by triggering the *source venv/bin/activate* command on the terminal
+- Node.js and npm (latest stable)
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
 
-```bash
-source venv/bin/activate
-```
-**Step 3:** You can fetch the LambdaTest Credentials from the [LambdaTest Profile Section](https://accounts.lambdatest.com/security/username-accesskey) section.
+### Setup
 
-Update the LambdaTest Credentials - [LT_USERNAME](https://github.com/hjsblogger/playwright-cucumber-bdd-demo/blob/main/lambdatest.yml#L5) and [LT_ACCESS_KEY](https://github.com/hjsblogger/playwright-cucumber-bdd-demo/blob/main/lambdatest.yml#L6) in lambdatest.yml.
-
-**Step 4:** Run the *npm install* command on the terminal to install the desired packages (or dependencies).
+Clone the repo and move into this sample:
 
 ```bash
+git clone https://github.com/LambdaTest/playwright-sample && cd playwright-sample/playwright-bdd
 npm install
 ```
 
-<img width="571" height="291" alt="Image" src="https://github.com/user-attachments/assets/54ee6ed8-101a-41c0-a498-facc62c5d9e4" />
+Set your credentials as environment variables.
 
-With this, all the dependencies and environment variables are set. We can now harness the combination of (playwright-bdd + LambdaTest Playwright-Node.js SDK) for running web  - desktop + mobile (Android + iOS) tests on the LambdaTest cloud grid.
+**macOS / Linux:**
 
-You can add/remove the browser, OS, and device(s) from [lambdatest.yml](https://github.com/hjsblogger/playwright-cucumber-bdd-demo/blob/main/lambdatest.yml) by selecting the appropriate combination from the [LambdaTest Capabilities Generator](https://www.testmuai.com/capabilities-generator).
+```bash
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+```
 
-You can find the list of available real devces on LambdaTest in the [LambdaTest Real Devices Page](https://www.testmuai.com/list-of-real-devices).
+**Windows:**
 
-**Step 5:** Trigger the command ```npx bddgen && npx playwright-node-sdk playwright test``` on the terminal. The command does the following:
+```bash
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+```
 
- - **npx bddgen**: Triggers BDD test generator CLI that comes with the playwright-bdd library. This command generates the step definitions from the .feature(s) in the ```<project-folder>/.features-gen/features``` folder
- - **npx playwright-node-sdk playwright test**: Runs the Playwright tests on LambdaTest cloud gridusing the LambdaTest SDK that injects config, capabilities, and reporting.
+### Run tests
 
-<img width="1411" height="491" alt="Image" src="https://github.com/user-attachments/assets/a516b04c-8aea-4339-b89d-7259c09a4931" /><br/>
+Generate the BDD step definitions and run the suite on TestMu AI:
 
-<img width="1411" height="514" alt="Image" src="https://github.com/user-attachments/assets/a5bf2884-b980-48ca-8112-900c0b88568d" /><br/>
+```bash
+npx bddgen && npx playwright-node-sdk playwright test
+```
 
-**Step 6:** Navigate to the [LambdaTest Automation Dashboard](https://automation.lambdatest.com/) to check the status of the test execution:
+`npx bddgen` generates step definitions from your `.feature` files; `npx playwright-node-sdk playwright test` runs them on the TestMu AI cloud via the Playwright Node.js SDK. View results on your TestMu AI dashboard.
 
-<img width="1440" height="900" alt="Image" src="https://github.com/user-attachments/assets/a246ad30-3fd4-4e59-80df-7011294bc014" /><br/>
+### Local testing with TestMu AI Tunnel
 
-As seen below, all the scenarios that are a part of respective .feature(s) files successfuly executed on LambdaTest.
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
 
-<img width="1440" height="900" alt="Image" src="https://github.com/user-attachments/assets/1d1f4df6-ad8d-4590-888e-b7b5f01e105a" /><br/>
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
 
-<img width="1440" height="900" alt="Image" src="https://github.com/user-attachments/assets/f3dcc6c3-30d4-4936-895a-c9d46a3015a6" /><br/>
+Enable the `tunnel` capability (set `tunnel` to `true`) in your test configuration.
+
+## Contributions
+
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Node.js version, OS, and Playwright version.
+
+## TestMu AI (Formerly LambdaTest) Community
+
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+
+## TestMu AI (Formerly LambdaTest) Certifications
+
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
+
+## Learning Resources by TestMu AI (Formerly LambdaTest)
+
+Learn modern testing through tutorials, guides, videos, and weekly updates:
+
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+
+## LambdaTest is Now TestMu AI
+
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
+
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
+
+👉 Find the new home for [LambdaTest](https://www.testmuai.com).
+
+## Support
+
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.

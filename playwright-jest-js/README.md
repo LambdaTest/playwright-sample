@@ -1,5 +1,7 @@
 # Testing Playwright with Jest on LambdaTest
 
+> Automated End-to-End (E2E) testing of web apps with Playwright and Jest across real browsers and operating systems on TestMu AI.
+
 ## Pre-requisites
 
 1. Clone the repo, then `cd playwright-jest-js`

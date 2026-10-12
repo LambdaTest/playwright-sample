@@ -1,5 +1,7 @@
 # Testing Playwright in Java on LambdaTest
 
+> Automated End-to-End (E2E) testing of web apps with Playwright and Java across real browsers and operating systems on TestMu AI.
+
 ## Setup
 * Clone the repo. Run `cd playwright-java`
 

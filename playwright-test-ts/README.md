@@ -9,5 +9,4 @@
 * Install dependencies. Run `npm install`
 
 ## Running your tests
-- To run a single test, run 
-  ```npm run test```
+- To run a single test, run `npm run test`

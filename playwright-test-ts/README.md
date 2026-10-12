@@ -1,12 +1,100 @@
-# Testing Playwright with TS on LambdaTest
+# Run Playwright Tests with TypeScript on TestMu AI (Formerly LambdaTest)
 
 > Automated End-to-End (E2E) testing of web apps with Playwright Test for TypeScript across real browsers and operating systems on TestMu AI.
 
-## Setup
-* Clone the repo. Run `cd playwright-test-ts`
-* Install Playwright `npx playwright install`
-* Install Playwright Dep `npx playwright install-deps`
-* Install dependencies. Run `npm install`
+<p align="center">
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://www.npmjs.com/package/@playwright/test"><img src="https://img.shields.io/npm/v/@playwright/test.svg?style=for-the-badge&labelColor=000000" alt="Playwright Test version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
+</p>
 
-## Running your tests
-- To run a single test, run `npm run test`
+## Getting Started
+
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks.
+
+With TestMu AI (Formerly LambdaTest), you can run Playwright tests across real browsers and operating systems. This sample shows how to run Playwright test-runner suites in TypeScript on the TestMu AI cloud.
+
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [Run Playwright tests on TestMu AI](https://www.testmuai.com/support/docs/playwright-testing/) for the full setup walkthrough.
+
+### Prerequisites
+
+- Node.js and npm (latest stable)
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
+
+### Setup
+
+Clone the repo and move into this sample:
+
+```bash
+git clone https://github.com/LambdaTest/playwright-sample && cd playwright-sample/playwright-test-ts
+npm install
+npx playwright install
+```
+
+Set your credentials as environment variables.
+
+**macOS / Linux:**
+
+```bash
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+```
+
+**Windows:**
+
+```bash
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+```
+
+### Run tests
+
+```bash
+npm run test
+```
+
+This runs `npx playwright test --config=./playwright.config.ts`. The TestMu AI connection is in `lambdatest-setup.ts`; the browser/OS matrix is in `playwright.config.ts`. View results on your TestMu AI dashboard.
+
+### Local testing with TestMu AI Tunnel
+
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
+
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
+
+Enable the `tunnel` capability (set `tunnel` to `true`) in your test configuration.
+
+## Contributions
+
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Node.js version, OS, and Playwright version.
+
+## TestMu AI (Formerly LambdaTest) Community
+
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+
+## TestMu AI (Formerly LambdaTest) Certifications
+
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
+
+## Learning Resources by TestMu AI (Formerly LambdaTest)
+
+Learn modern testing through tutorials, guides, videos, and weekly updates:
+
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+
+## LambdaTest is Now TestMu AI
+
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
+
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
+
+👉 Find the new home for [LambdaTest](https://www.testmuai.com).
+
+## Support
+
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.

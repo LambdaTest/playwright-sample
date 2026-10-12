@@ -1,5 +1,7 @@
 # LambdaTest PlayWright BDD Tests
 
+> Automated End-to-End (E2E) testing of web apps with Playwright and BDD across real browsers and operating systems on TestMu AI.
+
 In this 'Playwright BDD Demo with Cloud Grid' repo, we have covered the usage of the [LambdaTest Playwright-Node.js SDK](https://www.lambdatest.com/support/docs/playwright-sdk/) to automate tests on the LambdaTest platform. Here is the top-level view of the internal working of the Playwright-BDD framework:
 
 <a href="https://github.com/user-attachments/assets/adb3dab7-e663-4657-9eed-9b58a7ff1b83" target="_blank">

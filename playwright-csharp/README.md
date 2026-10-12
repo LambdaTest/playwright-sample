@@ -1,5 +1,7 @@
 # Testing Playwright in C# on LambdaTest
 
+> Automated End-to-End (E2E) testing of web apps with Playwright and C# across real browsers and operating systems on TestMu AI.
+
 ## Setup
 
 * Clone the repo and run `cd playwright-csharp`

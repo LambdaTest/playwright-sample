@@ -1,5 +1,7 @@
 # Playwright Cloud ![pw](https://user-images.githubusercontent.com/70570645/169813479-9713557e-4430-42ea-91f4-70c6cb72ec0b.PNG)
 
+> Automated End-to-End (E2E) testing of web apps with Playwright, Java, and JUnit across real browsers and operating systems on TestMu AI.
+
 <img height="400" src="https://user-images.githubusercontent.com/70570645/171361733-065df506-c302-452d-8bc7-e63047377f8e.png">
 
 <p align="center">

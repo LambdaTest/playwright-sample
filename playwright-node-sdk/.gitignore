@@ -1,2 +1,5 @@
 log/
 test-results/
+playwright-report/
+playwright-lambdatest-sdk.config.temp.json
+.lambdatest/

@@ -7,11 +7,30 @@ video: true
 console: true
 network: true
 
+# Parallel sessions per platform: total parallel sessions = this value x number of platforms.
+# Keep the total within your plan's parallel limit.
+parallelsPerPlatform: 1
+
 # Every test runs once on each platform below.
 platforms:
   - platform: "Windows 11"
     browserName: "chrome"
     browserVersion: "latest"
   - platform: "macOS Sonoma"
-    browserName: "MicrosoftEdge"
+    browserName: "pw-webkit"
     browserVersion: "latest"
+  # Real Android device. Runs only the specs listed in testMatch.
+  - platformName: "android"
+    deviceName: "Galaxy.*"
+    platformVersion: ".*"
+    isRealMobile: true
+    browserName: "chrome"
+    playwrightConfigOptions:
+      testMatch: ["**/search.spec.ts", "**/checkout.spec.ts"]
+
+# Local testing: set tunnel to true, then run `npm run test:tunnel`.
+# The SDK starts the tunnel before the tests and stops it after.
+tunnelSettings:
+  tunnel: false
+  autostart: true
+  tunnelName: "playwright-node-sdk-sample"

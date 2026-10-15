@@ -4,11 +4,13 @@
   "author": "TestMu AI",
   "description": "Sample project to run Playwright tests on TestMu AI (Formerly LambdaTest) with the Playwright Node SDK",
   "scripts": {
-    "test": "playwright-node-sdk playwright test"
+    "test": "playwright-node-sdk playwright test --grep-invert @tunnel",
+    "test:tunnel": "playwright-node-sdk playwright test --grep @tunnel",
+    "test:local": "playwright test --grep-invert @tunnel"
   },
   "devDependencies": {
     "@lambdatest/playwright-node-sdk": "^1.0.4",
-    "@playwright/test": "1.63.0",
-    "playwright": "1.63.0"
+    "@playwright/test": "1.61.1",
+    "playwright": "1.61.1"
   }
 }

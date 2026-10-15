@@ -1,0 +1,17 @@
+# Your TestMu AI (Formerly LambdaTest) username and access key
+user: "YOUR_LAMBDATEST_USERNAME"
+accessKey: "YOUR_LAMBDATEST_ACCESS_KEY"
+
+build: "Playwright Node SDK Sample"
+video: true
+console: true
+network: true
+
+# Every test runs once on each platform below.
+platforms:
+  - platform: "Windows 11"
+    browserName: "chrome"
+    browserVersion: "latest"
+  - platform: "macOS Sonoma"
+    browserName: "MicrosoftEdge"
+    browserVersion: "latest"

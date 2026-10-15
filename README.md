@@ -59,6 +59,8 @@ node playwright-parallel.js
 
 View results on your TestMu AI dashboard.
 
+To run an existing Playwright Test suite with no code changes, use the Playwright Node SDK: see [playwright-node-sdk](playwright-node-sdk/).
+
 ### Local testing with TestMu AI Tunnel
 
 To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:

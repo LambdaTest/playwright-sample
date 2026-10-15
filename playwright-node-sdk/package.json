@@ -1,0 +1,14 @@
+{
+  "name": "playwright-node-sdk-sample",
+  "version": "1.0.0",
+  "author": "TestMu AI",
+  "description": "Sample project to run Playwright tests on TestMu AI (Formerly LambdaTest) with the Playwright Node SDK",
+  "scripts": {
+    "test": "playwright-node-sdk playwright test"
+  },
+  "devDependencies": {
+    "@lambdatest/playwright-node-sdk": "^1.0.4",
+    "@playwright/test": "1.63.0",
+    "playwright": "1.63.0"
+  }
+}

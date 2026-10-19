@@ -1,0 +1,6 @@
+[
+  { "term": "iPhone", "expectResults": true },
+  { "term": "MacBook", "expectResults": true },
+  { "term": "Canon", "expectResults": true },
+  { "term": "no-such-product-xyz", "expectResults": false }
+]
